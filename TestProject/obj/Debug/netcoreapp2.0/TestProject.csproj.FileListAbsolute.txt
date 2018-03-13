@@ -1,0 +1,10 @@
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/bin/Debug/netcoreapp2.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/bin/Debug/netcoreapp2.0/xunit.runner.reporters.netcoreapp10.dll
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/bin/Debug/netcoreapp2.0/xunit.runner.utility.netcoreapp10.dll
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/bin/Debug/netcoreapp2.0/TestProject.dll
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/bin/Debug/netcoreapp2.0/TestProject.pdb
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/obj/Debug/netcoreapp2.0/TestProject.csproj.CoreCompileInputs.cache
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/obj/Debug/netcoreapp2.0/TestProject.AssemblyInfoInputs.cache
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/obj/Debug/netcoreapp2.0/TestProject.AssemblyInfo.cs
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/obj/Debug/netcoreapp2.0/TestProject.dll
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/TestProject/obj/Debug/netcoreapp2.0/TestProject.pdb

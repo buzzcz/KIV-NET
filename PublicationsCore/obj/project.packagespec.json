@@ -1,0 +1,58 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/PublicationsCore.csproj",
+    "projectName": "PublicationsCore",
+    "projectPath": "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/PublicationsCore.csproj",
+    "outputPath": "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/opt/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "Microsoft.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[2.0.1, )"
+        },
+        "Microsoft.EntityFrameworkCore.Design": {
+          "target": "Package",
+          "version": "[2.0.1, )"
+        },
+        "Microsoft.EntityFrameworkCore.Tools": {
+          "target": "Package",
+          "version": "[2.0.1, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.5, )"
+        },
+        "MySql.Data.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[6.10.6, )"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

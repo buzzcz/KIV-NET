@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2017.3/system/resharper-host/local/Transient/ReSharperHost/v11/SolutionCaches/_Publications.937333665.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Publications.sln" t="IncludeFlat" />
+      <e p="PublicationsCore" t="IncludeRecursive">
+        <e p="Migrations" t="Include">
+          <e p="20180313131209_Model.Designer.cs" t="Include" />
+          <e p="20180313131209_Model.cs" t="Include" />
+          <e p="PublicationsContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="PublicationsCore.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="facade" t="Include">
+          <e p="Enum" t="Include" />
+          <e p="IPublicationFacade.cs" t="Include" />
+          <e p="PublicationFacade.cs" t="Include" />
+          <e p="dto" t="Include">
+            <e p="AddressDto.cs" t="Include" />
+            <e p="AuthorDto.cs" t="Include" />
+            <e p="PublicationDto.cs" t="Include" />
+            <e p="PublisherDto.cs" t="Include" />
+          </e>
+          <e p="enums" t="Include">
+            <e p="PublicationType.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="PublicationsCore.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="persistence" t="Include">
+          <e p="PublicationsContext.cs" t="Include" />
+          <e p="model" t="Include">
+            <e p="Address.cs" t="Include" />
+            <e p="Author.cs" t="Include" />
+            <e p="Publication.cs" t="Include" />
+            <e p="Publisher.cs" t="Include" />
+          </e>
+        </e>
+        <e p="service" t="Include">
+          <e p="IMapper.cs" t="Include" />
+          <e p="IPublicationService.cs" t="Include" />
+          <e p="Mapper.cs" t="Include" />
+          <e p="PublicationService.cs" t="Include" />
+        </e>
+      </e>
+      <e p="TestProject" t="IncludeRecursive">
+        <e p="TestProject.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="facade" t="Include">
+          <e p="dto" t="Include">
+            <e p="PublicationDtoTest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="TestProject.AssemblyInfo.cs" t="Include" />
+              <e p="TestProject.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="persistence" t="Include">
+          <e p="PublicationContextTest.cs" t="Include" />
+        </e>
+        <e p="service" t="Include">
+          <e p="MapperTest.cs" t="Include" />
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

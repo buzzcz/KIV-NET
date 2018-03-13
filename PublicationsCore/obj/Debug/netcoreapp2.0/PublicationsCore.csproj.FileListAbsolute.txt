@@ -1,0 +1,7 @@
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.dll
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.pdb
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.csproj.CoreCompileInputs.cache
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.AssemblyInfoInputs.cache
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.AssemblyInfo.cs
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.dll
+/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.pdb
