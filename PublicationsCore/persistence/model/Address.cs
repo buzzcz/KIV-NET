@@ -20,10 +20,14 @@ namespace PublicationsCore.Persistence.Model
 
         [Required] public int Number { get; set; }
 
+        public override string ToString()
+        {
+            return $"{nameof(Id)}: {Id}, {nameof(State)}: {State}, {nameof(City)}: {City}, {nameof(Street)}: {Street}, {nameof(Number)}: {Number}";
+        }
+
         protected bool Equals(Address other)
         {
-            return string.Equals(State, other.State) && string.Equals(City, other.City) &&
-                   string.Equals(Street, other.Street) && Number == other.Number;
+            return Id == other.Id && string.Equals(State, other.State) && string.Equals(City, other.City) && string.Equals(Street, other.Street) && Number == other.Number;
         }
 
         public override bool Equals(object obj)
@@ -38,7 +42,8 @@ namespace PublicationsCore.Persistence.Model
         {
             unchecked
             {
-                var hashCode = (State != null ? State.GetHashCode() : 0);
+                var hashCode = Id;
+                hashCode = (hashCode * 397) ^ (State != null ? State.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (City != null ? City.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Street != null ? Street.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Number;

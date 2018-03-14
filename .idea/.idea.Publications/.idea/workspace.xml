@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38f7e52f-62e8-4b63-9c88-2a93ca7f7d59" name="Default" comment="" />
+    <list default="true" id="38f7e52f-62e8-4b63-9c88-2a93ca7f7d59" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/contentModel.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/contentModel.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/Migrations/PublicationsContextModelSnapshot.cs" afterPath="$PROJECT_DIR$/PublicationsCore/Migrations/PublicationsContextModelSnapshot.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/PublicationsCore.csproj" afterPath="$PROJECT_DIR$/PublicationsCore/PublicationsCore.csproj" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.deps.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.dll" afterPath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.dll" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" afterPath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.runtimeconfig.dev.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.runtimeconfig.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.csproj.CoreCompileInputs.cache" afterPath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.csproj.CoreCompileInputs.cache" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.dll" afterPath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.dll" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.pdb" afterPath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.pdb" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/PublicationsCore.csproj.nuget.cache" afterPath="$PROJECT_DIR$/PublicationsCore/obj/PublicationsCore.csproj.nuget.cache" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/project.assets.json" afterPath="$PROJECT_DIR$/PublicationsCore/obj/project.assets.json" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" afterPath="$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" />
+      <change beforePath="$PROJECT_DIR$/TestProject/TestProject.csproj" afterPath="$PROJECT_DIR$/TestProject/TestProject.csproj" />
+      <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.dll" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.dll" />
+      <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" />
+      <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.dll" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.dll" />
+      <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.pdb" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.pdb" />
+      <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.csproj.CoreCompileInputs.cache" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.csproj.CoreCompileInputs.cache" />
+      <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.dll" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.dll" />
+      <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.pdb" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.pdb" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,12 +47,97 @@
     <favorites_list name="Publications" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PublicationServiceTest.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="114" column="13" lean-forward="false" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
+              <folding>
+                <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
+                <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
+                <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IPublicationService.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+              <folding>
+                <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
+                <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
+                <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
+                <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
+                <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
+                <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PublicationService.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <marker date="1521046464111" expanded="false" signature="6:168" ph="..." />
+                <marker date="1521046464111" expanded="true" signature="204:2892" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="211:297" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
+                <marker date="1521046464111" expanded="true" signature="355:2890" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="370:452" ph="/// Mapper between DTOs and entities. ... " />
+                <marker date="1521046464111" expanded="true" signature="504:679" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
+                <marker date="1521046464111" expanded="true" signature="729:779" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="853:1318" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="934:1308" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="1372:1755" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="1453:1745" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="1830:2370" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="1911:2360" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="2060:2129" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="2427:2884" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="2508:2874" ph="{...}" />
+                <marker date="1521046464111" expanded="true" signature="2636:2705" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>[Required]</find>
+      <find>DefaultIfEmpty(null).</find>
+      <find>_db</find>
+      <find>using</find>
+      <find>using (</find>
     </findStrings>
+    <replaceStrings>
+      <replace>db</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -34,6 +153,7 @@
     <setting file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/service/IMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/service/Mapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TestProject/service/MapperTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs" root0="FORCE_HIGHLIGHTING" />
@@ -50,7 +170,6 @@
         <option value="$PROJECT_DIR$/TestProject/PublicationDtoTest.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/PublicationsContext.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/obj/project.packagespec.json" />
-        <option value="$PROJECT_DIR$/TestProject/TestProject.csproj" />
         <option value="$PROJECT_DIR$/PublicationsCore/PublicationsCore.csproj" />
         <option value="$PROJECT_DIR$/TestProject/facade/dto/PublicationDtoTest.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/enum/PublicationType.cs" />
@@ -62,22 +181,24 @@
         <option value="$PROJECT_DIR$/PublicationsCore/persistence/Mapper.cs" />
         <option value="$PROJECT_DIR$/TestProject/service/MapperTest.cs" />
         <option value="$PROJECT_DIR$/TestProject/service/IPublicationService.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/enums/PublicationType.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/persistence/PublicationsContext.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/service/IMapper.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/service/Mapper.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs" />
+        <option value="$PROJECT_DIR$/TestProject/TestProject.csproj" />
         <option value="$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/service/Mapper.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" />
+        <option value="$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs" />
       </list>
     </option>
   </component>
@@ -91,6 +212,9 @@
     <option name="y" value="-13" />
     <option name="width" value="1920" />
     <option name="height" value="1093" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="SolutionExplorer" proportions="" version="1">
@@ -119,6 +243,19 @@
               <item name="Publications (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
               <item name="PublicationsCore" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Publications (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="PublicationsCore" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="persistence" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Publications (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="PublicationsCore" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="persistence" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="model" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -130,7 +267,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="RiderUnitTestingPageId" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/PublicationsCore/obj/project.packagespec.json" />
     <property name="RiderNuGetCacheManager.AutoClear.global-packages" value="2" />
     <property name="RiderNuGetCacheManager.AutoClear.http-cache" value="2" />
@@ -149,7 +286,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.Default">
     <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -165,6 +302,9 @@
       <option name="PROJECT_KIND" value="None" />
       <option name="PROJECT_TFM" value="" />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue=".NET Project.Default" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -185,12 +325,19 @@
       <workItem from="1520929636760" duration="1378000" />
       <workItem from="1520931056069" duration="5590000" />
       <workItem from="1520945330595" duration="11146000" />
-      <workItem from="1520968278280" duration="111000" />
+      <workItem from="1520968278280" duration="2316000" />
+      <workItem from="1520970848806" duration="192000" />
+      <workItem from="1520971044032" duration="292000" />
+      <workItem from="1520971363416" duration="421000" />
+      <workItem from="1520971787886" duration="3084000" />
+      <workItem from="1521043333732" duration="3564000" />
+      <workItem from="1521046902581" duration="3540000" />
+      <workItem from="1521051740229" duration="2681000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22803000" />
+    <option name="totallyTimeSpent" value="38782000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -206,24 +353,24 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5032017" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.312961" sideWeight="0.5037353" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29820865" sideWeight="0.49626467" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.4967983" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2705443" sideWeight="0.46218488" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.4967983" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2913554" sideWeight="0.4234234" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2705443" sideWeight="0.53781515" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2529349" sideWeight="0.5062696" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2913554" sideWeight="0.5765766" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2529349" sideWeight="0.5062696" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -235,10 +382,164 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
+          <folding>
+            <marker date="1521046464111" expanded="false" signature="6:168" ph="..." />
+            <marker date="1521046464111" expanded="true" signature="204:2892" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="211:297" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
+            <marker date="1521046464111" expanded="true" signature="355:2890" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="370:452" ph="/// Mapper between DTOs and entities. ... " />
+            <marker date="1521046464111" expanded="true" signature="504:679" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
+            <marker date="1521046464111" expanded="true" signature="729:779" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="853:1318" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="934:1308" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1372:1755" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1453:1745" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1830:2370" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1911:2360" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2060:2129" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2427:2884" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2508:2874" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2636:2705" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
+            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+          <folding>
+            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
+            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
+            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
+            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
+            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
+            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
+            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+          <folding>
+            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
+            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
+            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
+            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
+            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
+            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="72" column="50" lean-forward="false" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
+          <folding>
+            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
+            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+          <folding>
+            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
+            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
+            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
+            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
+            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
+            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -366,13 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestProject/TestProject.csproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/PublicationsCore.csproj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -415,87 +709,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/enums/PublicationType.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="44" column="8" lean-forward="false" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="43" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/PublicationsContext.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IMapper.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1098">
           <caret line="62" column="34" lean-forward="false" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/Mapper.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="69" lean-forward="true" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -506,13 +723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="35" column="8" lean-forward="false" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -520,10 +730,288 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/enums/PublicationType.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestProject/TestProject.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/PublicationsContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
+            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
+            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
+            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
+            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
+            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="31" column="103" lean-forward="false" selection-start-line="31" selection-start-column="103" selection-end-line="31" selection-end-column="103" />
+          <folding>
+            <marker date="1521047124252" expanded="true" signature="97:170" ph="/// Entity representing a publisher. ... " />
+            <marker date="1521047124252" expanded="true" signature="197:1596" ph="{...}" />
+            <marker date="1521047124252" expanded="true" signature="212:281" ph="/// Id of the publisher. ... " />
+            <marker date="1521047124252" expanded="true" signature="344:415" ph="/// Name of the publisher. ... " />
+            <marker date="1521047124252" expanded="true" signature="477:551" ph="/// Address of the publisher. ... " />
+            <marker date="1521047124252" expanded="true" signature="650:766" ph="{...}" />
+            <marker date="1521047124252" expanded="true" signature="814:938" ph="{...}" />
+            <marker date="1521047124252" expanded="true" signature="987:1229" ph="{...}" />
+            <marker date="1521047124252" expanded="true" signature="1272:1590" ph="{...}" />
+            <marker date="1521047124252" expanded="true" signature="1304:1580" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="31" column="122" lean-forward="false" selection-start-line="31" selection-start-column="122" selection-end-line="31" selection-end-column="122" />
+          <folding>
+            <marker date="1521047158889" expanded="true" signature="97:182" ph="/// Entity representing author of a publication. ... " />
+            <marker date="1521047158889" expanded="true" signature="206:1636" ph="{...}" />
+            <marker date="1521047158889" expanded="true" signature="221:287" ph="/// Id of the author. ... " />
+            <marker date="1521047158889" expanded="true" signature="350:419" ph="/// Author's first name. ... " />
+            <marker date="1521047158889" expanded="true" signature="486:554" ph="/// Author's last name. ... " />
+            <marker date="1521047158889" expanded="true" signature="653:781" ph="{...}" />
+            <marker date="1521047158889" expanded="true" signature="826:969" ph="{...}" />
+            <marker date="1521047158889" expanded="true" signature="1018:1257" ph="{...}" />
+            <marker date="1521047158889" expanded="true" signature="1300:1630" ph="{...}" />
+            <marker date="1521047158889" expanded="true" signature="1332:1620" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="29" column="171" lean-forward="false" selection-start-line="29" selection-start-column="171" selection-end-line="29" selection-end-column="171" />
+          <folding>
+            <marker date="1521047174179" expanded="true" signature="97:166" ph="/// Entity representing address. ... " />
+            <marker date="1521047174179" expanded="true" signature="191:1786" ph="{...}" />
+            <marker date="1521047174179" expanded="true" signature="206:273" ph="/// Id of the address. ... " />
+            <marker date="1521047174179" expanded="true" signature="583:751" ph="{...}" />
+            <marker date="1521047174179" expanded="true" signature="797:989" ph="{...}" />
+            <marker date="1521047174179" expanded="true" signature="1038:1278" ph="{...}" />
+            <marker date="1521047174179" expanded="true" signature="1321:1780" ph="{...}" />
+            <marker date="1521047174179" expanded="true" signature="1353:1770" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding>
+            <marker date="1521046814962" expanded="true" signature="44:116" ph="/// Class representing a publisher. ... " />
+            <marker date="1521046814962" expanded="true" signature="146:1381" ph="{...}" />
+            <marker date="1521046814962" expanded="true" signature="161:242" ph="/// Id of the publisher in database. ... " />
+            <marker date="1521046814962" expanded="true" signature="288:359" ph="/// Name of the publisher. ... " />
+            <marker date="1521046814962" expanded="true" signature="410:484" ph="/// Address of the publisher. ... " />
+            <marker date="1521046814962" expanded="true" signature="575:691" ph="{...}" />
+            <marker date="1521046814962" expanded="true" signature="742:848" ph="{...}" />
+            <marker date="1521046814962" expanded="true" signature="897:1142" ph="{...}" />
+            <marker date="1521046814962" expanded="true" signature="1185:1375" ph="{...}" />
+            <marker date="1521046814962" expanded="true" signature="1217:1365" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="24" column="107" lean-forward="false" selection-start-line="24" selection-start-column="107" selection-end-line="24" selection-end-column="107" />
+          <folding>
+            <marker date="1521046835705" expanded="true" signature="44:128" ph="/// Class representing author of a publication. ... " />
+            <marker date="1521046835705" expanded="true" signature="155:1441" ph="{...}" />
+            <marker date="1521046835705" expanded="true" signature="170:248" ph="/// Id of the author in database. ... " />
+            <marker date="1521046835705" expanded="true" signature="294:363" ph="/// Author's first name. ... " />
+            <marker date="1521046835705" expanded="true" signature="419:487" ph="/// Author's last name. ... " />
+            <marker date="1521046835705" expanded="true" signature="575:703" ph="{...}" />
+            <marker date="1521046835705" expanded="true" signature="751:876" ph="{...}" />
+            <marker date="1521046835705" expanded="true" signature="925:1167" ph="{...}" />
+            <marker date="1521046835705" expanded="true" signature="1210:1435" ph="{...}" />
+            <marker date="1521046835705" expanded="true" signature="1242:1425" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="147" lean-forward="false" selection-start-line="22" selection-start-column="147" selection-end-line="22" selection-end-column="147" />
+          <folding>
+            <marker date="1521046849039" expanded="true" signature="44:112" ph="/// Class representing address. ... " />
+            <marker date="1521046849039" expanded="true" signature="140:1643" ph="{...}" />
+            <marker date="1521046849039" expanded="true" signature="155:234" ph="/// Id of the address in database. ... " />
+            <marker date="1521046849039" expanded="true" signature="483:651" ph="{...}" />
+            <marker date="1521046849039" expanded="true" signature="700:893" ph="{...}" />
+            <marker date="1521046849039" expanded="true" signature="942:1185" ph="{...}" />
+            <marker date="1521046849039" expanded="true" signature="1228:1637" ph="{...}" />
+            <marker date="1521046849039" expanded="true" signature="1260:1627" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/Mapper.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+          <folding>
+            <marker date="1520959757956" expanded="true" signature="6:76" ph="..." />
+            <marker date="1520959757956" expanded="true" signature="119:207" ph="/// Implementation of the &lt;i&gt;IMapper&lt;/i&gt; interface. ... " />
+            <marker date="1520959757956" expanded="true" signature="241:2922" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="317:727" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="378:716" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="798:1205" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="856:1194" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="1260:1533" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="1317:1522" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="1588:1858" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="1642:1847" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="1909:2112" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="1965:2101" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="2163:2363" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="2216:2352" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="2426:2641" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="2485:2630" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="2704:2916" ph="{...}" />
+            <marker date="1520959757956" expanded="true" signature="2760:2905" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/Migrations/20180314182908_PublicationAddTypeToDate.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <marker date="1521046464111" expanded="false" signature="6:168" ph="..." />
+            <marker date="1521046464111" expanded="true" signature="204:2892" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="211:297" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
+            <marker date="1521046464111" expanded="true" signature="355:2890" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="370:452" ph="/// Mapper between DTOs and entities. ... " />
+            <marker date="1521046464111" expanded="true" signature="504:679" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
+            <marker date="1521046464111" expanded="true" signature="729:779" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="853:1318" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="934:1308" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1372:1755" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1453:1745" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1830:2370" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="1911:2360" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2060:2129" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2427:2884" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2508:2874" ph="{...}" />
+            <marker date="1521046464111" expanded="true" signature="2636:2705" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="26" column="66" lean-forward="false" selection-start-line="26" selection-start-column="66" selection-end-line="26" selection-end-column="66" />
+          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="42" />
+          <folding>
+            <marker date="1521054157175" expanded="false" signature="6:95" ph="..." />
+            <marker date="1521054157175" expanded="true" signature="134:2682" ph="{...}" />
+            <marker date="1521054157175" expanded="true" signature="141:215" ph="/// Class representing a publication. ... " />
+            <marker date="1521054157175" expanded="true" signature="247:2680" ph="{...}" />
+            <marker date="1521054157175" expanded="true" signature="262:345" ph="/// Id of the publication in database. ... " />
+            <marker date="1521054157175" expanded="true" signature="391:471" ph="/// ISBN number of the publication. ... " />
+            <marker date="1521054157175" expanded="true" signature="522:596" ph="/// Title of the publication. ... " />
+            <marker date="1521054157175" expanded="true" signature="648:723" ph="/// Author of the publication. ... " />
+            <marker date="1521054157175" expanded="true" signature="779:847" ph="/// Date of publishing. ... " />
+            <marker date="1521054157175" expanded="true" signature="900:969" ph="/// Type of publication. ... " />
+            <marker date="1521054157175" expanded="true" signature="1029:1107" ph="/// Publisher of the publication. ... " />
+            <marker date="1521054157175" expanded="true" signature="1202:1440" ph="{...}" />
+            <marker date="1521054157175" expanded="true" signature="1493:1759" ph="{...}" />
+            <marker date="1521054157175" expanded="true" signature="1808:2055" ph="{...}" />
+            <marker date="1521054157175" expanded="true" signature="2098:2674" ph="{...}" />
+            <marker date="1521054157175" expanded="true" signature="2130:2664" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
+          <folding>
+            <marker date="1521054257000" expanded="false" signature="6:147" ph="..." />
+            <marker date="1521054257000" expanded="true" signature="193:2964" ph="{...}" />
+            <marker date="1521054257000" expanded="true" signature="200:275" ph="/// Entity representing a publication. ... " />
+            <marker date="1521054257000" expanded="true" signature="304:2962" ph="{...}" />
+            <marker date="1521054257000" expanded="true" signature="319:390" ph="/// Id of the publication. ... " />
+            <marker date="1521054257000" expanded="true" signature="469:549" ph="/// ISBN number of the publication. ... " />
+            <marker date="1521054257000" expanded="true" signature="619:693" ph="/// Title of the publication. ... " />
+            <marker date="1521054257000" expanded="true" signature="764:839" ph="/// Author of the publication. ... " />
+            <marker date="1521054257000" expanded="true" signature="911:979" ph="/// Date of publishing. ... " />
+            <marker date="1521054257000" expanded="true" signature="1085:1154" ph="/// Type of publication. ... " />
+            <marker date="1521054257000" expanded="true" signature="1233:1311" ph="/// Publisher of the publication. ... " />
+            <marker date="1521054257000" expanded="true" signature="1422:1660" ph="{...}" />
+            <marker date="1521054257000" expanded="true" signature="1710:1994" ph="{...}" />
+            <marker date="1521054257000" expanded="true" signature="2043:2287" ph="{...}" />
+            <marker date="1521054257000" expanded="true" signature="2330:2956" ph="{...}" />
+            <marker date="1521054257000" expanded="true" signature="2362:2946" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="114" column="13" lean-forward="false" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
+          <folding>
+            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
+            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
+            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

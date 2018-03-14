@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using PublicationsCore.Facade.Enums;
 
 namespace PublicationsCore.Facade.Dto
@@ -46,7 +47,7 @@ namespace PublicationsCore.Facade.Dto
         public override string ToString()
         {
             return
-                $"{nameof(Isbn)}: {Isbn}, {nameof(Title)}: {Title}, {nameof(Author)}: {Author}, {nameof(Date)}: {Date}, {nameof(Type)}: {Type}, {nameof(Publisher)}: {Publisher}";
+                $"{nameof(Id)}: {Id}, {nameof(Isbn)}: {Isbn}, {nameof(Title)}: {Title}, {nameof(Author)}: {Author}, {nameof(Date)}: {Date}, {nameof(Type)}: {Type}, {nameof(Publisher)}: {Publisher}";
         }
 
         protected bool Equals(PublicationDto other)

@@ -22,7 +22,7 @@
 
         public override string ToString()
         {
-            return $"{nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}";
+            return $"{nameof(Id)}: {Id}, {nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}";
         }
 
         protected bool Equals(AuthorDto other)

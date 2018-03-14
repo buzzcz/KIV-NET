@@ -11,9 +11,10 @@ using System;
 namespace PublicationsCore.Migrations
 {
     [DbContext(typeof(PublicationsContext))]
-    partial class PublicationsContextModelSnapshot : ModelSnapshot
+    [Migration("20180314190506_PublicationAddTypeToDate")]
+    partial class PublicationAddTypeToDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

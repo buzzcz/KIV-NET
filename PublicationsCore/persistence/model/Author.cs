@@ -22,9 +22,14 @@ namespace PublicationsCore.Persistence.Model
         /// </summary>
         [Required] public string LastName { get; set; }
 
+        public override string ToString()
+        {
+            return $"{nameof(Id)}: {Id}, {nameof(FirstName)}: {FirstName}, {nameof(LastName)}: {LastName}";
+        }
+
         protected bool Equals(Author other)
         {
-            return string.Equals(FirstName, other.FirstName) && string.Equals(LastName, other.LastName);
+            return Id == other.Id && string.Equals(FirstName, other.FirstName) && string.Equals(LastName, other.LastName);
         }
 
         public override bool Equals(object obj)
@@ -39,8 +44,10 @@ namespace PublicationsCore.Persistence.Model
         {
             unchecked
             {
-                return ((FirstName != null ? FirstName.GetHashCode() : 0) * 397) ^
-                       (LastName != null ? LastName.GetHashCode() : 0);
+                var hashCode = Id;
+                hashCode = (hashCode * 397) ^ (FirstName != null ? FirstName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (LastName != null ? LastName.GetHashCode() : 0);
+                return hashCode;
             }
         }
     }

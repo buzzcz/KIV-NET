@@ -20,8 +20,7 @@
 
         public override string ToString()
         {
-            return
-                $"{nameof(State)}: {State}, {nameof(City)}: {City}, {nameof(Street)}: {Street}, {nameof(Number)}: {Number}";
+            return $"{nameof(Id)}: {Id}, {nameof(State)}: {State}, {nameof(City)}: {City}, {nameof(Street)}: {Street}, {nameof(Number)}: {Number}";
         }
 
         protected bool Equals(AddressDto other)
