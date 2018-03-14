@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PublicationsCore.Facade.Dto;
 using PublicationsCore.Service;
 
@@ -39,6 +40,15 @@ namespace PublicationsCore.facade
             return publication;
         }
 
+        public IList<PublicationDto> GetAllPublications()
+        {
+            Console.WriteLine("Getting all publications.");
+            IList<PublicationDto> list = _publicationService.GetAllPublications();
+            Console.WriteLine($"Got {list.Count} publications.");
+
+            return list;
+        }
+
         public PublicationDto EditPublication(PublicationDto publication)
         {
             Console.WriteLine($"Editing publication: {publication}.");
@@ -48,10 +58,10 @@ namespace PublicationsCore.facade
             return publication;
         }
 
-        public PublicationDto DeletePublication(int id)
+        public PublicationDto DeletePublication(PublicationDto publication)
         {
-            Console.WriteLine($"Deleting publication id: {id}.");
-            PublicationDto publication = _publicationService.DeletePublication(id);
+            Console.WriteLine($"Deleting publication: {publication}.");
+            publication = _publicationService.DeletePublication(publication);
             Console.WriteLine($"Deleted publication: {publication}.");
 
             return publication;

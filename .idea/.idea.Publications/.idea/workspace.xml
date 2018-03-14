@@ -1,40 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38f7e52f-62e8-4b63-9c88-2a93ca7f7d59" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/contentModel.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/contentModel.xml" />
+    <list default="true" id="38f7e52f-62e8-4b63-9c88-2a93ca7f7d59" name="Default" comment="Add Id to ToString in DTOs and also Equals etc. in Entities&#10;Add TypeName datetime(3) to Publication.Date&#10;Fix using 'using' with PublicationContext&#10;Add Publication Service Tests">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.Publications/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/Migrations/PublicationsContextModelSnapshot.cs" afterPath="$PROJECT_DIR$/PublicationsCore/Migrations/PublicationsContextModelSnapshot.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/PublicationsCore.csproj" afterPath="$PROJECT_DIR$/PublicationsCore/PublicationsCore.csproj" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.deps.json" afterPath="" />
       <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.dll" afterPath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.dll" />
       <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" afterPath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.runtimeconfig.dev.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/bin/Debug/netcoreapp2.0/PublicationsCore.runtimeconfig.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.csproj.CoreCompileInputs.cache" afterPath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.csproj.CoreCompileInputs.cache" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs" afterPath="$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs" />
       <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.dll" afterPath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.dll" />
       <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.pdb" afterPath="$PROJECT_DIR$/PublicationsCore/obj/Debug/netcoreapp2.0/PublicationsCore.pdb" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/PublicationsCore.csproj.nuget.cache" afterPath="$PROJECT_DIR$/PublicationsCore/obj/PublicationsCore.csproj.nuget.cache" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/obj/project.assets.json" afterPath="$PROJECT_DIR$/PublicationsCore/obj/project.assets.json" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" />
-      <change beforePath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs" afterPath="$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs" />
+      <change beforePath="$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs" afterPath="$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs" />
       <change beforePath="$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" afterPath="$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" />
-      <change beforePath="$PROJECT_DIR$/TestProject/TestProject.csproj" afterPath="$PROJECT_DIR$/TestProject/TestProject.csproj" />
       <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.dll" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.dll" />
       <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/PublicationsCore.pdb" />
       <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.dll" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.dll" />
       <change beforePath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.pdb" afterPath="$PROJECT_DIR$/TestProject/bin/Debug/netcoreapp2.0/TestProject.pdb" />
-      <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.csproj.CoreCompileInputs.cache" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.csproj.CoreCompileInputs.cache" />
       <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.dll" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.dll" />
       <change beforePath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.pdb" afterPath="$PROJECT_DIR$/TestProject/obj/Debug/netcoreapp2.0/TestProject.pdb" />
+      <change beforePath="$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs" afterPath="$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,72 +34,44 @@
       <file leaf-file-name="PublicationServiceTest.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="114" column="13" lean-forward="false" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
+            <state relative-caret-position="122">
+              <caret line="232" column="30" lean-forward="false" selection-start-line="232" selection-start-column="30" selection-end-line="232" selection-end-column="30" />
               <folding>
-                <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
-                <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
-                <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IPublicationService.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-              <folding>
-                <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
-                <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
-                <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
-                <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
-                <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
-                <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PublicationService.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding>
-                <marker date="1521046464111" expanded="false" signature="6:168" ph="..." />
-                <marker date="1521046464111" expanded="true" signature="204:2892" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="211:297" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
-                <marker date="1521046464111" expanded="true" signature="355:2890" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="370:452" ph="/// Mapper between DTOs and entities. ... " />
-                <marker date="1521046464111" expanded="true" signature="504:679" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
-                <marker date="1521046464111" expanded="true" signature="729:779" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="853:1318" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="934:1308" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="1372:1755" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="1453:1745" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="1830:2370" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="1911:2360" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="2060:2129" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="2427:2884" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="2508:2874" ph="{...}" />
-                <marker date="1521046464111" expanded="true" signature="2636:2705" ph="{...}" />
+                <marker date="1521057406915" expanded="false" signature="6:324" ph="..." />
+                <marker date="1521057406915" expanded="true" signature="355:9306" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="397:9304" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="630:819" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="886:1833" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="1050:1786" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="1107:1208" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="1350:1667" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="1417:1602" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="1890:2260" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="1971:2250" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="2325:3479" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="2725:3174" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="3191:3365" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="3385:3469" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="3536:4266" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="4075:4154" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="4174:4256" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="4329:5488" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="5200:5376" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="5396:5478" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="5560:6829" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="5939:6028" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="6541:6717" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="6737:6819" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="6897:8011" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="7702:7826" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="7846:8001" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="7893:7987" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="8072:9298" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="8191:8580" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="8827:9089" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="8988:9075" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="9109:9288" ph="{...}" />
+                <marker date="1521057406915" expanded="true" signature="9172:9274" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -144,7 +99,9 @@
     <setting file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Address.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Publisher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PublicationsCore/Migrations/20180314190506_PublicationAddTypeToDate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Author.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PublicationsCore/Migrations/PublicationsContextModelSnapshot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PublicationsCore/persistence/PublicationsContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TestProject/persistence/PublicationContextTest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -182,13 +139,8 @@
         <option value="$PROJECT_DIR$/TestProject/service/MapperTest.cs" />
         <option value="$PROJECT_DIR$/TestProject/service/IPublicationService.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/enums/PublicationType.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/persistence/PublicationsContext.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/service/IMapper.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs" />
-        <option value="$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs" />
-        <option value="$PROJECT_DIR$/TestProject/TestProject.csproj" />
-        <option value="$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/PublisherDto.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/AuthorDto.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/AddressDto.cs" />
@@ -198,7 +150,12 @@
         <option value="$PROJECT_DIR$/PublicationsCore/service/Mapper.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs" />
         <option value="$PROJECT_DIR$/PublicationsCore/persistence/model/Publication.cs" />
+        <option value="$PROJECT_DIR$/TestProject/TestProject.csproj" />
+        <option value="$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs" />
         <option value="$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs" />
+        <option value="$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs" />
       </list>
     </option>
   </component>
@@ -242,6 +199,12 @@
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
               <item name="Publications (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
               <item name="PublicationsCore" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="Publications (2 projects)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="PublicationsCore" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="facade" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
             <path>
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
@@ -332,12 +295,20 @@
       <workItem from="1520971787886" duration="3084000" />
       <workItem from="1521043333732" duration="3564000" />
       <workItem from="1521046902581" duration="3540000" />
-      <workItem from="1521051740229" duration="2681000" />
+      <workItem from="1521051740229" duration="5774000" />
     </task>
+    <task id="LOCAL-00001" summary="Add Id to ToString in DTOs and also Equals etc. in Entities&#10;Add TypeName datetime(3) to Publication.Date&#10;Fix using 'using' with PublicationContext&#10;Add Publication Service Tests">
+      <created>1521054635703</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1521054635703</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38782000" />
+    <option name="totallyTimeSpent" value="41875000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -350,20 +321,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-13" width="1920" height="1093" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.312961" sideWeight="0.5037353" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Unit Tests" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29820865" sideWeight="0.49626467" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29820865" sideWeight="0.5058698" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31085354" sideWeight="0.4941302" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.4967983" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2913554" sideWeight="0.4234234" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2913554" sideWeight="0.4235474" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2913554" sideWeight="0.5765766" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2913554" sideWeight="0.5764526" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2529349" sideWeight="0.5062696" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -381,6 +353,12 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add Id to ToString in DTOs and also Equals etc. in Entities&#10;Add TypeName datetime(3) to Publication.Date&#10;Fix using 'using' with PublicationContext&#10;Add Publication Service Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Id to ToString in DTOs and also Equals etc. in Entities&#10;Add TypeName datetime(3) to Publication.Date&#10;Fix using 'using' with PublicationContext&#10;Add Publication Service Tests" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="3" />
@@ -393,23 +371,24 @@
         <state relative-caret-position="1224">
           <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
           <folding>
-            <marker date="1521046464111" expanded="false" signature="6:168" ph="..." />
-            <marker date="1521046464111" expanded="true" signature="204:2892" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="211:297" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
-            <marker date="1521046464111" expanded="true" signature="355:2890" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="370:452" ph="/// Mapper between DTOs and entities. ... " />
-            <marker date="1521046464111" expanded="true" signature="504:679" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
-            <marker date="1521046464111" expanded="true" signature="729:779" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="853:1318" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="934:1308" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1372:1755" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1453:1745" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1830:2370" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1911:2360" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2060:2129" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2427:2884" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2508:2874" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2636:2705" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="6:202" ph="..." />
+            <marker date="1521056751538" expanded="true" signature="238:3397" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="245:331" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
+            <marker date="1521056751538" expanded="true" signature="389:3395" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="404:486" ph="/// Mapper between DTOs and entities. ... " />
+            <marker date="1521056751538" expanded="true" signature="538:713" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
+            <marker date="1521056751538" expanded="true" signature="763:813" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="887:1352" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="968:1342" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1406:1789" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1487:1779" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1848:2415" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1929:2405" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2263:2361" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2490:2901" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2571:2891" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2978:3389" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="3059:3379" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -419,24 +398,41 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
-            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+            <marker date="1521057406915" expanded="false" signature="6:324" ph="..." />
+            <marker date="1521057406915" expanded="true" signature="355:9306" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="397:9304" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="630:819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="886:1833" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1050:1786" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1107:1208" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1350:1667" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1417:1602" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1890:2260" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1971:2250" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2325:3479" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2725:3174" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3191:3365" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3385:3469" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3536:4266" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4075:4154" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4174:4256" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4329:5488" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5200:5376" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5396:5478" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5560:6829" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5939:6028" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6541:6717" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6737:6819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6897:8011" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7702:7826" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7846:8001" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7893:7987" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8072:9298" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8191:8580" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8827:9089" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8988:9075" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9109:9288" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9172:9274" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -446,12 +442,15 @@
         <state relative-caret-position="378">
           <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
           <folding>
-            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
-            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
-            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
-            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
-            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
-            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+            <marker date="1521056531297" expanded="false" signature="6:68" ph="..." />
+            <marker date="1521056531297" expanded="true" signature="104:1591" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="111:188" ph="/// Interface for handling publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="229:1589" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="244:462" ph="/// Adds publication to database. ... " />
+            <marker date="1521056531297" expanded="true" signature="539:772" ph="/// Finds publication based on its id. ... " />
+            <marker date="1521056531297" expanded="true" signature="829:950" ph="/// Finds all publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="1020:1231" ph="/// Edits specified publication. ... " />
+            <marker date="1521056531297" expanded="true" signature="1309:1513" ph="/// Deletes specified publication. ... " />
           </folding>
         </state>
       </provider>
@@ -461,24 +460,41 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
-            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+            <marker date="1521057406915" expanded="false" signature="6:324" ph="..." />
+            <marker date="1521057406915" expanded="true" signature="355:9306" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="397:9304" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="630:819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="886:1833" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1050:1786" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1107:1208" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1350:1667" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1417:1602" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1890:2260" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1971:2250" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2325:3479" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2725:3174" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3191:3365" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3385:3469" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3536:4266" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4075:4154" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4174:4256" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4329:5488" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5200:5376" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5396:5478" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5560:6829" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5939:6028" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6541:6717" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6737:6819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6897:8011" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7702:7826" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7846:8001" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7893:7987" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8072:9298" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8191:8580" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8827:9089" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8988:9075" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9109:9288" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9172:9274" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -488,12 +504,15 @@
         <state relative-caret-position="378">
           <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
           <folding>
-            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
-            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
-            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
-            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
-            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
-            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+            <marker date="1521056531297" expanded="false" signature="6:68" ph="..." />
+            <marker date="1521056531297" expanded="true" signature="104:1591" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="111:188" ph="/// Interface for handling publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="229:1589" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="244:462" ph="/// Adds publication to database. ... " />
+            <marker date="1521056531297" expanded="true" signature="539:772" ph="/// Finds publication based on its id. ... " />
+            <marker date="1521056531297" expanded="true" signature="829:950" ph="/// Finds all publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="1020:1231" ph="/// Edits specified publication. ... " />
+            <marker date="1521056531297" expanded="true" signature="1309:1513" ph="/// Deletes specified publication. ... " />
           </folding>
         </state>
       </provider>
@@ -503,24 +522,41 @@
         <state relative-caret-position="1296">
           <caret line="72" column="50" lean-forward="false" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
           <folding>
-            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
-            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+            <marker date="1521057406915" expanded="false" signature="6:324" ph="..." />
+            <marker date="1521057406915" expanded="true" signature="355:9306" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="397:9304" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="630:819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="886:1833" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1050:1786" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1107:1208" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1350:1667" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1417:1602" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1890:2260" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1971:2250" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2325:3479" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2725:3174" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3191:3365" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3385:3469" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3536:4266" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4075:4154" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4174:4256" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4329:5488" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5200:5376" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5396:5478" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5560:6829" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5939:6028" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6541:6717" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6737:6819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6897:8011" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7702:7826" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7846:8001" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7893:7987" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8072:9298" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8191:8580" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8827:9089" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8988:9075" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9109:9288" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9172:9274" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -530,12 +566,15 @@
         <state relative-caret-position="378">
           <caret line="21" column="46" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
           <folding>
-            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
-            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
-            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
-            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
-            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
-            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
+            <marker date="1521056531297" expanded="false" signature="6:68" ph="..." />
+            <marker date="1521056531297" expanded="true" signature="104:1591" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="111:188" ph="/// Interface for handling publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="229:1589" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="244:462" ph="/// Adds publication to database. ... " />
+            <marker date="1521056531297" expanded="true" signature="539:772" ph="/// Finds publication based on its id. ... " />
+            <marker date="1521056531297" expanded="true" signature="829:950" ph="/// Finds all publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="1020:1231" ph="/// Edits specified publication. ... " />
+            <marker date="1521056531297" expanded="true" signature="1309:1513" ph="/// Deletes specified publication. ... " />
           </folding>
         </state>
       </provider>
@@ -716,20 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="35" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="14" column="61" lean-forward="false" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/enums/PublicationType.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -737,32 +762,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestProject/TestProject.csproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/persistence/PublicationsContext.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-          <folding>
-            <marker date="1520959817989" expanded="true" signature="77:154" ph="/// Interface for handling publications. ... " />
-            <marker date="1520959817989" expanded="true" signature="195:1347" ph="{...}" />
-            <marker date="1520959817989" expanded="true" signature="210:428" ph="/// Adds publication to database. ... " />
-            <marker date="1520959817989" expanded="true" signature="505:738" ph="/// Finds publication based on its id. ... " />
-            <marker date="1520959817989" expanded="true" signature="795:1006" ph="/// Edits specified publication. ... " />
-            <marker date="1520959817989" expanded="true" signature="1084:1291" ph="/// Deletes publication based on its id. ... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -912,32 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <marker date="1521046464111" expanded="false" signature="6:168" ph="..." />
-            <marker date="1521046464111" expanded="true" signature="204:2892" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="211:297" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
-            <marker date="1521046464111" expanded="true" signature="355:2890" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="370:452" ph="/// Mapper between DTOs and entities. ... " />
-            <marker date="1521046464111" expanded="true" signature="504:679" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
-            <marker date="1521046464111" expanded="true" signature="729:779" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="853:1318" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="934:1308" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1372:1755" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1453:1745" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1830:2370" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="1911:2360" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2060:2129" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2427:2884" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2508:2874" ph="{...}" />
-            <marker date="1521046464111" expanded="true" signature="2636:2705" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/dto/PublicationDto.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -988,29 +965,137 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TestProject/TestProject.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/PublicationService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="65" column="28" lean-forward="false" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+          <folding>
+            <marker date="1521056751538" expanded="true" signature="6:202" ph="..." />
+            <marker date="1521056751538" expanded="true" signature="238:3397" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="245:331" ph="/// Implementation of &lt;i&gt;IPublicationService&lt;/i&gt;. ... " />
+            <marker date="1521056751538" expanded="true" signature="389:3395" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="404:486" ph="/// Mapper between DTOs and entities. ... " />
+            <marker date="1521056751538" expanded="true" signature="538:713" ph="/// Constructor for creating &lt;i&gt;PublicationService&lt;/i&gt;. ... " />
+            <marker date="1521056751538" expanded="true" signature="763:813" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="887:1352" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="968:1342" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1406:1789" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1487:1779" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1848:2415" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="1929:2405" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2263:2361" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2490:2901" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2571:2891" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="2978:3389" ph="{...}" />
+            <marker date="1521056751538" expanded="true" signature="3059:3379" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/service/IPublicationService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="28" selection-end-column="51" />
+          <folding>
+            <marker date="1521056531297" expanded="false" signature="6:68" ph="..." />
+            <marker date="1521056531297" expanded="true" signature="104:1591" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="111:188" ph="/// Interface for handling publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="229:1589" ph="{...}" />
+            <marker date="1521056531297" expanded="true" signature="244:462" ph="/// Adds publication to database. ... " />
+            <marker date="1521056531297" expanded="true" signature="539:772" ph="/// Finds publication based on its id. ... " />
+            <marker date="1521056531297" expanded="true" signature="829:950" ph="/// Finds all publications. ... " />
+            <marker date="1521056531297" expanded="true" signature="1020:1231" ph="/// Edits specified publication. ... " />
+            <marker date="1521056531297" expanded="true" signature="1309:1513" ph="/// Deletes specified publication. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/IPublicationFacade.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <folding>
+            <marker date="1521057447314" expanded="true" signature="6:68" ph="..." />
+            <marker date="1521057447314" expanded="true" signature="103:1590" ph="{...}" />
+            <marker date="1521057447314" expanded="true" signature="110:188" ph="/// Facade for handling of publications.  ... " />
+            <marker date="1521057447314" expanded="true" signature="228:1588" ph="{...}" />
+            <marker date="1521057447314" expanded="true" signature="243:461" ph="/// Adds publication to database. ... " />
+            <marker date="1521057447314" expanded="true" signature="538:771" ph="/// Finds publication based on its id. ... " />
+            <marker date="1521057447314" expanded="true" signature="836:957" ph="/// Finds all publications. ... " />
+            <marker date="1521057447314" expanded="true" signature="1019:1230" ph="/// Edits specified publication. ... " />
+            <marker date="1521057447314" expanded="true" signature="1308:1512" ph="/// Deletes specified publication. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PublicationsCore/facade/PublicationFacade.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+          <folding>
+            <marker date="1521057509521" expanded="false" signature="6:114" ph="..." />
+            <marker date="1521057509521" expanded="true" signature="149:2493" ph="{...}" />
+            <marker date="1521057509521" expanded="true" signature="156:241" ph="/// Implementation of &lt;i&gt;IPublicationFacade&lt;/i&gt;. ... " />
+            <marker date="1521057509521" expanded="true" signature="297:2491" ph="{...}" />
+            <marker date="1521057509521" expanded="true" signature="379:587" ph="/// Constructor for creating &lt;i&gt;PublicationFacade&lt;/i&gt;. ... " />
+            <marker date="1521057509521" expanded="true" signature="660:734" ph="{...}" />
+            <marker date="1521057509521" expanded="true" signature="808:1155" ph="{...}" />
+            <marker date="1521057509521" expanded="true" signature="1209:1475" ph="{...}" />
+            <marker date="1521057509521" expanded="true" signature="1534:1789" ph="{...}" />
+            <marker date="1521057509521" expanded="true" signature="1864:2134" ph="{...}" />
+            <marker date="1521057509521" expanded="true" signature="2211:2485" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TestProject/service/PublicationServiceTest.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="114" column="13" lean-forward="false" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
+        <state relative-caret-position="122">
+          <caret line="232" column="30" lean-forward="false" selection-start-line="232" selection-start-column="30" selection-end-line="232" selection-end-column="30" />
           <folding>
-            <marker date="1521054385395" expanded="false" signature="6:290" ph="..." />
-            <marker date="1521054385395" expanded="true" signature="321:4167" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="363:4165" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="596:785" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="852:1799" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1016:1752" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1073:1174" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1316:1633" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1383:1568" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1856:2226" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="1937:2216" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2291:3372" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="2709:3160" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3177:3258" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3278:3362" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3429:4159" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="3968:4047" ph="{...}" />
-            <marker date="1521054385395" expanded="true" signature="4067:4149" ph="{...}" />
+            <marker date="1521057406915" expanded="false" signature="6:324" ph="..." />
+            <marker date="1521057406915" expanded="true" signature="355:9306" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="397:9304" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="630:819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="886:1833" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1050:1786" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1107:1208" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1350:1667" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1417:1602" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1890:2260" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="1971:2250" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2325:3479" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="2725:3174" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3191:3365" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3385:3469" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="3536:4266" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4075:4154" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4174:4256" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="4329:5488" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5200:5376" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5396:5478" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5560:6829" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="5939:6028" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6541:6717" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6737:6819" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="6897:8011" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7702:7826" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7846:8001" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="7893:7987" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8072:9298" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8191:8580" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8827:9089" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="8988:9075" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9109:9288" ph="{...}" />
+            <marker date="1521057406915" expanded="true" signature="9172:9274" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -1,4 +1,5 @@
-﻿using PublicationsCore.Facade.Dto;
+﻿using System.Collections.Generic;
+using PublicationsCore.Facade.Dto;
 
 namespace PublicationsCore.Service
 {
@@ -22,6 +23,12 @@ namespace PublicationsCore.Service
         PublicationDto GetPublication(int id);
 
         /// <summary>
+        /// Finds all publications.
+        /// </summary>
+        /// <returns>All publications.</returns>
+        IList<PublicationDto> GetAllPublications();
+        
+        /// <summary>
         /// Edits specified publication.
         /// </summary>
         /// <param name="publication">Edited publication with original id.</param>
@@ -29,10 +36,10 @@ namespace PublicationsCore.Service
         PublicationDto EditPublication(PublicationDto publication);
 
         /// <summary>
-        /// Deletes publication based on its id.
+        /// Deletes specified publication.
         /// </summary>
-        /// <param name="id">Id of publication to be deleted.</param>
+        /// <param name="publication">Publication to be deleted.</param>
         /// <returns>Deleted publication.</returns>
-        PublicationDto DeletePublication(int id);
+        PublicationDto DeletePublication(PublicationDto publication);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PublicationsCore.Facade.Dto;
 using PublicationsCore.Persistence;
@@ -49,18 +50,29 @@ namespace PublicationsCore.Service
             }
         }
 
+        public IList<PublicationDto> GetAllPublications()
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                List<PublicationDto> list = new List<PublicationDto>();
+                List<Publication> entities = new List<Publication>(db.Publications.Include(p => p.Author)
+                    .Include(p => p.Publisher).ThenInclude(p => p.Address).AsEnumerable());
+
+                foreach (var entity in entities)
+                {
+                    list.Add(_mapper.MapPublication(entity));
+                }
+
+                return list;
+            }
+        }
+
         public PublicationDto EditPublication(PublicationDto publication)
         {
             using (PublicationsContext db = new PublicationsContext())
             {
-                Publication entity = db.Publications.FirstOrDefault(p => p.Id == publication.Id);
-
-                if (entity == null)
-                {
-                    return null;
-                }
-
-                entity = _mapper.MapPublication(publication);
+                // TODO: Klaus - Remove all unused subentities.
+                Publication entity = _mapper.MapPublication(publication);
                 entity = db.Publications.Update(entity).Entity;
                 db.SaveChanges();
 
@@ -68,17 +80,12 @@ namespace PublicationsCore.Service
             }
         }
 
-        public PublicationDto DeletePublication(int id)
+        public PublicationDto DeletePublication(PublicationDto publication)
         {
             using (PublicationsContext db = new PublicationsContext())
             {
-                Publication entity = db.Publications.First(p => p.Id == id);
-
-                if (entity == null)
-                {
-                    return null;
-                }
-
+                // TODO: Klaus - Remove all unused subentities.
+                Publication entity = _mapper.MapPublication(publication);
                 entity = db.Publications.Remove(entity).Entity;
                 db.SaveChanges();
 
