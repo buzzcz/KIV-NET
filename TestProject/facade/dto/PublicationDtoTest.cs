@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PublicationsCore.Facade.Dto;
 using Xunit;
 
@@ -17,14 +18,20 @@ namespace TestProject.Facade.Dto
             Assert.Equal("8930723480239793", publication.Isbn);
             Assert.Equal("Name", publication.Title);
 
-            AuthorDto a = new AuthorDto
+            AuthorPublicationDto a = new AuthorPublicationDto
             {
-                FirstName = "Douglas",
-                LastName = "Adams"
+                Author = new AuthorDto
+                {
+                    FirstName = "Douglas",
+                    LastName = "Adams"
+                }
             };
-            publication.Author = a; 
+            publication.AuthorPublicationList = new List<AuthorPublicationDto>
+            {
+                a
+            }; 
             
-            Assert.Equal(a, publication.Author);
+            Assert.Equal(a, publication.AuthorPublicationList[0]);
         }
     }
 }

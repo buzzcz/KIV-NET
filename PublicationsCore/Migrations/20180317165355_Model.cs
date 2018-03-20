@@ -64,8 +64,7 @@ namespace PublicationsCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    AuthorId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime(3)", nullable: false),
                     Isbn = table.Column<string>(nullable: false),
                     PublisherId = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: false),
@@ -75,12 +74,6 @@ namespace PublicationsCore.Migrations
                 {
                     table.PrimaryKey("PK_Publications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Publications_Authors_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Authors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Publications_Publishers_PublisherId",
                         column: x => x.PublisherId,
                         principalTable: "Publishers",
@@ -88,10 +81,30 @@ namespace PublicationsCore.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AuthorPublications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:AutoIncrement", true),
+                    AuthorId = table.Column<int>(nullable: false),
+                    PublicationId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuthorPublications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AuthorPublications_Publications_PublicationId",
+                        column: x => x.PublicationId,
+                        principalTable: "Publications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Publications_AuthorId",
-                table: "Publications",
-                column: "AuthorId");
+                name: "IX_AuthorPublications_PublicationId",
+                table: "AuthorPublications",
+                column: "PublicationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Publications_PublisherId",
@@ -107,10 +120,13 @@ namespace PublicationsCore.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Publications");
+                name: "AuthorPublications");
 
             migrationBuilder.DropTable(
                 name: "Authors");
+
+            migrationBuilder.DropTable(
+                name: "Publications");
 
             migrationBuilder.DropTable(
                 name: "Publishers");

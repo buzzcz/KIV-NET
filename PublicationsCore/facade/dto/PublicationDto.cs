@@ -1,5 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
 using PublicationsCore.Facade.Enums;
 
 namespace PublicationsCore.Facade.Dto
@@ -27,7 +28,7 @@ namespace PublicationsCore.Facade.Dto
         /// <summary>
         /// Author of the publication.
         /// </summary>
-        public AuthorDto Author { get; set; }
+        public IList<AuthorPublicationDto> AuthorPublicationList { get; set; }
 
         /// <summary>
         /// Date of publishing.
@@ -44,16 +45,35 @@ namespace PublicationsCore.Facade.Dto
         /// </summary>
         public PublisherDto Publisher { get; set; }
 
+        private string AuthorPublicationListToString()
+        {
+            return AuthorPublicationList != null
+                ? AuthorPublicationList.Aggregate("",
+                    (current, authorPublication) => current + $"{authorPublication}; ")
+                : "";
+        }
+
+        private bool AuthorPublicationListEquals(PublicationDto other)
+        {
+            if (AuthorPublicationList != null && other.AuthorPublicationList != null)
+            {
+                return AuthorPublicationList.Count == other.AuthorPublicationList.Count &&
+                       AuthorPublicationList.All(other.AuthorPublicationList.Contains);
+            }
+
+            return AuthorPublicationList == null && other.AuthorPublicationList == null;
+        }
+
         public override string ToString()
         {
             return
-                $"{nameof(Id)}: {Id}, {nameof(Isbn)}: {Isbn}, {nameof(Title)}: {Title}, {nameof(Author)}: {Author}, {nameof(Date)}: {Date}, {nameof(Type)}: {Type}, {nameof(Publisher)}: {Publisher}";
+                $"{nameof(Id)}: {Id}, {nameof(Isbn)}: {Isbn}, {nameof(Title)}: {Title}, {nameof(AuthorPublicationList)}: [{AuthorPublicationListToString()}], {nameof(Date)}: {Date}, {nameof(Type)}: {Type}, {nameof(Publisher)}: {Publisher}";
         }
 
         protected bool Equals(PublicationDto other)
         {
             return string.Equals(Isbn, other.Isbn) && string.Equals(Title, other.Title) &&
-                   Equals(Author, other.Author) && Date.Equals(other.Date) && Type == other.Type &&
+                   AuthorPublicationListEquals(other) && Date.Equals(other.Date) && Type == other.Type &&
                    Equals(Publisher, other.Publisher);
         }
 
@@ -71,7 +91,7 @@ namespace PublicationsCore.Facade.Dto
             {
                 var hashCode = (Isbn != null ? Isbn.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Author != null ? Author.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (AuthorPublicationList != null ? AuthorPublicationList.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Date.GetHashCode();
                 hashCode = (hashCode * 397) ^ (int) Type;
                 hashCode = (hashCode * 397) ^ (Publisher != null ? Publisher.GetHashCode() : 0);

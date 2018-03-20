@@ -27,6 +27,8 @@ namespace PublicationsCore.Persistence
         /// Set of publishers in database.
         /// </summary>
         public DbSet<Publisher> Publishers { get; set; }
+        
+        public DbSet<AuthorPublication> AuthorPublications { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

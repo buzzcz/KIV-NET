@@ -63,5 +63,19 @@ namespace PublicationsCore.Service
         /// <param name="publisher">DTO to be mapped to entity.</param>
         /// <returns>Entity of the mapped DTO.</returns>
         Publisher MapPublisher(PublisherDto publisher);
+        
+        /// <summary>
+        /// Maps author-publication entity to DTO.
+        /// </summary>
+        /// <param name="authorPublication">Entity to be mapped to DTO.</param>
+        /// <returns>DTO of the mapped entity.</returns>
+        AuthorPublicationDto MapAuthorPublication(AuthorPublication authorPublication);
+        
+        /// <summary>
+        /// Maps author-publication DTO to entity.
+        /// </summary>
+        /// <param name="authorPublication">DTO to be mapped to entity.</param>
+        /// <returns>Entity of the mapped DTO.</returns>
+        AuthorPublication MapAuthorPublication(AuthorPublicationDto authorPublication);
     }
 }

@@ -11,7 +11,7 @@ using System;
 namespace PublicationsCore.Migrations
 {
     [DbContext(typeof(PublicationsContext))]
-    [Migration("20180313131209_Model")]
+    [Migration("20180317165355_Model")]
     partial class Model
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,14 +57,29 @@ namespace PublicationsCore.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("PublicationsCore.Persistence.Model.Publication", b =>
+            modelBuilder.Entity("PublicationsCore.Persistence.Model.AuthorPublication", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AuthorId");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<int>("PublicationId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PublicationId");
+
+                    b.ToTable("AuthorPublications");
+                });
+
+            modelBuilder.Entity("PublicationsCore.Persistence.Model.Publication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime(3)");
 
                     b.Property<string>("Isbn")
                         .IsRequired();
@@ -77,8 +92,6 @@ namespace PublicationsCore.Migrations
                     b.Property<int>("Type");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
 
                     b.HasIndex("PublisherId");
 
@@ -102,13 +115,16 @@ namespace PublicationsCore.Migrations
                     b.ToTable("Publishers");
                 });
 
+            modelBuilder.Entity("PublicationsCore.Persistence.Model.AuthorPublication", b =>
+                {
+                    b.HasOne("PublicationsCore.Persistence.Model.Publication")
+                        .WithMany("AuthorPublicationList")
+                        .HasForeignKey("PublicationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("PublicationsCore.Persistence.Model.Publication", b =>
                 {
-                    b.HasOne("PublicationsCore.Persistence.Model.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("PublicationsCore.Persistence.Model.Publisher", "Publisher")
                         .WithMany()
                         .HasForeignKey("PublisherId")
