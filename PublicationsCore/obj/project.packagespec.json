@@ -28,20 +28,20 @@
       "dependencies": {
         "Microsoft.EntityFrameworkCore": {
           "target": "Package",
-          "version": "[2.0.1, )"
+          "version": "[2.0.2, )"
         },
         "Microsoft.EntityFrameworkCore.Design": {
           "target": "Package",
-          "version": "[2.0.1, )"
+          "version": "[2.0.2, )"
         },
         "Microsoft.EntityFrameworkCore.Tools": {
           "target": "Package",
-          "version": "[2.0.1, )"
+          "version": "[2.0.2, )"
         },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",
-          "version": "[2.0.5, )"
+          "version": "[2.0.6, )"
         },
         "MySql.Data.EntityFrameworkCore": {
           "target": "Package",

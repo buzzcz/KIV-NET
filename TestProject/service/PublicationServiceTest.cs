@@ -12,8 +12,6 @@ using Xunit.Abstractions;
 
 namespace TestProject.Service
 {
-    
-    
     [CollectionDefinition("DbTests", DisableParallelization = true)]
     [Collection("DbTests")]
     public class PublicationServiceTest
@@ -40,14 +38,14 @@ namespace TestProject.Service
             {
                 AuthorPublicationList = new List<AuthorPublicationDto>
                 {
-                   new AuthorPublicationDto
-                   {
-                       Author = new AuthorDto
-                       {
-                           FirstName = "Douglas",
-                           LastName = "Adams"
-                       }
-                   }
+                    new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = "Douglas",
+                            LastName = "Adams"
+                        }
+                    }
                 },
                 Date = dateTime,
                 Isbn = "7892347-913-2341-09",
@@ -69,25 +67,19 @@ namespace TestProject.Service
             return publicationDto;
         }
 
-        private void Cleanup(Publication entity)
+        private void Cleanup()
         {
             using (PublicationsContext db = new PublicationsContext())
             {
-                db.Addresses.Remove(entity.Publisher.Address);
-                db.Publishers.Remove(entity.Publisher);
-                if (entity.AuthorPublicationList != null)
-                {
-                    _output.WriteLine(entity.AuthorPublicationList.Aggregate("", (current, authorPublication) => current + $"{authorPublication}; "));
-                    db.AuthorPublications.RemoveRange(entity.AuthorPublicationList);
-
-                    foreach (AuthorPublication authorPublication in entity.AuthorPublicationList)
-                    {
-                        db.Authors.Remove(authorPublication.Author);
-                    }
-                }
-
-                db.Publications.Remove(entity);
-                db.SaveChanges();
+                _output.WriteLine("Cleanup db.");
+                db.Database.ExecuteSqlCommand(
+                    "delete from Addresses; delete from Authors; delete from Publishers; delete from Publications; delete from AuthorPublications;");
+                
+                Assert.Empty(db.Addresses.AsEnumerable());
+                Assert.Empty(db.AuthorPublications.AsEnumerable());
+                Assert.Empty(db.Authors.AsEnumerable());
+                Assert.Empty(db.Publishers.AsEnumerable());
+                Assert.Empty(db.Publications.AsEnumerable());
             }
         }
 
@@ -119,7 +111,7 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup(_mapper.MapPublication(added));
+                Cleanup();
             }
         }
 
@@ -141,7 +133,7 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup(_mapper.MapPublication(got));
+                Cleanup();
             }
         }
 
@@ -170,7 +162,7 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup(_mapper.MapPublication(got));
+                Cleanup();
             }
         }
 
@@ -178,6 +170,14 @@ namespace TestProject.Service
         public void TestEditPublicationAuthor()
         {
             PublicationDto publicationDto = CreatePublication("EDIT AUTHOR");
+            publicationDto.AuthorPublicationList.Add(new AuthorPublicationDto
+            {
+                Author = new AuthorDto
+                {
+                    FirstName = "Unknown",
+                    LastName = "Writer"
+                }
+            });
             _output.WriteLine($"Adding {publicationDto} in EDIT AUTHOR test.");
             publicationDto = _publicationService.AddPublication(publicationDto);
             _output.WriteLine($"Added {publicationDto} in EDIT AUTHOR test.");
@@ -207,7 +207,7 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup(_mapper.MapPublication(got));
+                Cleanup();
             }
         }
 
@@ -234,21 +234,30 @@ namespace TestProject.Service
                 Assert.Equal(publicationDto.Title, deleted.Title);
                 Assert.Equal(publicationDto.Date, deleted.Date);
                 Assert.Equal(publicationDto.Type, deleted.Type);
-                Assert.True(!deleted.AuthorPublicationList.Any());
+                Assert.Empty(deleted.AuthorPublicationList);
                 Assert.Equal(null, deleted.Publisher);
                 Assert.Equal(null, got);
+
+                using (PublicationsContext db = new PublicationsContext())
+                {
+                    Assert.Empty(db.Addresses.AsEnumerable());
+                    Assert.Empty(db.AuthorPublications.AsEnumerable());
+                    Assert.Empty(db.Authors.AsEnumerable());
+                    Assert.Empty(db.Publishers.AsEnumerable());
+                    Assert.Empty(db.Publications.AsEnumerable());
+                }
             }
             finally
             {
                 if (got != null)
                 {
-                    Cleanup(_mapper.MapPublication(got));
+                    Cleanup();
                 }
             }
         }
 
         [Fact]
-        public void TestGetAllPublications()
+        public void TestAddMorePublicationsAndGetAllPublications()
         {
             List<PublicationDto> list = new List<PublicationDto>();
             for (int i = 0; i < 10; i++)
@@ -281,10 +290,90 @@ namespace TestProject.Service
             }
             finally
             {
-                foreach (var publication in got)
+                Cleanup();
+            }
+        }
+
+        [Fact]
+        public void TestAddTwoPublicationsWithTheSameAuthor()
+        {
+            PublicationDto publicationDto1 = CreatePublication();
+            PublicationDto publicationDto2 = CreatePublication("Doctor Who");
+            _output.WriteLine($"Adding {publicationDto1} in ADD TWO WITH SAME AUTHOR test.");
+            publicationDto1 = _publicationService.AddPublication(publicationDto1);
+            _output.WriteLine($"Added {publicationDto1} in ADD TWO WITH SAME AUTHOR test.");
+            _output.WriteLine($"Adding {publicationDto2} in ADD TWO WITH SAME AUTHOR test.");
+            publicationDto2 = _publicationService.AddPublication(publicationDto2);
+            _output.WriteLine($"Added {publicationDto2} in ADD TWO WITH SAME AUTHOR test.");
+
+            try
+            {
+                Assert.Equal(publicationDto1.AuthorPublicationList[0].AuthorId,
+                    publicationDto2.AuthorPublicationList[0].AuthorId);
+                Assert.Equal(publicationDto1.AuthorPublicationList[0].Author,
+                    publicationDto2.AuthorPublicationList[0].Author);
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+        
+        [Fact]
+        public void TestDeleteTwoPublicationsWithTheSameAuthor()
+        {
+            PublicationDto publicationDto1 = CreatePublication();
+            PublicationDto publicationDto2 = CreatePublication("Doctor Who");
+            _output.WriteLine($"Adding {publicationDto1} in DELETE TWO WITH SAME AUTHOR test.");
+            publicationDto1 = _publicationService.AddPublication(publicationDto1);
+            _output.WriteLine($"Added {publicationDto1} in DELETE TWO WITH SAME AUTHOR test.");
+            _output.WriteLine($"Adding {publicationDto2} in DELETE TWO WITH SAME AUTHOR test.");
+            publicationDto2 = _publicationService.AddPublication(publicationDto2);
+            _output.WriteLine($"Added {publicationDto2} in DELETE TWO WITH SAME AUTHOR test.");
+            
+            _output.WriteLine($"Deleting {publicationDto1} in DELETE TWO WITH SAME AUTHOR test.");
+            PublicationDto deleted1 = _publicationService.DeletePublication(publicationDto1);
+            _output.WriteLine($"Deleted {deleted1} in DELETE TWO WITH SAME AUTHOR test.");
+
+            _output.WriteLine($"Getting {publicationDto1.Id} in DELETE TWO WITH SAME AUTHOR test.");
+            PublicationDto got1 = _publicationService.GetPublication(publicationDto1.Id);
+            _output.WriteLine($"Got {got1} in DELETE test.");
+            
+            _output.WriteLine($"Getting {publicationDto2.Id} in DELETE TWO WITH SAME AUTHOR test.");
+            PublicationDto got2 = _publicationService.GetPublication(publicationDto2.Id);
+            _output.WriteLine($"Got {got2} in DELETE test.");
+
+            try
+            {
+                Assert.Equal(null, got1);
+                Assert.Equal(publicationDto2, got2);
+                
+                using (PublicationsContext db = new PublicationsContext())
                 {
-                    Cleanup(_mapper.MapPublication(publication));
+                    IList<Address> addresses = db.Addresses.AsEnumerable().ToList();
+                    IList<AuthorPublication> authorPublications = db.AuthorPublications.AsEnumerable().ToList();
+                    IList<Author> authors = db.Authors.AsEnumerable().ToList();
+                    IList<Publisher> publishers = db.Publishers.AsEnumerable().ToList();
+                    IList<Publication> publications = db.Publications.AsEnumerable().ToList();
+                    Assert.Equal(1, addresses.Count);
+                    Assert.Equal(1, authorPublications.Count);
+                    Assert.Equal(1, authors.Count);
+                    Assert.Equal(1, publishers.Count);
+                    Assert.Equal(1, publications.Count);
+                    Assert.Contains(_mapper.MapAddress(publicationDto2.Publisher.Address), addresses);
+                    foreach (AuthorPublicationDto authorPublicationDto in publicationDto2.AuthorPublicationList)
+                    {
+                        Assert.Contains(_mapper.MapAuthorPublication(authorPublicationDto), authorPublications);
+                        Assert.Contains(_mapper.MapAuthor(authorPublicationDto.Author), authors);
+                    }
+
+                    Assert.Contains(_mapper.MapPublisher(publicationDto2.Publisher), publishers);
+                    Assert.Contains(_mapper.MapPublication(publicationDto2), publications);
                 }
+            }
+            finally
+            {
+                Cleanup();
             }
         }
     }

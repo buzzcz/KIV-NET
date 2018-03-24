@@ -49,6 +49,10 @@ namespace PublicationsCore.Persistence.Model
         [Required]
         public Publisher Publisher { get; set; }
 
+        /// <summary>
+        /// List of author-publications that contains information about the authors of the publication.
+        /// </summary>
+        [Required]
         public IList<AuthorPublication> AuthorPublicationList { get; set; }
 
         private string AuthorPublicationListToString()
