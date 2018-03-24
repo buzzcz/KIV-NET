@@ -4,26 +4,10 @@ using System.Collections.Generic;
 
 namespace PublicationsCore.Migrations
 {
-    public partial class Model : Migration
+    public partial class _01_Model : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Addresses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
-                    City = table.Column<string>(nullable: false),
-                    Number = table.Column<int>(nullable: false),
-                    State = table.Column<string>(nullable: false),
-                    Street = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Addresses", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Authors",
                 columns: table => new
@@ -44,18 +28,12 @@ namespace PublicationsCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    AddressId = table.Column<int>(nullable: false),
+                    Address = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Publishers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Publishers_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,12 +72,23 @@ namespace PublicationsCore.Migrations
                 {
                     table.PrimaryKey("PK_AuthorPublications", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_AuthorPublications_Authors_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "Authors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_AuthorPublications_Publications_PublicationId",
                         column: x => x.PublicationId,
                         principalTable: "Publications",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuthorPublications_AuthorId",
+                table: "AuthorPublications",
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AuthorPublications_PublicationId",
@@ -110,11 +99,6 @@ namespace PublicationsCore.Migrations
                 name: "IX_Publications_PublisherId",
                 table: "Publications",
                 column: "PublisherId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Publishers_AddressId",
-                table: "Publishers",
-                column: "AddressId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -130,9 +114,6 @@ namespace PublicationsCore.Migrations
 
             migrationBuilder.DropTable(
                 name: "Publishers");
-
-            migrationBuilder.DropTable(
-                name: "Addresses");
         }
     }
 }

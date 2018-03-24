@@ -66,40 +66,6 @@ namespace PublicationsCore.Service
             };
         }
 
-        public AddressDto MapAddress(Address address)
-        {
-            if (address == null)
-            {
-                return null;
-            }
-
-            return new AddressDto
-            {
-                City = address.City,
-                Id = address.Id,
-                Number = address.Number,
-                State = address.State,
-                Street = address.Street
-            };
-        }
-
-        public Address MapAddress(AddressDto address)
-        {
-            if (address == null)
-            {
-                return null;
-            }
-
-            return new Address
-            {
-                City = address.City,
-                Id = address.Id,
-                Number = address.Number,
-                State = address.State,
-                Street = address.Street
-            };
-        }
-
         public AuthorDto MapAuthor(Author author)
         {
             if (author == null)
@@ -139,7 +105,7 @@ namespace PublicationsCore.Service
 
             return new PublisherDto
             {
-                Address = MapAddress(publisher.Address),
+                Address = publisher.Address,
                 Id = publisher.Id,
                 Name = publisher.Name
             };
@@ -154,7 +120,7 @@ namespace PublicationsCore.Service
 
             return new Publisher
             {
-                Address = MapAddress(publisher.Address),
+                Address = publisher.Address,
                 Id = publisher.Id,
                 Name = publisher.Name
             };

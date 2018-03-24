@@ -23,20 +23,6 @@ namespace PublicationsCore.Service
         Publication MapPublication(PublicationDto publication);
 
         /// <summary>
-        /// Maps address entity to DTO.
-        /// </summary>
-        /// <param name="address">Entity to be mapped to DTO.</param>
-        /// <returns>DTO of the mapped entity.</returns>
-        AddressDto MapAddress(Address address);
-        
-        /// <summary>
-        /// Maps address DTO to entity.
-        /// </summary>
-        /// <param name="address">DTO to be mapped to entity.</param>
-        /// <returns>Entity of the mapped DTO.</returns>
-        Address MapAddress(AddressDto address);
-
-        /// <summary>
         /// Maps author entity to DTO.
         /// </summary>
         /// <param name="author">Entity to be mapped to DTO.</param>

@@ -16,9 +16,9 @@
         public string Name { get; set; }
 
         /// <summary>
-        /// Address of the publisher.
+        /// Address where the publication has been published.
         /// </summary>
-        public AddressDto Address { get; set; }
+        public string Address { get; set; }
 
         public override string ToString()
         {

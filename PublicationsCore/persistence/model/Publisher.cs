@@ -18,9 +18,9 @@ namespace PublicationsCore.Persistence.Model
         [Required] public string Name { get; set; }
 
         /// <summary>
-        /// Address of the publisher.
+        /// Address where the publication has been published.
         /// </summary>
-        [Required] public Address Address { get; set; }
+        [Required] public string Address { get; set; }
 
         public override string ToString()
         {

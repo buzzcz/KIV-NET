@@ -19,11 +19,6 @@ namespace PublicationsCore.Persistence
         public DbSet<Author> Authors { get; set; }
         
         /// <summary>
-        /// Set of addresses in databse.
-        /// </summary>
-        public DbSet<Address> Addresses { get; set; }
-        
-        /// <summary>
         /// Set of publishers in database.
         /// </summary>
         public DbSet<Publisher> Publishers { get; set; }

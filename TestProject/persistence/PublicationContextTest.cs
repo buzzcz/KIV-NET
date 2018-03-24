@@ -59,18 +59,10 @@ namespace TestProject.Persistence
                     LastName = "Adams"
                 };
 
-                Address address = new Address
-                {
-                    State = "CZ",
-                    City = "Pilsen",
-                    Street = "Univerzitní",
-                    Number = 8
-                };
-
                 Publisher publisher = new Publisher
                 {
                     Name = "ZČU",
-                    Address = address
+                    Address = "Pilsen"
                 };
 
                 Publication publication = new Publication
@@ -95,7 +87,7 @@ namespace TestProject.Persistence
                 ctx.SaveChanges();
 
                 var selected = ctx.Publications.Where(s => s.Isbn == "8375209824").Include(p => p.AuthorPublicationList)
-                    .Include(p => p.Publisher).ThenInclude(p => p.Address).ToList();
+                    .Include(p => p.Publisher).ToList();
                 _output.WriteLine($"Publication: {publication}.");
                 foreach (Publication p in selected)
                 {
@@ -112,7 +104,6 @@ namespace TestProject.Persistence
                 {
                     ctx.Publications.Remove(publication);
                     ctx.Authors.Remove(author);
-                    ctx.Addresses.Remove(address);
                     ctx.Publishers.Remove(publisher);
                     ctx.SaveChanges();
                 }

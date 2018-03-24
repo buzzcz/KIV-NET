@@ -47,19 +47,18 @@ namespace PublicationsCore.Service
         /// </summary>
         /// <param name="db">Database context to use.</param>
         /// <param name="asNoTracking"></param>
-        /// <returns>Publication query with included AuthorPublications, Publishers and his address.</returns>
-        private static IIncludableQueryable<Publication, Address> PreparePublicationsDb(PublicationsContext db,
+        /// <returns>Publication query with included AuthorPublications and Publishers.</returns>
+        private static IIncludableQueryable<Publication, Publisher> PreparePublicationsDb(PublicationsContext db,
             bool asNoTracking = false)
         {
             var retVal = asNoTracking ? db.Publications.AsNoTracking() : db.Publications;
 
-            return retVal.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author).Include(p => p.Publisher)
-                .ThenInclude(p => p.Address);
+            return retVal.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author).Include(p => p.Publisher);
         }
 
 
         /// <summary>
-        /// Deletes old entities from old publication (author-publications, authors, publisher and publisher's address)
+        /// Deletes old entities from old publication (author-publications, authors and publisher)
         /// if they differ from the new one or if the new one is null.
         /// </summary>
         /// <param name="db">Database context to use.</param>
@@ -71,29 +70,6 @@ namespace PublicationsCore.Service
             DeleteOldAuthors(db, oldPublication, publication);
 
             DeleteOldPublisher(db, oldPublication, publication);
-
-            DeleteOldAddress(db, oldPublication, publication);
-        }
-
-        /// <summary>
-        /// Deletes publisher's old address from old publication if they differ from the new one or if the new one is
-        /// null.
-        /// </summary>
-        /// <param name="db">Database context to use.</param>
-        /// <param name="oldPublication">Old publication from which to delete entities.</param>
-        /// <param name="publication">New publication with changed entities. Defaults to null.</param>
-        private static void DeleteOldAddress(PublicationsContext db, Publication oldPublication,
-            Publication publication = null)
-        {
-            if (publication == null || !oldPublication.Publisher.Address.Equals(publication.Publisher.Address))
-            {
-                IList<Publisher> used = db.Publishers.AsNoTracking().Include(p => p.Address)
-                    .Where(p => p.Address.Id == oldPublication.Publisher.Address.Id).ToList();
-                if (used.Contains(oldPublication.Publisher) && used.Count == 1)
-                {
-                    db.Addresses.Remove(oldPublication.Publisher.Address);
-                }
-            }
         }
 
         /// <summary>
@@ -171,25 +147,6 @@ namespace PublicationsCore.Service
                 }
             }
         }
-
-        /// <summary>
-        /// Checks if address from publisher already exists in the database and if so, this address is used instead of
-        /// creating new one.
-        /// </summary>
-        /// <param name="db">Database context to use.</param>
-        /// <param name="publication">Publication where to check the address.</param>
-        private static void CheckAlreadyExistingAddress(PublicationsContext db, Publication publication)
-        {
-            Address address = publication.Publisher.Address;
-            Address existing = db.Addresses.AsNoTracking().FirstOrDefault(a =>
-                a.City == address.City && a.Number == address.Number && a.State == address.State &&
-                a.Street == address.Street);
-            if (existing != null)
-            {
-                address.Id = existing.Id;
-                db.Entry(address).State = EntityState.Unchanged;
-            }
-        }
         
         /// <summary>
         /// Checks if publisher from publication already exists in the database and if so, this publisher is used
@@ -200,8 +157,7 @@ namespace PublicationsCore.Service
         private static void CheckAlreadyExistingPublisher(PublicationsContext db, Publication publication)
         {
             Publisher publisher = publication.Publisher;
-            Publisher existing = db.Publishers.AsNoTracking().FirstOrDefault(p =>
-                p.Name == publisher.Name && p.Address.Equals(publisher.Address));
+            Publisher existing = db.Publishers.AsNoTracking().FirstOrDefault(p => p.Name == publisher.Name);
             if (existing != null)
             {
                 publisher.Id = existing.Id;
@@ -217,7 +173,6 @@ namespace PublicationsCore.Service
                 
                 CheckAlreadyExistingAuthor(db, entity);
                 CheckAlreadyExistingPublisher(db, entity);
-                CheckAlreadyExistingAddress(db, entity);
 
                 entity = db.Add(entity).Entity;
                 db.SaveChanges();

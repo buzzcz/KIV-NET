@@ -51,13 +51,7 @@ namespace TestProject.Service
                 Isbn = "7892347-913-2341-09",
                 Publisher = new PublisherDto
                 {
-                    Address = new AddressDto
-                    {
-                        City = "Pilsen",
-                        Number = 8,
-                        State = "CZ",
-                        Street = "Univerzitní"
-                    },
+                    Address = "Pilsen",
                     Name = "University Press"
                 },
                 Title = title,
@@ -73,9 +67,8 @@ namespace TestProject.Service
             {
                 _output.WriteLine("Cleanup db.");
                 db.Database.ExecuteSqlCommand(
-                    "delete from Addresses; delete from Authors; delete from Publishers; delete from Publications; delete from AuthorPublications;");
+                    "delete from Authors; delete from Publishers; delete from Publications; delete from AuthorPublications;");
                 
-                Assert.Empty(db.Addresses.AsEnumerable());
                 Assert.Empty(db.AuthorPublications.AsEnumerable());
                 Assert.Empty(db.Authors.AsEnumerable());
                 Assert.Empty(db.Publishers.AsEnumerable());
@@ -96,7 +89,7 @@ namespace TestProject.Service
             {
                 _output.WriteLine($"Getting {added.Id} in ADD test from RAW db ctx.");
                 Publication entity = db.Publications.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author)
-                    .Include(p => p.Publisher).ThenInclude(p => p.Address).First(p => p.Id == added.Id);
+                    .Include(p => p.Publisher).First(p => p.Id == added.Id);
                 db.SaveChanges();
                 _output.WriteLine($"Got entity {entity} in ADD test.");
                 got = _mapper.MapPublication(entity);
@@ -235,12 +228,11 @@ namespace TestProject.Service
                 Assert.Equal(publicationDto.Date, deleted.Date);
                 Assert.Equal(publicationDto.Type, deleted.Type);
                 Assert.Empty(deleted.AuthorPublicationList);
-                Assert.Equal(null, deleted.Publisher);
-                Assert.Equal(null, got);
+                Assert.Null(deleted.Publisher);
+                Assert.Null(got);
 
                 using (PublicationsContext db = new PublicationsContext())
                 {
-                    Assert.Empty(db.Addresses.AsEnumerable());
                     Assert.Empty(db.AuthorPublications.AsEnumerable());
                     Assert.Empty(db.Authors.AsEnumerable());
                     Assert.Empty(db.Publishers.AsEnumerable());
@@ -345,22 +337,19 @@ namespace TestProject.Service
 
             try
             {
-                Assert.Equal(null, got1);
+                Assert.Null(got1);
                 Assert.Equal(publicationDto2, got2);
                 
                 using (PublicationsContext db = new PublicationsContext())
                 {
-                    IList<Address> addresses = db.Addresses.AsEnumerable().ToList();
                     IList<AuthorPublication> authorPublications = db.AuthorPublications.AsEnumerable().ToList();
                     IList<Author> authors = db.Authors.AsEnumerable().ToList();
                     IList<Publisher> publishers = db.Publishers.AsEnumerable().ToList();
                     IList<Publication> publications = db.Publications.AsEnumerable().ToList();
-                    Assert.Equal(1, addresses.Count);
                     Assert.Equal(1, authorPublications.Count);
                     Assert.Equal(1, authors.Count);
                     Assert.Equal(1, publishers.Count);
                     Assert.Equal(1, publications.Count);
-                    Assert.Contains(_mapper.MapAddress(publicationDto2.Publisher.Address), addresses);
                     foreach (AuthorPublicationDto authorPublicationDto in publicationDto2.AuthorPublicationList)
                     {
                         Assert.Contains(_mapper.MapAuthorPublication(authorPublicationDto), authorPublications);
