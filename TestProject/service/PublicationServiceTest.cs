@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using PublicationsCore.Facade.Dto;
-using PublicationsCore.Facade.Enums;
 using PublicationsCore.Persistence;
 using PublicationsCore.Persistence.Model;
 using PublicationsCore.Service;
+using TestProject.Utils;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -31,55 +31,10 @@ namespace TestProject.Service
             Console.SetOut(new ConsoleOutToITestOutputHelper(output));
         }
 
-        private static PublicationDto CreatePublication(string title = "Hitchhiker's Guide to the Galaxy")
-        {
-            DateTime dateTime = DateTime.FromOADate(DateTime.Now.ToOADate());
-            PublicationDto publicationDto = new PublicationDto
-            {
-                AuthorPublicationList = new List<AuthorPublicationDto>
-                {
-                    new AuthorPublicationDto
-                    {
-                        Author = new AuthorDto
-                        {
-                            FirstName = "Douglas",
-                            LastName = "Adams"
-                        }
-                    }
-                },
-                Date = dateTime,
-                Isbn = "7892347-913-2341-09",
-                Publisher = new PublisherDto
-                {
-                    Address = "Pilsen",
-                    Name = "University Press"
-                },
-                Title = title,
-                Type = PublicationType.BOOK
-            };
-
-            return publicationDto;
-        }
-
-        private void Cleanup()
-        {
-            using (PublicationsContext db = new PublicationsContext())
-            {
-                _output.WriteLine("Cleanup db.");
-                db.Database.ExecuteSqlCommand(
-                    "delete from Authors; delete from Publishers; delete from Publications; delete from AuthorPublications;");
-                
-                Assert.Empty(db.AuthorPublications.AsEnumerable());
-                Assert.Empty(db.Authors.AsEnumerable());
-                Assert.Empty(db.Publishers.AsEnumerable());
-                Assert.Empty(db.Publications.AsEnumerable());
-            }
-        }
-
         [Fact]
         public void TestAddPublication()
         {
-            PublicationDto publicationDto = CreatePublication("ADD");
+            PublicationDto publicationDto = TestUtils.CreatePublication("ADD");
             _output.WriteLine($"Adding {publicationDto} in ADD test.");
             PublicationDto added = _publicationService.AddPublication(publicationDto);
             _output.WriteLine($"Added {added} in ADD test.");
@@ -104,14 +59,14 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup();
+                TestUtils.Cleanup(_output);
             }
         }
 
         [Fact]
         public void TestGetPublication()
         {
-            PublicationDto publicationDto = CreatePublication("GET");
+            PublicationDto publicationDto = TestUtils.CreatePublication("GET");
             _output.WriteLine($"Adding {publicationDto} in GET test.");
             publicationDto = _publicationService.AddPublication(publicationDto);
             _output.WriteLine($"Added {publicationDto} in GET test.");
@@ -126,14 +81,14 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup();
+                TestUtils.Cleanup(_output);
             }
         }
 
         [Fact]
         public void TestEditPublicationTitle()
         {
-            PublicationDto publicationDto = CreatePublication("EDIT TITLE");
+            PublicationDto publicationDto = TestUtils.CreatePublication("EDIT TITLE");
             _output.WriteLine($"Adding {publicationDto} in EDIT TITLE test.");
             publicationDto = _publicationService.AddPublication(publicationDto);
             _output.WriteLine($"Added {publicationDto} in EDIT TITLE test.");
@@ -155,14 +110,14 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup();
+                TestUtils.Cleanup(_output);
             }
         }
 
         [Fact]
         public void TestEditPublicationAuthor()
         {
-            PublicationDto publicationDto = CreatePublication("EDIT AUTHOR");
+            PublicationDto publicationDto = TestUtils.CreatePublication("EDIT AUTHOR");
             publicationDto.AuthorPublicationList.Add(new AuthorPublicationDto
             {
                 Author = new AuthorDto
@@ -200,14 +155,14 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup();
+                TestUtils.Cleanup(_output);
             }
         }
 
         [Fact]
         public void TestDeletePublication()
         {
-            PublicationDto publicationDto = CreatePublication("DELETE");
+            PublicationDto publicationDto = TestUtils.CreatePublication("DELETE");
             _output.WriteLine($"Adding {publicationDto} in DELETE test.");
             publicationDto = _publicationService.AddPublication(publicationDto);
             _output.WriteLine($"Added {publicationDto} in DELETE test.");
@@ -243,7 +198,7 @@ namespace TestProject.Service
             {
                 if (got != null)
                 {
-                    Cleanup();
+                    TestUtils.Cleanup(_output);
                 }
             }
         }
@@ -254,7 +209,7 @@ namespace TestProject.Service
             List<PublicationDto> list = new List<PublicationDto>();
             for (int i = 0; i < 10; i++)
             {
-                PublicationDto publicationDto = CreatePublication("GET ALL" + i);
+                PublicationDto publicationDto = TestUtils.CreatePublication("GET ALL" + i);
                 publicationDto.Title = i.ToString();
 
                 _output.WriteLine($"Adding {publicationDto} in GET ALL test.");
@@ -282,15 +237,15 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup();
+                TestUtils.Cleanup(_output);
             }
         }
 
         [Fact]
         public void TestAddTwoPublicationsWithTheSameAuthor()
         {
-            PublicationDto publicationDto1 = CreatePublication();
-            PublicationDto publicationDto2 = CreatePublication("Doctor Who");
+            PublicationDto publicationDto1 = TestUtils.CreatePublication();
+            PublicationDto publicationDto2 = TestUtils.CreatePublication("Doctor Who");
             _output.WriteLine($"Adding {publicationDto1} in ADD TWO WITH SAME AUTHOR test.");
             publicationDto1 = _publicationService.AddPublication(publicationDto1);
             _output.WriteLine($"Added {publicationDto1} in ADD TWO WITH SAME AUTHOR test.");
@@ -307,15 +262,15 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup();
+                TestUtils.Cleanup(_output);
             }
         }
         
         [Fact]
         public void TestDeleteTwoPublicationsWithTheSameAuthor()
         {
-            PublicationDto publicationDto1 = CreatePublication();
-            PublicationDto publicationDto2 = CreatePublication("Doctor Who");
+            PublicationDto publicationDto1 = TestUtils.CreatePublication();
+            PublicationDto publicationDto2 = TestUtils.CreatePublication("Doctor Who");
             _output.WriteLine($"Adding {publicationDto1} in DELETE TWO WITH SAME AUTHOR test.");
             publicationDto1 = _publicationService.AddPublication(publicationDto1);
             _output.WriteLine($"Added {publicationDto1} in DELETE TWO WITH SAME AUTHOR test.");
@@ -362,7 +317,7 @@ namespace TestProject.Service
             }
             finally
             {
-                Cleanup();
+                TestUtils.Cleanup(_output);
             }
         }
     }

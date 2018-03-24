@@ -54,6 +54,12 @@ namespace PublicationsCore.Persistence.Model
         /// </summary>
         [Required]
         public IList<AuthorPublication> AuthorPublicationList { get; set; }
+        
+        /// <summary>
+        /// Edition of the book.
+        /// </summary>
+        [Required]
+        public string Edition { get; set; }
 
         private string AuthorPublicationListToString()
         {

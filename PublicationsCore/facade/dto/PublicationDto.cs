@@ -44,6 +44,11 @@ namespace PublicationsCore.Facade.Dto
         /// Publisher of the publication.
         /// </summary>
         public PublisherDto Publisher { get; set; }
+        
+        /// <summary>
+        /// Edition of the book.
+        /// </summary>
+        public string Edition { get; set; }
 
         private string AuthorPublicationListToString()
         {

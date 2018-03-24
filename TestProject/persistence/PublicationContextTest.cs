@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using PublicationsCore.Facade.Enums;
 using PublicationsCore.Persistence;
 using PublicationsCore.Persistence.Model;
+using TestProject.Utils;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -71,7 +72,8 @@ namespace TestProject.Persistence
                     Title = "Hitchhiker's Guide to the Galaxy",
                     Date = DateTime.Now,
                     Type = PublicationType.BOOK,
-                    Publisher = publisher
+                    Publisher = publisher,
+                    Edition = "1st"
                 };
 
                 publication = ctx.Publications.Add(publication).Entity;

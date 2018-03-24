@@ -33,7 +33,8 @@ namespace PublicationsCore.Service
                 Publisher = MapPublisher(publication.Publisher),
                 Title = publication.Title,
                 Type = publication.Type,
-                AuthorPublicationList = list
+                AuthorPublicationList = list,
+                Edition = publication.Edition
             };
 
         }
@@ -62,7 +63,8 @@ namespace PublicationsCore.Service
                 Publisher = MapPublisher(publication.Publisher),
                 Title = publication.Title,
                 Type = publication.Type,
-                AuthorPublicationList = list
+                AuthorPublicationList = list,
+                Edition = publication.Edition
             };
         }
 

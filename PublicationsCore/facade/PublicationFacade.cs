@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using PublicationsCore.Facade.Dto;
 using PublicationsCore.Service;
 
@@ -10,59 +10,62 @@ namespace PublicationsCore.facade
     /// </summary>
     public class PublicationFacade : IPublicationFacade
     {
+        private readonly ILogger _logger;
+        
         private readonly IPublicationService _publicationService;
 
         /// <summary>
         /// Constructor for creating <i>PublicationFacade</i>.
         /// </summary>
+        /// <param name="logger">Logger to use for logging.</param>
         /// <param name="publicationService">Service handling database operations with publications.</param>
-        public PublicationFacade(IPublicationService publicationService)
+        public PublicationFacade(ILogger<PublicationFacade> logger, IPublicationService publicationService)
         {
+            _logger = logger;
             _publicationService = publicationService;
         }
 
         public PublicationDto AddPublication(PublicationDto publication)
         {
-            // TODO: Klaus - Use logger instead. Check the whole project.
-            Console.WriteLine($"Adding publication: {publication}.");
+            _logger.LogInformation($"Adding publication: {publication}.");
             publication = _publicationService.AddPublication(publication);
-            Console.WriteLine($"Added publication id: {publication.Id}.");
+            _logger.LogInformation($"Added publication id: {publication.Id}.");
 
             return publication;
         }
 
         public PublicationDto GetPublication(int id)
         {
-            Console.WriteLine($"Getting publication id: {id}.");
+            _logger.LogInformation($"Getting publication id: {id}.");
             PublicationDto publication = _publicationService.GetPublication(id);
-            Console.WriteLine($"Got publication: {publication}.");
+            _logger.LogInformation($"Got publication: {publication}.");
 
             return publication;
         }
 
         public IList<PublicationDto> GetAllPublications()
         {
-            Console.WriteLine("Getting all publications.");
+            _logger.LogInformation("Getting all publications.");
             IList<PublicationDto> list = _publicationService.GetAllPublications();
-            Console.WriteLine($"Got {list.Count} publications.");
+            _logger.LogInformation($"Got {list.Count} publications.");
 
             return list;
         }
 
         public PublicationDto EditPublication(PublicationDto publication)
         {
-            Console.WriteLine($"Editing publication: {publication}.");
+            _logger.LogInformation($"Editing publication: {publication}.");
             publication = _publicationService.EditPublication(publication);
-            Console.WriteLine($"Edited publication: {publication}.");
+            _logger.LogInformation($"Edited publication: {publication}.");
 
             return publication;
         }
 
         public PublicationDto DeletePublication(PublicationDto publication)
         {
-            Console.WriteLine($"Deleting publication: {publication}.");
+            _logger.LogInformation($"Deleting publication: {publication}.");
             publication = _publicationService.DeletePublication(publication);
-            Console.WriteLine($"Deleted publication: {publication}.");
+            _logger.LogInformation($"Deleted publication: {publication}.");
 
             return publication;
         }

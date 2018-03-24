@@ -2,7 +2,7 @@
 using System.Text;
 using Xunit.Abstractions;
 
-namespace TestProject
+namespace TestProject.Utils
 {
     public class ConsoleOutToITestOutputHelper : TextWriter
     {

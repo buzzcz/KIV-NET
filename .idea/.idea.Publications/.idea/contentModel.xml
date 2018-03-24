@@ -11,6 +11,8 @@
         <e p="Migrations" t="Include">
           <e p="20180324100224_01_Model.Designer.cs" t="Include" />
           <e p="20180324100224_01_Model.cs" t="Include" />
+          <e p="20180324113405_02_AddEdition.Designer.cs" t="Include" />
+          <e p="20180324113405_02_AddEdition.cs" t="Include" />
           <e p="PublicationsContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="PublicationsCore.csproj" t="IncludeRecursive" />
@@ -55,7 +57,6 @@
         </e>
       </e>
       <e p="TestProject" t="IncludeRecursive">
-        <e p="ConsoleOutToITestOutputHelper.cs" t="Include" />
         <e p="TestProject.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="facade" t="Include">
@@ -75,8 +76,13 @@
           <e p="PublicationContextTest.cs" t="Include" />
         </e>
         <e p="service" t="Include">
+          <e p="CitationServiceTest.cs" t="Include" />
           <e p="MapperTest.cs" t="Include" />
           <e p="PublicationServiceTest.cs" t="Include" />
+        </e>
+        <e p="utils" t="Include">
+          <e p="ConsoleOutToITestOutputHelper.cs" t="Include" />
+          <e p="TestUtils.cs" t="Include" />
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
