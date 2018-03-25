@@ -36,7 +36,7 @@ namespace TestProject.Utils
                     Name = "University Press"
                 },
                 Title = title,
-                Type = PublicationType.BOOK,
+                Type = PublicationType.Book,
                 Edition = "1st Edition"
             };
 

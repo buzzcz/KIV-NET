@@ -1,8 +1,8 @@
 ﻿using PublicationsCore.Facade.Dto;
 
-namespace PublicationsCore.Service
+namespace PublicationsCore.facade
 {
-    public interface ICitationService
+    public interface ICitationFacade
     {
         /// <summary>
         /// Creates citation of the specified publication.

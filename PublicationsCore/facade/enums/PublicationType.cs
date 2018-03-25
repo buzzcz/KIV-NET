@@ -5,14 +5,14 @@
     /// </summary>
     public enum PublicationType
     {
-        CONFERENCE_ARTICLE,
+        ConferenceArticle,
         
-        MAGAZINE_ARTICLE,
+        MagazineArticle,
         
-        TECHNICAL_REPORT,
+        TechnicalReport,
         
-        QUALIFICATION_WORK,
+        QualificationWork,
         
-        BOOK
+        Book
     }
 }

@@ -71,7 +71,7 @@ namespace TestProject.Persistence
                     Isbn = "8375209824",
                     Title = "Hitchhiker's Guide to the Galaxy",
                     Date = DateTime.Now,
-                    Type = PublicationType.BOOK,
+                    Type = PublicationType.Book,
                     Publisher = publisher,
                     Edition = "1st"
                 };

@@ -195,15 +195,9 @@ namespace PublicationsCore.Service
         {
             using (PublicationsContext db = new PublicationsContext())
             {
-                IList<PublicationDto> list = new List<PublicationDto>();
                 IList<Publication> entities = new List<Publication>(PreparePublicationsDb(db).AsEnumerable());
 
-                foreach (var entity in entities)
-                {
-                    list.Add(GetPublication(entity));
-                }
-
-                return list;
+                return entities.Select(GetPublication).ToList();
             }
         }
 

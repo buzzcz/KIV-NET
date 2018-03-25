@@ -19,7 +19,7 @@ namespace PublicationsCore.facade
         /// </summary>
         /// <param name="logger">Logger to use for logging.</param>
         /// <param name="publicationService">Service handling database operations with publications.</param>
-        public PublicationFacade(ILogger<PublicationFacade> logger, IPublicationService publicationService)
+        public PublicationFacade(ILogger logger, IPublicationService publicationService)
         {
             _logger = logger;
             _publicationService = publicationService;

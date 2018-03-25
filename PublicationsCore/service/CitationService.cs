@@ -6,7 +6,7 @@ namespace PublicationsCore.Service
 {
     public class CitationService : ICitationService
     {
-        private string getBookCitation(PublicationDto publication)
+        private static string GetBookCitation(PublicationDto publication)
         {
             string citation = "";
 
@@ -33,26 +33,26 @@ namespace PublicationsCore.Service
             return citation;
         }
         
-        public string getCitation(PublicationDto publication)
+        public string GetCitation(PublicationDto publication)
         {
             switch (publication.Type)
             {
-                case PublicationType.CONFERENCE_ARTICLE:
+                case PublicationType.ConferenceArticle:
                     break;
-                case PublicationType.MAGAZINE_ARTICLE:
+                case PublicationType.MagazineArticle:
                     break;
-                case PublicationType.TECHNICAL_REPORT:
+                case PublicationType.TechnicalReport:
                     break;
-                case PublicationType.QUALIFICATION_WORK:
+                case PublicationType.QualificationWork:
                     break;
-                case PublicationType.BOOK:
-                    return getBookCitation(publication);
+                case PublicationType.Book:
+                    return GetBookCitation(publication);
             }
 
             return "";
         }
 
-        public string getHtmlDescription(PublicationDto publication)
+        public string GetHtmlDescription(PublicationDto publication)
         {
             throw new NotImplementedException();
         }
