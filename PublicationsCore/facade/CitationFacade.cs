@@ -25,7 +25,12 @@ namespace PublicationsCore.facade
         public string GetCitation(PublicationDto publication)
         {
             _logger.LogInformation($"Getting citation for: {publication}.");
-            string citation = _citationService.GetCitation(publication);
+            string citation = null;
+            if (publication is BookDto book)
+            {
+                citation = _citationService.GetBookCitation(book);
+            }
+
             _logger.LogInformation($"Got citation: {citation}.");
 
             return citation;
@@ -34,7 +39,12 @@ namespace PublicationsCore.facade
         public string GetHtmlDescription(PublicationDto publication)
         {
             _logger.LogInformation($"Getting HTML description of: {publication}.");
-            string html = _citationService.GetHtmlDescription(publication);
+            string html = null;
+            if (publication is BookDto book)
+            {
+                html = _citationService.GetBookHtmlDescription(book);
+            }
+
             _logger.LogInformation($"Got HTML description: {html}.");
 
             return html;

@@ -5,7 +5,57 @@ namespace PublicationsCore.Service
 {
     public class CitationService : ICitationService
     {
-        private static string GetBookCitation(BookDto book)
+        /// <summary>
+        /// Adds next author (not the first one) to the citation.
+        /// </summary>
+        /// <param name="author">Author to add.</param>
+        /// <param name="citation">Citation to which author should be added.</param>
+        /// <param name="comma">Indicates whether author should be separated by comma or 'and'.</param>
+        /// <returns>Citation with added author.</returns>
+        private static string AddNextAuthor(AuthorDto author, string citation, bool comma)
+        {
+            citation += comma ? "," : " a";
+
+            if (author.FirstName != null)
+            {
+                citation += $" {author.FirstName}";
+            }
+
+            if (author.LastName != null)
+            {
+                citation += $" {author.LastName.ToUpper()}";    
+            }
+            
+            return citation;
+        }
+
+        /// <summary>
+        /// Adds first author to the citation.
+        /// </summary>
+        /// <param name="author">Author to add.</param>
+        /// <param name="citation">Citation to which author should be added.</param>
+        /// <returns>Citation with added author.</returns>
+        private static string AddFirstAuthor(AuthorDto author, string citation)
+        {
+            if (author.LastName != null)
+            {
+                citation += $"{author.LastName.ToUpper()}";
+            }
+
+            if (author.FirstName != null)
+            {
+                if (author.LastName != null)
+                {
+                    citation += ", ";
+                }
+
+                citation += $"{author.FirstName}";
+            }
+
+            return citation;
+        }
+
+        public string GetBookCitation(BookDto book)
         {
             string citation = "";
 
@@ -29,54 +79,7 @@ namespace PublicationsCore.Service
             return citation;
         }
 
-        private static string AddNextAuthor(AuthorDto author, string citation, bool comma)
-        {
-            citation += comma ? "," : " a";
-
-            if (author.FirstName != null)
-            {
-                citation += $" {author.FirstName}";
-            }
-
-            if (author.LastName != null)
-            {
-                citation += $" {author.LastName.ToUpper()}";    
-            }
-            
-            return citation;
-        }
-
-        private static string AddFirstAuthor(AuthorDto author, string citation)
-        {
-            if (author.LastName != null)
-            {
-                citation += $"{author.LastName.ToUpper()}";
-            }
-
-            if (author.FirstName != null)
-            {
-                if (author.LastName != null)
-                {
-                    citation += ", ";
-                }
-
-                citation += $"{author.FirstName}";
-            }
-
-            return citation;
-        }
-
-        public string GetCitation(PublicationDto publication)
-        {
-            if (publication is BookDto book)
-            {
-                return GetBookCitation(book);
-            }
-
-            throw new NotImplementedException();
-        }
-
-        public string GetHtmlDescription(PublicationDto publication)
+        public string GetBookHtmlDescription(BookDto book)
         {
             throw new NotImplementedException();
         }

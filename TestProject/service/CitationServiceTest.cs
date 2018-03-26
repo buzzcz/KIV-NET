@@ -33,7 +33,8 @@ namespace TestProject.Service
         [InlineData("Adams", "Douglas", "Hitchhiker's Guide to the Galaxy", "1st Edition", "Pilsen", "University Press",
             "1990", "7892347-913-2341-09",
             "ADAMS, Douglas. Hitchhiker's Guide to the Galaxy. 1st Edition. Pilsen: University Press, 1990. ISBN 7892347-913-2341-09.")]
-        public void Test_CorrectBookOneAuthor_CorrectBookCitation(string lastName, string name, string title,
+        public void Test_GetBookCitation_CorrectBookOneAuthor_CorrectBookCitation(string lastName, string name,
+            string title,
             string edition,
             string address, string publisher, string date, string isbn, string expected)
         {
@@ -66,7 +67,7 @@ namespace TestProject.Service
             }
 
             _output.WriteLine($"Getting citation for {bookDto} in BOOK CITATION test.");
-            string citation = _citationService.GetCitation(bookDto);
+            string citation = _citationService.GetBookCitation(bookDto);
             _output.WriteLine($"Got citation {citation} in BOOK CITATION test.");
 
             Assert.Equal(expected, citation);
@@ -83,7 +84,8 @@ namespace TestProject.Service
             "ADAMS, Douglas a Steven. Hitchhiker's Guide to the Galaxy. 1st Edition. Pilsen: University Press, 1990. ISBN 7892347-913-2341-09.")]
         [InlineData("Adams", "Douglas", "Moffat", "Steven", "1990",
             "ADAMS, Douglas a Steven MOFFAT. Hitchhiker's Guide to the Galaxy. 1st Edition. Pilsen: University Press, 1990. ISBN 7892347-913-2341-09.")]
-        public void Test_CorrectBookTwoAuthors_CorrectBookCitation(string lastName, string name, string lastName2,
+        public void Test_GetBookCitation_CorrectBookTwoAuthors_CorrectBookCitation(string lastName, string name,
+            string lastName2,
             string name2, string date, string expected)
         {
             BookDto bookDto = TestUtils.CreateBook();
@@ -118,12 +120,12 @@ namespace TestProject.Service
             }
 
             _output.WriteLine($"Getting citation for {bookDto} in BOOK CITATION test.");
-            string citation = _citationService.GetCitation(bookDto);
+            string citation = _citationService.GetBookCitation(bookDto);
             _output.WriteLine($"Got citation {citation} in BOOK CITATION test.");
 
             Assert.Equal(expected, citation);
         }
-        
+
         [Theory]
         [InlineData("Adams", null, "Moffat", null, "1990",
             "ADAMS, MOFFAT, ADAMS a MOFFAT. Hitchhiker's Guide to the Galaxy. 1st Edition. Pilsen: University Press, 1990. ISBN 7892347-913-2341-09.")]
@@ -135,7 +137,8 @@ namespace TestProject.Service
             "ADAMS, Douglas, Steven, Steven ADAMS a Douglas. Hitchhiker's Guide to the Galaxy. 1st Edition. Pilsen: University Press, 1990. ISBN 7892347-913-2341-09.")]
         [InlineData("Adams", "Douglas", "Moffat", "Steven", "1990",
             "ADAMS, Douglas, Steven MOFFAT, Steven ADAMS a Douglas MOFFAT. Hitchhiker's Guide to the Galaxy. 1st Edition. Pilsen: University Press, 1990. ISBN 7892347-913-2341-09.")]
-        public void Test_CorrectBookMoreAuthors_CorrectBookCitation(string lastName, string name, string lastName2,
+        public void Test_GetBookCitation_CorrectBookMoreAuthors_CorrectBookCitation(string lastName, string name,
+            string lastName2,
             string name2, string date, string expected)
         {
             BookDto bookDto = TestUtils.CreateBook();
@@ -168,7 +171,7 @@ namespace TestProject.Service
                     }
                 );
             }
-            
+
             if (lastName != null || name2 != null)
             {
                 bookDto.AuthorPublicationList.Add(new AuthorPublicationDto
@@ -181,7 +184,7 @@ namespace TestProject.Service
                     }
                 );
             }
-            
+
             if (lastName2 != null || name != null)
             {
                 bookDto.AuthorPublicationList.Add(new AuthorPublicationDto
@@ -196,7 +199,7 @@ namespace TestProject.Service
             }
 
             _output.WriteLine($"Getting citation for {bookDto} in BOOK CITATION test.");
-            string citation = _citationService.GetCitation(bookDto);
+            string citation = _citationService.GetBookCitation(bookDto);
             _output.WriteLine($"Got citation {citation} in BOOK CITATION test.");
 
             Assert.Equal(expected, citation);
