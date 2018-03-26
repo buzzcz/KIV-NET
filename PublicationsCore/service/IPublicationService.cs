@@ -1,45 +1,53 @@
-﻿using System.Collections.Generic;
-using PublicationsCore.Facade.Dto;
+﻿using PublicationsCore.Persistence;
+using PublicationsCore.Persistence.Model;
 
 namespace PublicationsCore.Service
 {
-    /// <summary>
-    /// Interface for handling publications.
-    /// </summary>
     public interface IPublicationService
     {
         /// <summary>
-        /// Adds publication to database.
+        /// Deletes old entities from old publication (author-publications, authors and publisher)
+        /// if they differ from the new one or if the new one is null.
         /// </summary>
-        /// <param name="publication">New publication to be added.</param>
-        /// <returns>Added publication with filled id.</returns>
-        PublicationDto AddPublication(PublicationDto publication);
+        /// <param name="db">Database context to use.</param>
+        /// <param name="oldPublication">Old publication from which to delete entities.</param>
+        /// <param name="publication">New publication with changed entities. Defaults to null.</param>
+        void DeleteOldPublicationSubentities(PublicationsContext db, Publication oldPublication,
+            Publication publication = null);
 
         /// <summary>
-        /// Finds publication based on its id.
+        /// Deletes old publisher from old publication if they differ from the new one or if the new one is null.
         /// </summary>
-        /// <param name="id">Id of the publication to find.</param>
-        /// <returns>Found publication or <i>null</i> if none is found.</returns>
-        PublicationDto GetPublication(int id);
+        /// <param name="db">Database context to use.</param>
+        /// <param name="oldPublication">Old publication from which to delete entities.</param>
+        /// <param name="publication">New publication with changed entities. Defaults to null.</param>
+        void DeleteOldPublisher(PublicationsContext db, Publication oldPublication,
+            Publication publication = null);
 
         /// <summary>
-        /// Finds all publications.
+        /// Deletes old author-publications and authors from old publication if they differ from the new one or if the
+        /// new one is null.
         /// </summary>
-        /// <returns>All publications.</returns>
-        IList<PublicationDto> GetAllPublications();
-        
-        /// <summary>
-        /// Edits specified publication.
-        /// </summary>
-        /// <param name="publication">Edited publication with original id.</param>
-        /// <returns>Edited publication.</returns>
-        PublicationDto EditPublication(PublicationDto publication);
+        /// <param name="db">Database context to use.</param>
+        /// <param name="oldPublication">Old publication from which to delete entities.</param>
+        /// <param name="publication">New publication with changed entities. Defaults to null.</param>
+        void DeleteOldAuthors(PublicationsContext db, Publication oldPublication,
+            Publication publication = null);
 
         /// <summary>
-        /// Deletes specified publication.
+        /// Checks if author from author-publication list already exists in the database and if so, this author is used
+        /// instead of creating new one.
         /// </summary>
-        /// <param name="publication">Publication to be deleted.</param>
-        /// <returns>Deleted publication.</returns>
-        PublicationDto DeletePublication(PublicationDto publication);
+        /// <param name="db">Database context to use.</param>
+        /// <param name="publication">Publication where to check the authors.</param>
+        void CheckAlreadyExistingAuthor(PublicationsContext db, Publication publication);
+
+        /// <summary>
+        /// Checks if publisher from publication already exists in the database and if so, this publisher is used
+        /// instead of creating new one.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="publication">Publication where to check the publisher.</param>
+        void CheckAlreadyExistingPublisher(PublicationsContext db, Publication publication);
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System;
 using PublicationsCore.Facade.Dto;
-using PublicationsCore.Facade.Enums;
 
 namespace PublicationsCore.Service
 {
     public class CitationService : ICitationService
     {
-        private static string GetBookCitation(PublicationDto publication)
+        private static string GetBookCitation(BookDto publication)
         {
             string citation = "";
 
@@ -32,24 +31,15 @@ namespace PublicationsCore.Service
 
             return citation;
         }
-        
+
         public string GetCitation(PublicationDto publication)
         {
-            switch (publication.Type)
+            if (publication is BookDto book)
             {
-                case PublicationType.ConferenceArticle:
-                    break;
-                case PublicationType.MagazineArticle:
-                    break;
-                case PublicationType.TechnicalReport:
-                    break;
-                case PublicationType.QualificationWork:
-                    break;
-                case PublicationType.Book:
-                    return GetBookCitation(publication);
+                return GetBookCitation(book);
             }
 
-            return "";
+            throw new NotImplementedException();
         }
 
         public string GetHtmlDescription(PublicationDto publication)

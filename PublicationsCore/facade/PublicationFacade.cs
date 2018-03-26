@@ -12,24 +12,28 @@ namespace PublicationsCore.facade
     {
         private readonly ILogger _logger;
         
-        private readonly IPublicationService _publicationService;
+        private readonly IBookService _bookService;
 
         /// <summary>
         /// Constructor for creating <i>PublicationFacade</i>.
         /// </summary>
         /// <param name="logger">Logger to use for logging.</param>
-        /// <param name="publicationService">Service handling database operations with publications.</param>
-        public PublicationFacade(ILogger logger, IPublicationService publicationService)
+        /// <param name="bookService">Service handling books.</param>
+        public PublicationFacade(ILogger logger, IBookService bookService)
         {
             _logger = logger;
-            _publicationService = publicationService;
+            _bookService = bookService;
         }
 
         public PublicationDto AddPublication(PublicationDto publication)
         {
             _logger.LogInformation($"Adding publication: {publication}.");
-            publication = _publicationService.AddPublication(publication);
-            _logger.LogInformation($"Added publication id: {publication.Id}.");
+            if (publication is BookDto book)
+            {
+                publication = _bookService.AddBook(book);
+            }
+
+            _logger.LogInformation($"Added publication: {publication}.");
 
             return publication;
         }
@@ -37,7 +41,7 @@ namespace PublicationsCore.facade
         public PublicationDto GetPublication(int id)
         {
             _logger.LogInformation($"Getting publication id: {id}.");
-            PublicationDto publication = _publicationService.GetPublication(id);
+            PublicationDto publication = _bookService.GetBook(id);
             _logger.LogInformation($"Got publication: {publication}.");
 
             return publication;
@@ -46,7 +50,7 @@ namespace PublicationsCore.facade
         public IList<PublicationDto> GetAllPublications()
         {
             _logger.LogInformation("Getting all publications.");
-            IList<PublicationDto> list = _publicationService.GetAllPublications();
+            IList<PublicationDto> list = new List<PublicationDto>(_bookService.GetAllBooks());
             _logger.LogInformation($"Got {list.Count} publications.");
 
             return list;
@@ -55,7 +59,11 @@ namespace PublicationsCore.facade
         public PublicationDto EditPublication(PublicationDto publication)
         {
             _logger.LogInformation($"Editing publication: {publication}.");
-            publication = _publicationService.EditPublication(publication);
+            if (publication is BookDto book)
+            {
+                publication = _bookService.EditBook(book);
+            }
+
             _logger.LogInformation($"Edited publication: {publication}.");
 
             return publication;
@@ -64,7 +72,11 @@ namespace PublicationsCore.facade
         public PublicationDto DeletePublication(PublicationDto publication)
         {
             _logger.LogInformation($"Deleting publication: {publication}.");
-            publication = _publicationService.DeletePublication(publication);
+            if (publication is BookDto book)
+            {
+                publication = _bookService.DeleteBook(book);
+            }
+
             _logger.LogInformation($"Deleted publication: {publication}.");
 
             return publication;

@@ -4,15 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Storage.Internal;
-using PublicationsCore.Facade.Enums;
 using PublicationsCore.Persistence;
 using System;
 
 namespace PublicationsCore.Migrations
 {
     [DbContext(typeof(PublicationsContext))]
-    [Migration("20180324100224_01_Model")]
-    partial class _01_Model
+    [Migration("20180326122336_01_BookModel")]
+    partial class _01_BookModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,18 +42,18 @@ namespace PublicationsCore.Migrations
 
                     b.Property<int>("AuthorId");
 
-                    b.Property<int>("PublicationId");
+                    b.Property<int>("BookId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
-                    b.HasIndex("PublicationId");
+                    b.HasIndex("BookId");
 
                     b.ToTable("AuthorPublications");
                 });
 
-            modelBuilder.Entity("PublicationsCore.Persistence.Model.Publication", b =>
+            modelBuilder.Entity("PublicationsCore.Persistence.Model.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -62,21 +61,22 @@ namespace PublicationsCore.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime(3)");
 
+                    b.Property<string>("Edition")
+                        .IsRequired();
+
                     b.Property<string>("Isbn")
                         .IsRequired();
 
-                    b.Property<int>("PublisherId");
+                    b.Property<int?>("PublisherId");
 
                     b.Property<string>("Title")
                         .IsRequired();
-
-                    b.Property<int>("Type");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Publications");
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("PublicationsCore.Persistence.Model.Publisher", b =>
@@ -84,8 +84,7 @@ namespace PublicationsCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address")
-                        .IsRequired();
+                    b.Property<string>("Address");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -102,18 +101,17 @@ namespace PublicationsCore.Migrations
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("PublicationsCore.Persistence.Model.Publication")
+                    b.HasOne("PublicationsCore.Persistence.Model.Book")
                         .WithMany("AuthorPublicationList")
-                        .HasForeignKey("PublicationId")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("PublicationsCore.Persistence.Model.Publication", b =>
+            modelBuilder.Entity("PublicationsCore.Persistence.Model.Book", b =>
                 {
                     b.HasOne("PublicationsCore.Persistence.Model.Publisher", "Publisher")
                         .WithMany()
-                        .HasForeignKey("PublisherId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PublisherId");
                 });
 #pragma warning restore 612, 618
         }

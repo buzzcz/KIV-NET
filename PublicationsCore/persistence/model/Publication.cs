@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using PublicationsCore.Facade.Enums;
 
 namespace PublicationsCore.Persistence.Model
 {
@@ -20,12 +19,6 @@ namespace PublicationsCore.Persistence.Model
         public int Id { get; set; }
 
         /// <summary>
-        /// ISBN number of the publication.
-        /// </summary>
-        [Required]
-        public string Isbn { get; set; }
-
-        /// <summary>
         /// Title of the publication.
         /// </summary>
         [Required]
@@ -38,23 +31,15 @@ namespace PublicationsCore.Persistence.Model
         public DateTime Date { get; set; }
 
         /// <summary>
-        /// Type of publication.
-        /// </summary>
-        [Required]
-        public PublicationType Type { get; set; }
-
-        /// <summary>
         /// Publisher of the publication.
         /// </summary>
-        [Required]
         public Publisher Publisher { get; set; }
 
         /// <summary>
         /// List of author-publications that contains information about the authors of the publication.
         /// </summary>
-        [Required]
         public IList<AuthorPublication> AuthorPublicationList { get; set; }
-        
+
         /// <summary>
         /// Edition of the book.
         /// </summary>
@@ -82,14 +67,13 @@ namespace PublicationsCore.Persistence.Model
         public override string ToString()
         {
             return
-                $"{nameof(Id)}: {Id}, {nameof(Isbn)}: {Isbn}, {nameof(Title)}: {Title}, {nameof(Date)}: {Date}, {nameof(Type)}: {Type}, {nameof(Publisher)}: {Publisher}, {nameof(AuthorPublicationList)}: [{AuthorPublicationListToString()}]";
+                $"{nameof(Id)}: {Id}, {nameof(Title)}: {Title}, {nameof(Date)}: {Date}, {nameof(Publisher)}: {Publisher}, {nameof(AuthorPublicationList)}: [{AuthorPublicationListToString()}]";
         }
 
         protected bool Equals(Publication other)
         {
-            return Id == other.Id && string.Equals(Isbn, other.Isbn) && string.Equals(Title, other.Title) &&
-                   Date.Equals(other.Date) && Type == other.Type && Equals(Publisher, other.Publisher) &&
-                   AuthorPublicationListEquals(other);
+            return Id == other.Id && string.Equals(Title, other.Title) && Date.Equals(other.Date) &&
+                   Equals(Publisher, other.Publisher) && AuthorPublicationListEquals(other);
         }
 
         public override bool Equals(object obj)
@@ -105,10 +89,8 @@ namespace PublicationsCore.Persistence.Model
             unchecked
             {
                 var hashCode = Id;
-                hashCode = (hashCode * 397) ^ (Isbn != null ? Isbn.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Date.GetHashCode();
-                hashCode = (hashCode * 397) ^ (int) Type;
                 hashCode = (hashCode * 397) ^ (Publisher != null ? Publisher.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (AuthorPublicationList != null ? AuthorPublicationList.GetHashCode() : 0);
                 return hashCode;

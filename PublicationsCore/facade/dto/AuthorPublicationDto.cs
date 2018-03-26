@@ -6,7 +6,7 @@
 
         public int AuthorId { get; set; }
 
-        public int PublicationId { get; set; }
+        public int BookId { get; set; }
 
         public AuthorDto Author { get; set; }
 

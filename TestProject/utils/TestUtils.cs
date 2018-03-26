@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PublicationsCore.Facade.Dto;
-using PublicationsCore.Facade.Enums;
 using PublicationsCore.Persistence;
+using PublicationsCore.Persistence.Model;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -12,10 +13,10 @@ namespace TestProject.Utils
 {
     public static class TestUtils
     {
-        public static PublicationDto CreatePublication(string title = "Hitchhiker's Guide to the Galaxy")
+        public static BookDto CreateBook(string title = "Hitchhiker's Guide to the Galaxy")
         {
             DateTime dateTime = DateTime.FromOADate(DateTime.Now.ToOADate());
-            PublicationDto publicationDto = new PublicationDto
+            BookDto bookDto = new BookDto
             {
                 AuthorPublicationList = new List<AuthorPublicationDto>
                 {
@@ -36,11 +37,22 @@ namespace TestProject.Utils
                     Name = "University Press"
                 },
                 Title = title,
-                Type = PublicationType.Book,
                 Edition = "1st Edition"
             };
 
-            return publicationDto;
+            return bookDto;
+        }
+
+        public static IMapper CreateMapper()
+        {
+            return new Mapper(new MapperConfiguration(conf =>
+            {
+                conf.CreateMap<Author, AuthorDto>();
+                conf.CreateMap<AuthorPublication, AuthorPublicationDto>();
+                conf.CreateMap<Book, BookDto>();
+                conf.CreateMap<Publication, PublicationDto>();
+                conf.CreateMap<Publisher, PublisherDto>();
+            }));
         }
 
         public static void Cleanup(ITestOutputHelper output)
@@ -49,12 +61,12 @@ namespace TestProject.Utils
             {
                 output.WriteLine("Cleanup db.");
                 db.Database.ExecuteSqlCommand(
-                    "delete from Authors; delete from Publishers; delete from Publications; delete from AuthorPublications;");
+                    "delete from AuthorPublications; delete from Authors; delete from Books; delete from Publishers;");
                 
                 Assert.Empty(db.AuthorPublications.AsEnumerable());
                 Assert.Empty(db.Authors.AsEnumerable());
                 Assert.Empty(db.Publishers.AsEnumerable());
-                Assert.Empty(db.Publications.AsEnumerable());
+                Assert.Empty(db.Books.AsEnumerable());
             }
         }
     }

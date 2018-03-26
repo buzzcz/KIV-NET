@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PublicationsCore.Facade.Enums;
 
 namespace PublicationsCore.Facade.Dto
 {
@@ -14,11 +13,6 @@ namespace PublicationsCore.Facade.Dto
         /// Id of the publication in database.
         /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// ISBN number of the publication.
-        /// </summary>
-        public string Isbn { get; set; }
 
         /// <summary>
         /// Title of the publication.
@@ -36,15 +30,10 @@ namespace PublicationsCore.Facade.Dto
         public DateTime Date { get; set; }
 
         /// <summary>
-        /// Type of publication.
-        /// </summary>
-        public PublicationType Type { get; set; }
-
-        /// <summary>
         /// Publisher of the publication.
         /// </summary>
         public PublisherDto Publisher { get; set; }
-        
+
         /// <summary>
         /// Edition of the book.
         /// </summary>
@@ -72,14 +61,13 @@ namespace PublicationsCore.Facade.Dto
         public override string ToString()
         {
             return
-                $"{nameof(Id)}: {Id}, {nameof(Isbn)}: {Isbn}, {nameof(Title)}: {Title}, {nameof(AuthorPublicationList)}: [{AuthorPublicationListToString()}], {nameof(Date)}: {Date}, {nameof(Type)}: {Type}, {nameof(Publisher)}: {Publisher}";
+                $"{nameof(Id)}: {Id}, {nameof(Title)}: {Title}, {nameof(AuthorPublicationList)}: [{AuthorPublicationListToString()}], {nameof(Date)}: {Date}, {nameof(Publisher)}: {Publisher}";
         }
 
         protected bool Equals(PublicationDto other)
         {
-            return string.Equals(Isbn, other.Isbn) && string.Equals(Title, other.Title) &&
-                   AuthorPublicationListEquals(other) && Date.Equals(other.Date) && Type == other.Type &&
-                   Equals(Publisher, other.Publisher);
+            return string.Equals(Title, other.Title) && AuthorPublicationListEquals(other) && Date.Equals(other.Date) &&
+                   Equals(Publisher, other.Publisher) && string.Equals(Edition, other.Edition);
         }
 
         public override bool Equals(object obj)
@@ -94,12 +82,11 @@ namespace PublicationsCore.Facade.Dto
         {
             unchecked
             {
-                var hashCode = (Isbn != null ? Isbn.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
+                var hashCode = (Title != null ? Title.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (AuthorPublicationList != null ? AuthorPublicationList.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ Date.GetHashCode();
-                hashCode = (hashCode * 397) ^ (int) Type;
                 hashCode = (hashCode * 397) ^ (Publisher != null ? Publisher.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Edition != null ? Edition.GetHashCode() : 0);
                 return hashCode;
             }
         }

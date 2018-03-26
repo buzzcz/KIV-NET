@@ -8,19 +8,19 @@ namespace PublicationsCore.Persistence.Model
 
         [Required] public int AuthorId { get; set; }
 
-        [Required] public int PublicationId { get; set; }
+        [Required] public int BookId { get; set; }
 
         [Required] public Author Author { get; set; }
 
         public override string ToString()
         {
             return
-                $"{nameof(Id)}: {Id}, {nameof(AuthorId)}: {AuthorId}, {nameof(PublicationId)}: {PublicationId}, {nameof(Author)}: {Author}";
+                $"{nameof(Id)}: {Id}, {nameof(AuthorId)}: {AuthorId}, {nameof(BookId)}: {BookId}, {nameof(Author)}: {Author}";
         }
 
         protected bool Equals(AuthorPublication other)
         {
-            return Id == other.Id && AuthorId == other.AuthorId && PublicationId == other.PublicationId &&
+            return Id == other.Id && AuthorId == other.AuthorId && BookId == other.BookId &&
                    Equals(Author, other.Author);
         }
 
@@ -38,7 +38,7 @@ namespace PublicationsCore.Persistence.Model
             {
                 var hashCode = Id;
                 hashCode = (hashCode * 397) ^ AuthorId;
-                hashCode = (hashCode * 397) ^ PublicationId;
+                hashCode = (hashCode * 397) ^ BookId;
                 hashCode = (hashCode * 397) ^ (Author != null ? Author.GetHashCode() : 0);
                 return hashCode;
             }

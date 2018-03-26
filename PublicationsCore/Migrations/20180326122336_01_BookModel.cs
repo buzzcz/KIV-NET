@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PublicationsCore.Migrations
 {
-    public partial class _01_Model : Migration
+    public partial class _01_BookModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,7 @@ namespace PublicationsCore.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    Address = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -37,26 +37,26 @@ namespace PublicationsCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Publications",
+                name: "Books",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
                     Date = table.Column<DateTime>(type: "datetime(3)", nullable: false),
+                    Edition = table.Column<string>(nullable: false),
                     Isbn = table.Column<string>(nullable: false),
-                    PublisherId = table.Column<int>(nullable: false),
-                    Title = table.Column<string>(nullable: false),
-                    Type = table.Column<int>(nullable: false)
+                    PublisherId = table.Column<int>(nullable: true),
+                    Title = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Publications", x => x.Id);
+                    table.PrimaryKey("PK_Books", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Publications_Publishers_PublisherId",
+                        name: "FK_Books_Publishers_PublisherId",
                         column: x => x.PublisherId,
                         principalTable: "Publishers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,7 +66,7 @@ namespace PublicationsCore.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
                     AuthorId = table.Column<int>(nullable: false),
-                    PublicationId = table.Column<int>(nullable: false)
+                    BookId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,9 +78,9 @@ namespace PublicationsCore.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AuthorPublications_Publications_PublicationId",
-                        column: x => x.PublicationId,
-                        principalTable: "Publications",
+                        name: "FK_AuthorPublications_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -91,13 +91,13 @@ namespace PublicationsCore.Migrations
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AuthorPublications_PublicationId",
+                name: "IX_AuthorPublications_BookId",
                 table: "AuthorPublications",
-                column: "PublicationId");
+                column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Publications_PublisherId",
-                table: "Publications",
+                name: "IX_Books_PublisherId",
+                table: "Books",
                 column: "PublisherId");
         }
 
@@ -110,7 +110,7 @@ namespace PublicationsCore.Migrations
                 name: "Authors");
 
             migrationBuilder.DropTable(
-                name: "Publications");
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Publishers");

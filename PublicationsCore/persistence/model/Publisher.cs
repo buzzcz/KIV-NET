@@ -10,17 +10,20 @@ namespace PublicationsCore.Persistence.Model
         /// <summary>
         /// Id of the publisher.
         /// </summary>
-        [Key] [Required] public int Id { get; set; }
+        [Key]
+        [Required]
+        public int Id { get; set; }
 
         /// <summary>
         /// Name of the publisher.
         /// </summary>
-        [Required] public string Name { get; set; }
+        [Required]
+        public string Name { get; set; }
 
         /// <summary>
         /// Address where the publication has been published.
         /// </summary>
-        [Required] public string Address { get; set; }
+        public string Address { get; set; }
 
         public override string ToString()
         {
