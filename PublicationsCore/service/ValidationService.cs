@@ -5,7 +5,7 @@ namespace PublicationsCore.Service
 {
     public class ValidationService : IValidationService
     {
-        public void validateBook(BookDto book)
+        public void ValidateBook(BookDto book)
         {
             if (string.IsNullOrEmpty(book.Isbn))
             {

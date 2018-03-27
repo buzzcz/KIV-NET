@@ -6,7 +6,7 @@
 
         public int AuthorId { get; set; }
 
-        public int BookId { get; set; }
+        public int PublicationId { get; set; }
 
         public AuthorDto Author { get; set; }
 
@@ -25,7 +25,7 @@
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((AuthorPublicationDto) obj);
         }
 

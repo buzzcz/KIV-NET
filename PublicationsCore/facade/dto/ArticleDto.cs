@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PublicationsCore.Persistence.Model
+﻿namespace PublicationsCore.Facade.Dto
 {
-    public class Article : Publication
+    public class ArticleDto : PublicationDto
     {
         /// <summary>
         /// DOI number of the article
@@ -12,7 +10,6 @@ namespace PublicationsCore.Persistence.Model
         /// <summary>
         /// Range of pages containing the citation.
         /// </summary>
-        [Required]
         public string Pages { get; set; }
         
         /// <summary>
@@ -23,13 +20,11 @@ namespace PublicationsCore.Persistence.Model
         /// <summary>
         /// Title of the magazine.
         /// </summary>
-        [Required]
         public string MagazineTitle { get; set; }
         
         /// <summary>
         /// Volume of the magazine.
         /// </summary>
-        [Required]
         public int Volume { get; set; }
     }
 }

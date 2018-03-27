@@ -203,7 +203,7 @@ namespace TestProject.Service
         [Fact]
         public void Test_AddBook_CorrectBooks_CorrectBooks()
         {
-            List<BookDto> list = new List<BookDto>();
+            List<PublicationDto> list = new List<PublicationDto>();
             for (int i = 0; i < 10; i++)
             {
                 BookDto bookDto = TestUtils.CreateBook("GET ALL" + i);
@@ -216,13 +216,13 @@ namespace TestProject.Service
             }
 
             _output.WriteLine("Getting all in GET ALL test.");
-            List<BookDto> got = (List<BookDto>) _publicationService.GetAllBooks();
+            IList<PublicationDto> got = _publicationService.GetAllPublications();
             _output.WriteLine($"Got {got.Count} in GET ALL test.");
 
             try
             {
                 Assert.Equal(list.Count, got.Count);
-                Assert.Equal(list, got);
+//                Assert.Equal(list, got);
                 for (int i = 0; i < list.Count; i++)
                 {
                     Assert.Equal(list[i], got[i]);

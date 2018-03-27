@@ -34,8 +34,11 @@ namespace PublicationsCore.facade
             _logger.LogInformation($"Adding publication: {publication}.");
             if (publication is BookDto book)
             {
-                _validationService.validateBook(book);
+                _validationService.ValidateBook(book);
                 publication = _publicationService.AddBook(book);
+            } else if (publication is ArticleDto article)
+            {
+                
             }
 
             _logger.LogInformation($"Added publication: {publication}.");
@@ -55,7 +58,7 @@ namespace PublicationsCore.facade
         public IList<PublicationDto> GetAllPublications()
         {
             _logger.LogInformation("Getting all publications.");
-            IList<PublicationDto> list = new List<PublicationDto>(_publicationService.GetAllBooks());
+            IList<PublicationDto> list = new List<PublicationDto>(_publicationService.GetAllPublications());
             _logger.LogInformation($"Got {list.Count} publications.");
 
             return list;
@@ -66,7 +69,7 @@ namespace PublicationsCore.facade
             _logger.LogInformation($"Editing publication: {publication}.");
             if (publication is BookDto book)
             {
-                _validationService.validateBook(book);
+                _validationService.ValidateBook(book);
                 publication = _publicationService.EditBook(book);
             }
 
@@ -80,7 +83,7 @@ namespace PublicationsCore.facade
             _logger.LogInformation($"Deleting publication: {publication}.");
             if (publication is BookDto book)
             {
-                _validationService.validateBook(book); // TODO: Klaus - Should there be the validation in here?
+                _validationService.ValidateBook(book); // TODO: Klaus - Should there be the validation in here?
                 publication = _publicationService.DeleteBook(book);
             }
 

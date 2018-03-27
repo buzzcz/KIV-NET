@@ -61,12 +61,12 @@ namespace TestProject.Utils
             {
                 output.WriteLine("Cleanup db.");
                 db.Database.ExecuteSqlCommand(
-                    "delete from AuthorPublications; delete from Authors; delete from Books; delete from Publishers;");
-                
+                    "delete from AuthorPublications; delete from Authors; delete from Publications; delete from Publishers;");
+
                 Assert.Empty(db.AuthorPublications.AsEnumerable());
                 Assert.Empty(db.Authors.AsEnumerable());
                 Assert.Empty(db.Publishers.AsEnumerable());
-                Assert.Empty(db.Books.AsEnumerable());
+                Assert.Empty(db.Publications.AsEnumerable());
             }
         }
     }

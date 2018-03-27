@@ -24,9 +24,13 @@ namespace PublicationsCore.Persistence
         public DbSet<AuthorPublication> AuthorPublications { get; set; }
 
         /// <summary>
-        /// Set of books in database.
+        /// Set of publications in database.
         /// </summary>
+        public DbSet<Publication> Publications { get; set; }
+        
         public DbSet<Book> Books { get; set; }
+        
+        public DbSet<Article> Articles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

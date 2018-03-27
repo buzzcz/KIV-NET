@@ -32,7 +32,7 @@ namespace PublicationsCore.facade
             string citation = null;
             if (publication is BookDto book)
             {
-                _validationService.validateBook(book);
+                _validationService.ValidateBook(book);
                 citation = _citationService.GetBookCitation(book);
             }
 
@@ -47,7 +47,7 @@ namespace PublicationsCore.facade
             string html = null;
             if (publication is BookDto book)
             {
-                _validationService.validateBook(book);
+                _validationService.ValidateBook(book);
                 html = _citationService.GetBookHtmlDescription(book);
             }
 

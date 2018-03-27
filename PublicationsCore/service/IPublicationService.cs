@@ -23,7 +23,7 @@ namespace PublicationsCore.Service
         /// Finds all books.
         /// </summary>
         /// <returns>All books.</returns>
-        IList<BookDto> GetAllBooks();
+        IList<PublicationDto> GetAllPublications();
 
         /// <summary>
         /// Edits specified book.

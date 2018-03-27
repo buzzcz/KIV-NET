@@ -9,8 +9,8 @@
       <e p="Publications.sln" t="IncludeFlat" />
       <e p="PublicationsCore" t="IncludeRecursive">
         <e p="Migrations" t="Include">
-          <e p="20180326122336_01_BookModel.Designer.cs" t="Include" />
-          <e p="20180326122336_01_BookModel.cs" t="Include" />
+          <e p="20180327154925_01_BookAndArticleModel.Designer.cs" t="Include" />
+          <e p="20180327154925_01_BookAndArticleModel.cs" t="Include" />
           <e p="PublicationsContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="PublicationsCore.csproj" t="IncludeRecursive" />
@@ -21,6 +21,7 @@
           <e p="IPublicationFacade.cs" t="Include" />
           <e p="PublicationFacade.cs" t="Include" />
           <e p="dto" t="Include">
+            <e p="ArticleDto.cs" t="Include" />
             <e p="AuthorDto.cs" t="Include" />
             <e p="AuthorPublicationDto.cs" t="Include" />
             <e p="BookDto.cs" t="Include" />

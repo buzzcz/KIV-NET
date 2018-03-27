@@ -81,7 +81,7 @@ namespace TestProject.Persistence
                 AuthorPublication authorPublication = new AuthorPublication
                 {
                     AuthorId = author.Id,
-                    BookId = book.Id
+                    PublicationId = book.Id
                 };
                 authorPublication = db.AuthorPublications.Add(authorPublication).Entity;
                 db.SaveChanges();
