@@ -1,13 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PublicationsCore.Facade.Dto
+﻿namespace PublicationsCore.Facade.Dto
 {
     public class BookDto : PublicationDto
     {
         /// <summary>
         /// ISBN number of the publication.
         /// </summary>
-        [Required]
         public string Isbn { get; set; }
 
         public override string ToString()

@@ -52,7 +52,9 @@
           <e p="IBookService.cs" t="Include" />
           <e p="ICitationService.cs" t="Include" />
           <e p="IPublicationService.cs" t="Include" />
+          <e p="IValidationService.cs" t="Include" />
           <e p="PublicationService.cs" t="Include" />
+          <e p="ValidationService.cs" t="Include" />
         </e>
       </e>
       <e p="TestProject" t="IncludeRecursive">

@@ -14,15 +14,19 @@ namespace PublicationsCore.facade
         
         private readonly IBookService _bookService;
 
+        private readonly IValidationService _validationService;
+
         /// <summary>
         /// Constructor for creating <i>PublicationFacade</i>.
         /// </summary>
         /// <param name="logger">Logger to use for logging.</param>
         /// <param name="bookService">Service handling books.</param>
-        public PublicationFacade(ILogger logger, IBookService bookService)
+        /// <param name="validationService">Validation service used to validate publications.</param>
+        public PublicationFacade(ILogger logger, IBookService bookService, IValidationService validationService)
         {
             _logger = logger;
             _bookService = bookService;
+            _validationService = validationService;
         }
 
         public PublicationDto AddPublication(PublicationDto publication)
@@ -30,6 +34,7 @@ namespace PublicationsCore.facade
             _logger.LogInformation($"Adding publication: {publication}.");
             if (publication is BookDto book)
             {
+                _validationService.validateBook(book);
                 publication = _bookService.AddBook(book);
             }
 
@@ -61,6 +66,7 @@ namespace PublicationsCore.facade
             _logger.LogInformation($"Editing publication: {publication}.");
             if (publication is BookDto book)
             {
+                _validationService.validateBook(book);
                 publication = _bookService.EditBook(book);
             }
 
@@ -74,6 +80,7 @@ namespace PublicationsCore.facade
             _logger.LogInformation($"Deleting publication: {publication}.");
             if (publication is BookDto book)
             {
+                _validationService.validateBook(book); // TODO: Klaus - Should there be the validation in here?
                 publication = _bookService.DeleteBook(book);
             }
 
