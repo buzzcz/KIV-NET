@@ -38,6 +38,7 @@ namespace PublicationsCore.facade
                 publication = _publicationService.AddBook(book);
             } else if (publication is ArticleDto article)
             {
+                _validationService.ValidateArticle(article);
                 
             }
 

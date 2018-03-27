@@ -21,10 +21,10 @@
         /// Title of the magazine.
         /// </summary>
         public string MagazineTitle { get; set; }
-        
+
         /// <summary>
         /// Volume of the magazine.
         /// </summary>
-        public int Volume { get; set; }
+        public int Volume { get; set; } = -1;
     }
 }

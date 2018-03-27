@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using PublicationsCore.Facade.Dto;
 using PublicationsCore.Persistence;
 using PublicationsCore.Persistence.Model;
@@ -49,7 +48,8 @@ namespace PublicationsCore.Service
         {
             if (publication == null || !oldPublication.Publisher.Equals(publication.Publisher))
             {
-                IList<Publication> used = PrepareBookDb(db, true)
+                IList<Publication> used = db.Publications.AsNoTracking().Include(p => p.AuthorPublicationList)
+                    .ThenInclude(ap => ap.Author).Include(p => p.Publisher)
                     .Where(p => p.Publisher.Id == oldPublication.Publisher.Id).Include(p => p.AuthorPublicationList)
                     .ThenInclude(ap => ap.Author).Include(p => p.Publisher).ToList();
                 foreach (var publication1 in used)
@@ -138,20 +138,6 @@ namespace PublicationsCore.Service
             }
         }
 
-        /// <summary>
-        /// Prepares book query with its includes.
-        /// </summary>
-        /// <param name="db">Database context to use.</param>
-        /// <param name="asNoTracking"></param>
-        /// <returns>Book query with included AuthorPublications and Publishers.</returns>
-        private static IIncludableQueryable<Publication, Publisher> PrepareBookDb(PublicationsContext db,
-            bool asNoTracking = false)
-        {
-            var retVal = asNoTracking ? db.Publications.AsNoTracking() : db.Publications;
-
-            return retVal.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author).Include(p => p.Publisher);
-        }
-
         public BookDto AddBook(BookDto book)
         {
             using (PublicationsContext db = new PublicationsContext())
@@ -172,7 +158,8 @@ namespace PublicationsCore.Service
         {
             using (PublicationsContext db = new PublicationsContext())
             {
-                Book entity = (Book) PrepareBookDb(db).FirstOrDefault(p => p.Id == id);
+                Book entity = db.Books.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author)
+                    .Include(p => p.Publisher).FirstOrDefault(p => p.Id == id);
 
                 return _mapper.Map<BookDto>(entity);
             }
@@ -189,7 +176,7 @@ namespace PublicationsCore.Service
 
                 IList<BookDto> books = bookEntities.Select(b => _mapper.Map<BookDto>(b)).ToList();
                 IList<ArticleDto> articles = articleEntities.Select(a => _mapper.Map<ArticleDto>(a)).ToList();
-                
+
                 List<PublicationDto> retVal = new List<PublicationDto>(books);
                 retVal.AddRange(articles);
 
@@ -202,7 +189,8 @@ namespace PublicationsCore.Service
             using (PublicationsContext db = new PublicationsContext())
             {
                 Book entity = _mapper.Map<Book>(book);
-                Book oldBook = (Book) PrepareBookDb(db, true).FirstOrDefault(p => p.Id == book.Id);
+                Book oldBook = db.Books.AsNoTracking().Include(p => p.AuthorPublicationList)
+                    .ThenInclude(ap => ap.Author).Include(p => p.Publisher).FirstOrDefault(p => p.Id == book.Id);
 
                 DeleteOldPublicationSubentities(db, oldBook, entity);
 

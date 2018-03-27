@@ -5,45 +5,79 @@ namespace PublicationsCore.Service
 {
     public class ValidationService : IValidationService
     {
+        private static void ValidatePublisher(PublicationDto publication)
+        {
+            if (string.IsNullOrEmpty(publication.Publisher?.Name))
+            {
+                throw new ArgumentException("Nakladatelství musí být vyplněno.");
+            }
+        }
+
+        private static void ValidateEdition(PublicationDto publication, string text = "Vydání")
+        {
+            if (string.IsNullOrEmpty(publication.Edition))
+            {
+                throw new ArgumentException($"{text} musí být vyplněno.");
+            }
+        }
+
+        private static void ValidateTitle(PublicationDto publication)
+        {
+            if (string.IsNullOrEmpty(publication.Title))
+            {
+                throw new ArgumentException("Název musí být vyplněn.");
+            }
+        }
+
+        private static void ValidateAddress(PublicationDto publication)
+        {
+            if (string.IsNullOrEmpty(publication.Publisher.Address))
+            {
+                throw new ArgumentException("Místo vydání musí být vyplněno.");
+            }
+        }
+
+        private static void ValidateDate(PublicationDto publication)
+        {
+            if (publication.Date == null)
+            {
+                throw new ArgumentException("Rok vydání musí být vyplněn.");
+            }
+        }
+
         public void ValidateBook(BookDto book)
         {
+            ValidateTitle(book);
+            ValidateEdition(book);
+            ValidatePublisher(book);
+            ValidateAddress(book);
+            ValidateDate(book);
+
             if (string.IsNullOrEmpty(book.Isbn))
             {
-                throw new ArgumentNullException(nameof(book.Isbn), "ISBN musí být vyplněno.");
+                throw new ArgumentException("ISBN musí být vyplněno.");
+            }
+        }
+
+        public void ValidateArticle(ArticleDto article)
+        {
+            ValidateTitle(article);
+            ValidateEdition(article, "Ročník");
+            ValidateDate(article);
+
+            if (string.IsNullOrEmpty(article.Pages))
+            {
+                throw new ArgumentException("Rozsah stran musí být vyplněn.");
             }
 
-            if (string.IsNullOrEmpty(book.Title))
+            if (string.IsNullOrEmpty(article.MagazineTitle))
             {
-                throw new ArgumentNullException(nameof(book.Title), "Název musí být vyplněn.");
+                throw new ArgumentException("Název časopisu musí být vyplněn.");
             }
 
-            if (string.IsNullOrEmpty(book.Edition))
+            if (article.Volume < 0)
             {
-                throw new ArgumentNullException(nameof(book.Edition), "Vydání musí být vyplněno.");
-            }
-
-            if (string.IsNullOrEmpty(book.Publisher?.Name))
-            {
-                string field;
-                if (book.Publisher == null)
-                {
-                    field = nameof(book.Publisher);
-                }
-                else
-                {
-                    field = nameof(book.Publisher.Name);
-                }
-                throw new ArgumentNullException(field, "Nakladatelství musí být vyplněno.");
-            }
-
-            if (string.IsNullOrEmpty(book.Publisher.Address))
-            {
-                throw new ArgumentNullException(nameof(book.Publisher.Address), "Místo vydání musí být vyplněno.");
-            }
-
-            if (book.Date == null)
-            {
-                throw new ArgumentNullException(nameof(book.Date), "Rok vydání musí být vyplněn.");
+                throw new ArgumentException("Číslo musí být vyplněno.");
             }
         }
     }
