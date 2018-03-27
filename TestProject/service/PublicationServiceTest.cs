@@ -15,19 +15,19 @@ namespace TestProject.Service
 {
     [CollectionDefinition("DbTests", DisableParallelization = true)]
     [Collection("DbTests")]
-    public class BookServiceTest
+    public class PublicationServiceTest
     {
         private readonly ITestOutputHelper _output;
 
         private readonly IMapper _mapper;
 
-        private readonly IBookService _bookService;
+        private readonly IPublicationService _publicationService;
 
-        public BookServiceTest(ITestOutputHelper output)
+        public PublicationServiceTest(ITestOutputHelper output)
         {
             _output = output;
             IMapper mapper = TestUtils.CreateMapper();
-            _bookService = new BookService(mapper, new PublicationService());
+            _publicationService = new PublicationService(mapper);
             _mapper = mapper;
             Console.SetOut(new ConsoleOutToITestOutputHelper(output));
         }
@@ -37,7 +37,7 @@ namespace TestProject.Service
         {
             BookDto bookDto = TestUtils.CreateBook("ADD");
             _output.WriteLine($"Adding {bookDto} in ADD test.");
-            BookDto added = _bookService.AddBook(bookDto);
+            BookDto added = _publicationService.AddBook(bookDto);
             _output.WriteLine($"Added {added} in ADD test.");
 
             BookDto got;
@@ -69,11 +69,11 @@ namespace TestProject.Service
         {
             BookDto bookDto = TestUtils.CreateBook("GET");
             _output.WriteLine($"Adding {bookDto} in GET test.");
-            bookDto = _bookService.AddBook(bookDto);
+            bookDto = _publicationService.AddBook(bookDto);
             _output.WriteLine($"Added {bookDto} in GET test.");
 
             _output.WriteLine($"Getting {bookDto.Id} in GET test.");
-            PublicationDto got = _bookService.GetBook(bookDto.Id);
+            PublicationDto got = _publicationService.GetBook(bookDto.Id);
             _output.WriteLine($"Got {got} in GET test.");
 
             try
@@ -91,16 +91,16 @@ namespace TestProject.Service
         {
             BookDto bookDto = TestUtils.CreateBook("EDIT TITLE");
             _output.WriteLine($"Adding {bookDto} in EDIT TITLE test.");
-            bookDto = _bookService.AddBook(bookDto);
+            bookDto = _publicationService.AddBook(bookDto);
             _output.WriteLine($"Added {bookDto} in EDIT TITLE test.");
 
             bookDto.Title = "Doctor Who";
             _output.WriteLine($"Updating {bookDto} in EDIT TITLE test.");
-            BookDto edited = _bookService.EditBook(bookDto);
+            BookDto edited = _publicationService.EditBook(bookDto);
             _output.WriteLine($"Updated {edited} in EDIT TITLE test.");
 
             _output.WriteLine($"Getting {bookDto.Id} in EDIT TITLE test.");
-            BookDto got = _bookService.GetBook(bookDto.Id);
+            BookDto got = _publicationService.GetBook(bookDto.Id);
             _output.WriteLine($"Got {got} in EDIT TITLE test.");
 
             try
@@ -128,7 +128,7 @@ namespace TestProject.Service
                 }
             });
             _output.WriteLine($"Adding {bookDto} in EDIT AUTHOR test.");
-            bookDto = _bookService.AddBook(bookDto);
+            bookDto = _publicationService.AddBook(bookDto);
             _output.WriteLine($"Added {bookDto} in EDIT AUTHOR test.");
 
             bookDto.AuthorPublicationList.Clear();
@@ -141,11 +141,11 @@ namespace TestProject.Service
                 }
             });
             _output.WriteLine($"Updating {bookDto} in EDIT AUTHOR test.");
-            BookDto edited = _bookService.EditBook(bookDto);
+            BookDto edited = _publicationService.EditBook(bookDto);
             _output.WriteLine($"Updated {edited} in EDIT AUTHOR test.");
 
             _output.WriteLine($"Getting {bookDto.Id} in EDIT AUTHOR test.");
-            BookDto got = _bookService.GetBook(bookDto.Id);
+            BookDto got = _publicationService.GetBook(bookDto.Id);
             _output.WriteLine($"Got {got} in EDIT AUTHOR test.");
 
             try
@@ -165,15 +165,15 @@ namespace TestProject.Service
         {
             BookDto bookDto = TestUtils.CreateBook("DELETE");
             _output.WriteLine($"Adding {bookDto} in DELETE test.");
-            bookDto = _bookService.AddBook(bookDto);
+            bookDto = _publicationService.AddBook(bookDto);
             _output.WriteLine($"Added {bookDto} in DELETE test.");
 
             _output.WriteLine($"Deleting {bookDto} in DELETE test.");
-            BookDto deleted = _bookService.DeleteBook(bookDto);
+            BookDto deleted = _publicationService.DeleteBook(bookDto);
             _output.WriteLine($"Deleted {deleted} in DELETE test.");
 
             _output.WriteLine($"Getting {bookDto.Id} in DELETE test.");
-            BookDto got = _bookService.GetBook(bookDto.Id);
+            BookDto got = _publicationService.GetBook(bookDto.Id);
             _output.WriteLine($"Got {got} in DELETE test.");
 
             try
@@ -210,13 +210,13 @@ namespace TestProject.Service
                 bookDto.Title = i.ToString();
 
                 _output.WriteLine($"Adding {bookDto} in GET ALL test.");
-                _output.WriteLine($"Added {_bookService.AddBook(bookDto)} in GET ALL test.");
+                _output.WriteLine($"Added {_publicationService.AddBook(bookDto)} in GET ALL test.");
 
                 list.Add(bookDto);
             }
 
             _output.WriteLine("Getting all in GET ALL test.");
-            List<BookDto> got = (List<BookDto>) _bookService.GetAllBooks();
+            List<BookDto> got = (List<BookDto>) _publicationService.GetAllBooks();
             _output.WriteLine($"Got {got.Count} in GET ALL test.");
 
             try
@@ -240,10 +240,10 @@ namespace TestProject.Service
             BookDto bookDto1 = TestUtils.CreateBook();
             BookDto bookDto2 = TestUtils.CreateBook("Doctor Who");
             _output.WriteLine($"Adding {bookDto1} in ADD TWO WITH SAME AUTHOR test.");
-            bookDto1 = _bookService.AddBook(bookDto1);
+            bookDto1 = _publicationService.AddBook(bookDto1);
             _output.WriteLine($"Added {bookDto1} in ADD TWO WITH SAME AUTHOR test.");
             _output.WriteLine($"Adding {bookDto2} in ADD TWO WITH SAME AUTHOR test.");
-            bookDto2 = _bookService.AddBook(bookDto2);
+            bookDto2 = _publicationService.AddBook(bookDto2);
             _output.WriteLine($"Added {bookDto2} in ADD TWO WITH SAME AUTHOR test.");
 
             try
@@ -265,22 +265,22 @@ namespace TestProject.Service
             BookDto bookDto1 = TestUtils.CreateBook();
             BookDto bookDto2 = TestUtils.CreateBook("Doctor Who");
             _output.WriteLine($"Adding {bookDto1} in DELETE TWO WITH SAME AUTHOR test.");
-            bookDto1 = _bookService.AddBook(bookDto1);
+            bookDto1 = _publicationService.AddBook(bookDto1);
             _output.WriteLine($"Added {bookDto1} in DELETE TWO WITH SAME AUTHOR test.");
             _output.WriteLine($"Adding {bookDto2} in DELETE TWO WITH SAME AUTHOR test.");
-            bookDto2 = _bookService.AddBook(bookDto2);
+            bookDto2 = _publicationService.AddBook(bookDto2);
             _output.WriteLine($"Added {bookDto2} in DELETE TWO WITH SAME AUTHOR test.");
 
             _output.WriteLine($"Deleting {bookDto1} in DELETE TWO WITH SAME AUTHOR test.");
-            BookDto deleted1 = _bookService.DeleteBook(bookDto1);
+            BookDto deleted1 = _publicationService.DeleteBook(bookDto1);
             _output.WriteLine($"Deleted {deleted1} in DELETE TWO WITH SAME AUTHOR test.");
 
             _output.WriteLine($"Getting {bookDto1.Id} in DELETE TWO WITH SAME AUTHOR test.");
-            BookDto got1 = _bookService.GetBook(bookDto1.Id);
+            BookDto got1 = _publicationService.GetBook(bookDto1.Id);
             _output.WriteLine($"Got {got1} in DELETE test.");
 
             _output.WriteLine($"Getting {bookDto2.Id} in DELETE TWO WITH SAME AUTHOR test.");
-            BookDto got2 = _bookService.GetBook(bookDto2.Id);
+            BookDto got2 = _publicationService.GetBook(bookDto2.Id);
             _output.WriteLine($"Got {got2} in DELETE test.");
 
             try

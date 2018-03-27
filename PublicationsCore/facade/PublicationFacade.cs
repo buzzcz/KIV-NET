@@ -12,7 +12,7 @@ namespace PublicationsCore.facade
     {
         private readonly ILogger _logger;
         
-        private readonly IBookService _bookService;
+        private readonly IPublicationService _publicationService;
 
         private readonly IValidationService _validationService;
 
@@ -20,12 +20,12 @@ namespace PublicationsCore.facade
         /// Constructor for creating <i>PublicationFacade</i>.
         /// </summary>
         /// <param name="logger">Logger to use for logging.</param>
-        /// <param name="bookService">Service handling books.</param>
+        /// <param name="publicationService">Service handling publications.</param>
         /// <param name="validationService">Validation service used to validate publications.</param>
-        public PublicationFacade(ILogger logger, IBookService bookService, IValidationService validationService)
+        public PublicationFacade(ILogger logger, IPublicationService publicationService, IValidationService validationService)
         {
             _logger = logger;
-            _bookService = bookService;
+            _publicationService = publicationService;
             _validationService = validationService;
         }
 
@@ -35,7 +35,7 @@ namespace PublicationsCore.facade
             if (publication is BookDto book)
             {
                 _validationService.validateBook(book);
-                publication = _bookService.AddBook(book);
+                publication = _publicationService.AddBook(book);
             }
 
             _logger.LogInformation($"Added publication: {publication}.");
@@ -46,7 +46,7 @@ namespace PublicationsCore.facade
         public PublicationDto GetPublication(int id)
         {
             _logger.LogInformation($"Getting publication id: {id}.");
-            PublicationDto publication = _bookService.GetBook(id);
+            PublicationDto publication = _publicationService.GetBook(id);
             _logger.LogInformation($"Got publication: {publication}.");
 
             return publication;
@@ -55,7 +55,7 @@ namespace PublicationsCore.facade
         public IList<PublicationDto> GetAllPublications()
         {
             _logger.LogInformation("Getting all publications.");
-            IList<PublicationDto> list = new List<PublicationDto>(_bookService.GetAllBooks());
+            IList<PublicationDto> list = new List<PublicationDto>(_publicationService.GetAllBooks());
             _logger.LogInformation($"Got {list.Count} publications.");
 
             return list;
@@ -67,7 +67,7 @@ namespace PublicationsCore.facade
             if (publication is BookDto book)
             {
                 _validationService.validateBook(book);
-                publication = _bookService.EditBook(book);
+                publication = _publicationService.EditBook(book);
             }
 
             _logger.LogInformation($"Edited publication: {publication}.");
@@ -81,7 +81,7 @@ namespace PublicationsCore.facade
             if (publication is BookDto book)
             {
                 _validationService.validateBook(book); // TODO: Klaus - Should there be the validation in here?
-                publication = _bookService.DeleteBook(book);
+                publication = _publicationService.DeleteBook(book);
             }
 
             _logger.LogInformation($"Deleted publication: {publication}.");

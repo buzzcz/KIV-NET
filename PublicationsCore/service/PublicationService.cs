@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using PublicationsCore.Facade.Dto;
 using PublicationsCore.Persistence;
 using PublicationsCore.Persistence.Model;
 
@@ -9,7 +12,25 @@ namespace PublicationsCore.Service
 {
     public class PublicationService : IPublicationService
     {
-        public void DeleteOldPublicationSubentities(PublicationsContext db, Publication oldPublication,
+        private readonly IMapper _mapper;
+
+        /// <summary>
+        /// Constructor to create Publication Service.
+        /// </summary>
+        /// <param name="mapper">Mapper used to map DTOs to entites and vice versa.</param>
+        public PublicationService(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
+        /// <summary>
+        /// Deletes old entities from old publication (author-publications, authors and publisher)
+        /// if they differ from the new one or if the new one is null.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="oldPublication">Old publication from which to delete entities.</param>
+        /// <param name="publication">New publication with changed entities. Defaults to null.</param>
+        private static void DeleteOldPublicationSubentities(PublicationsContext db, Publication oldPublication,
             Publication publication = null)
         {
             DeleteOldAuthors(db, oldPublication, publication);
@@ -17,7 +38,13 @@ namespace PublicationsCore.Service
             DeleteOldPublisher(db, oldPublication, publication);
         }
 
-        public void DeleteOldPublisher(PublicationsContext db, Publication oldPublication,
+        /// <summary>
+        /// Deletes old publisher from old publication if they differ from the new one or if the new one is null.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="oldPublication">Old publication from which to delete entities.</param>
+        /// <param name="publication">New publication with changed entities. Defaults to null.</param>
+        private static void DeleteOldPublisher(PublicationsContext db, Publication oldPublication,
             Publication publication = null)
         {
             if (publication == null || !oldPublication.Publisher.Equals(publication.Publisher))
@@ -43,7 +70,15 @@ namespace PublicationsCore.Service
             }
         }
 
-        public void DeleteOldAuthors(PublicationsContext db, Publication oldPublication, Publication publication = null)
+        /// <summary>
+        /// Deletes old author-publications and authors from old publication if they differ from the new one or if the
+        /// new one is null.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="oldPublication">Old publication from which to delete entities.</param>
+        /// <param name="publication">New publication with changed entities. Defaults to null.</param>
+        private static void DeleteOldAuthors(PublicationsContext db, Publication oldPublication,
+            Publication publication = null)
         {
             if (oldPublication.AuthorPublicationList != null)
             {
@@ -65,7 +100,13 @@ namespace PublicationsCore.Service
             }
         }
 
-        public void CheckAlreadyExistingAuthor(PublicationsContext db, Publication publication)
+        /// <summary>
+        /// Checks if author from author-publication list already exists in the database and if so, this author is used
+        /// instead of creating new one.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="publication">Publication where to check the authors.</param>
+        private static void CheckAlreadyExistingAuthor(PublicationsContext db, Publication publication)
         {
             if (publication.AuthorPublicationList != null)
             {
@@ -85,7 +126,13 @@ namespace PublicationsCore.Service
             }
         }
 
-        public void CheckAlreadyExistingPublisher(PublicationsContext db, Publication publication)
+        /// <summary>
+        /// Checks if publisher from publication already exists in the database and if so, this publisher is used
+        /// instead of creating new one.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="publication">Publication where to check the publisher.</param>
+        private static void CheckAlreadyExistingPublisher(PublicationsContext db, Publication publication)
         {
             Publisher publisher = publication.Publisher;
 
@@ -94,6 +141,104 @@ namespace PublicationsCore.Service
             {
                 publisher.Id = existing.Id;
                 db.Entry(publisher).State = EntityState.Unchanged;
+            }
+        }
+
+        /// <summary>
+        /// Gets book mapped from entity or null.
+        /// </summary>
+        /// <param name="entity">Entity from which to get book.</param>
+        /// <returns>Book or null of entiy was null.</returns>
+        private BookDto GetBook(Book entity)
+        {
+            if (entity != null)
+            {
+                return _mapper.Map<BookDto>(entity);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Prepares book query with its includes.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="asNoTracking"></param>
+        /// <returns>Book query with included AuthorPublications and Publishers.</returns>
+        private static IIncludableQueryable<Book, Publisher> PrepareBookDb(PublicationsContext db,
+            bool asNoTracking = false)
+        {
+            var retVal = asNoTracking ? db.Books.AsNoTracking() : db.Books;
+
+            return retVal.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author).Include(p => p.Publisher);
+        }
+
+        public BookDto AddBook(BookDto book)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Book entity = _mapper.Map<Book>(book);
+
+                CheckAlreadyExistingAuthor(db, entity);
+                CheckAlreadyExistingPublisher(db, entity);
+
+                entity = db.Books.Add(entity).Entity;
+                db.SaveChanges();
+
+                return GetBook(entity);
+            }
+        }
+
+        public BookDto GetBook(int id)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Book entity = PrepareBookDb(db).FirstOrDefault(p => p.Id == id);
+
+                return GetBook(entity);
+            }
+        }
+
+        public IList<BookDto> GetAllBooks()
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                IList<Book> entities = new List<Book>(PrepareBookDb(db).AsEnumerable());
+
+                return entities.Select(GetBook).ToList();
+            }
+        }
+
+        public BookDto EditBook(BookDto book)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Book entity = _mapper.Map<Book>(book);
+                Book oldBook = PrepareBookDb(db, true).FirstOrDefault(p => p.Id == book.Id);
+
+                DeleteOldPublicationSubentities(db, oldBook, entity);
+
+                CheckAlreadyExistingAuthor(db, entity);
+
+                entity = db.Books.Update(entity).Entity;
+                db.SaveChanges();
+
+                return GetBook(entity);
+            }
+        }
+
+        public BookDto DeleteBook(BookDto book)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Book entity = _mapper.Map<Book>(book);
+
+                DeleteOldPublicationSubentities(db, entity);
+
+                entity = db.Books.Remove(entity).Entity;
+                db.SaveChanges();
+
+                return GetBook(entity);
             }
         }
     }

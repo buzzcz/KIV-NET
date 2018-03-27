@@ -47,9 +47,7 @@
           </e>
         </e>
         <e p="service" t="Include">
-          <e p="BookService.cs" t="Include" />
           <e p="CitationService.cs" t="Include" />
-          <e p="IBookService.cs" t="Include" />
           <e p="ICitationService.cs" t="Include" />
           <e p="IPublicationService.cs" t="Include" />
           <e p="IValidationService.cs" t="Include" />
@@ -72,9 +70,9 @@
           <e p="PublicationContextTest.cs" t="Include" />
         </e>
         <e p="service" t="Include">
-          <e p="BookServiceTest.cs" t="Include" />
           <e p="CitationServiceTest.cs" t="Include" />
           <e p="MapperTest.cs" t="Include" />
+          <e p="PublicationServiceTest.cs" t="Include" />
         </e>
         <e p="utils" t="Include">
           <e p="ConsoleOutToITestOutputHelper.cs" t="Include" />
