@@ -138,6 +138,25 @@ namespace PublicationsCore.Service
             }
         }
 
+        public IList<PublicationDto> GetAllPublications()
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                IList<Book> bookEntities = db.Books.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author)
+                    .Include(p => p.Publisher).ToList();
+                IList<Article> articleEntities = db.Articles.Include(p => p.AuthorPublicationList)
+                    .ThenInclude(ap => ap.Author).Include(p => p.Publisher).ToList();
+
+                IList<BookDto> books = bookEntities.Select(b => _mapper.Map<BookDto>(b)).ToList();
+                IList<ArticleDto> articles = articleEntities.Select(a => _mapper.Map<ArticleDto>(a)).ToList();
+
+                List<PublicationDto> retVal = new List<PublicationDto>(books);
+                retVal.AddRange(articles);
+
+                return retVal;
+            }
+        }
+
         public BookDto AddBook(BookDto book)
         {
             using (PublicationsContext db = new PublicationsContext())
@@ -165,25 +184,6 @@ namespace PublicationsCore.Service
             }
         }
 
-        public IList<PublicationDto> GetAllPublications()
-        {
-            using (PublicationsContext db = new PublicationsContext())
-            {
-                IList<Book> bookEntities = db.Books.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author)
-                    .Include(p => p.Publisher).ToList();
-                IList<Article> articleEntities = db.Articles.Include(p => p.AuthorPublicationList)
-                    .ThenInclude(ap => ap.Author).Include(p => p.Publisher).ToList();
-
-                IList<BookDto> books = bookEntities.Select(b => _mapper.Map<BookDto>(b)).ToList();
-                IList<ArticleDto> articles = articleEntities.Select(a => _mapper.Map<ArticleDto>(a)).ToList();
-
-                List<PublicationDto> retVal = new List<PublicationDto>(books);
-                retVal.AddRange(articles);
-
-                return retVal;
-            }
-        }
-
         public BookDto EditBook(BookDto book)
         {
             using (PublicationsContext db = new PublicationsContext())
@@ -195,6 +195,7 @@ namespace PublicationsCore.Service
                 DeleteOldPublicationSubentities(db, oldBook, entity);
 
                 CheckAlreadyExistingAuthor(db, entity);
+                CheckAlreadyExistingPublisher(db, entity);
 
                 entity = db.Books.Update(entity).Entity;
                 db.SaveChanges();
@@ -215,6 +216,68 @@ namespace PublicationsCore.Service
                 db.SaveChanges();
 
                 return _mapper.Map<BookDto>(entity);
+            }
+        }
+
+        public ArticleDto AddArticle(ArticleDto article)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Article entity = _mapper.Map<Article>(article);
+
+                CheckAlreadyExistingAuthor(db, entity);
+                CheckAlreadyExistingPublisher(db, entity);
+
+                entity = db.Articles.Add(entity).Entity;
+                db.SaveChanges();
+
+                return _mapper.Map<ArticleDto>(entity);
+            }
+        }
+
+        public ArticleDto GetArticle(int id)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Article entity = db.Articles.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author)
+                    .Include(p => p.Publisher).FirstOrDefault(p => p.Id == id);
+
+                return _mapper.Map<ArticleDto>(entity);
+            }
+        }
+
+        public ArticleDto EditArticle(ArticleDto article)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Article entity = _mapper.Map<Article>(article);
+                Article oldArticle = db.Articles.AsNoTracking().Include(p => p.AuthorPublicationList)
+                    .ThenInclude(ap => ap.Author).Include(p => p.Publisher).FirstOrDefault(p => p.Id == article.Id);
+
+                DeleteOldPublicationSubentities(db, oldArticle, entity);
+
+                CheckAlreadyExistingAuthor(db, entity);
+                CheckAlreadyExistingPublisher(db, entity);
+
+                entity = db.Articles.Update(entity).Entity;
+                db.SaveChanges();
+
+                return _mapper.Map<ArticleDto>(entity);
+            }
+        }
+
+        public ArticleDto DeleteArticle(ArticleDto article)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Article entity = _mapper.Map<Article>(article);
+
+                DeleteOldPublicationSubentities(db, entity);
+
+                entity = db.Articles.Remove(entity).Entity;
+                db.SaveChanges();
+
+                return _mapper.Map<ArticleDto>(entity);
             }
         }
     }

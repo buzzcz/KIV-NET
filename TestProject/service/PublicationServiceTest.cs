@@ -65,7 +65,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_GetBook_CorrectBook_SameBook()
+        public void Test_GetBook_ValidBook_SameBook()
         {
             BookDto bookDto = TestUtils.CreateBook("GET");
             _output.WriteLine($"Adding {bookDto} in GET test.");
@@ -87,7 +87,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_EditPublicationTitle_CorrectBookAndTitle_BookWithNewTitle()
+        public void Test_EditPublicationTitle_ValidBookAndTitle_BookWithNewTitle()
         {
             BookDto bookDto = TestUtils.CreateBook("EDIT TITLE");
             _output.WriteLine($"Adding {bookDto} in EDIT TITLE test.");
@@ -116,7 +116,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_EditBookAuthor_CorrectBookAndNewAuthor_BookWithNewAuthorAndUnusedAuthorDeleted()
+        public void Test_EditBookAuthor_ValidBookAndNewAuthor_BookWithNewAuthorAndUnusedAuthorDeleted()
         {
             BookDto bookDto = TestUtils.CreateBook("EDIT AUTHOR");
             bookDto.AuthorPublicationList.Add(new AuthorPublicationDto
@@ -161,7 +161,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_DeleteBook_CorrectBook_DeletedBookAndAuthorAndPublisher()
+        public void Test_DeleteBook_ValidBook_DeletedBookAndAuthorAndPublisher()
         {
             BookDto bookDto = TestUtils.CreateBook("DELETE");
             _output.WriteLine($"Adding {bookDto} in DELETE test.");
@@ -201,7 +201,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_AddBook_CorrectBooks_CorrectBooks()
+        public void Test_GetAllPublications_ValidBooks_AllBooks()
         {
             List<PublicationDto> list = new List<PublicationDto>();
             for (int i = 0; i < 10; i++)
@@ -222,7 +222,7 @@ namespace TestProject.Service
             try
             {
                 Assert.Equal(list.Count, got.Count);
-//                Assert.Equal(list, got);
+                Assert.Equal(list, got);
                 for (int i = 0; i < list.Count; i++)
                 {
                     Assert.Equal(list[i], got[i]);
@@ -235,7 +235,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_AddBook_CorrectBooksWithSameAuthor_BooksWithSameAuthor()
+        public void Test_AddBook_ValidBooksWithSameAuthor_BooksWithSameAuthor()
         {
             BookDto bookDto1 = TestUtils.CreateBook();
             BookDto bookDto2 = TestUtils.CreateBook("Doctor Who");
@@ -246,12 +246,17 @@ namespace TestProject.Service
             bookDto2 = _publicationService.AddBook(bookDto2);
             _output.WriteLine($"Added {bookDto2} in ADD TWO WITH SAME AUTHOR test.");
 
+            BookDto got1 = _publicationService.GetBook(bookDto1.Id);
+            BookDto got2 = _publicationService.GetBook(bookDto2.Id);
+
             try
             {
-                Assert.Equal(bookDto1.AuthorPublicationList[0].AuthorId,
-                    bookDto2.AuthorPublicationList[0].AuthorId);
-                Assert.Equal(bookDto1.AuthorPublicationList[0].Author,
-                    bookDto2.AuthorPublicationList[0].Author);
+                Assert.Equal(bookDto1.AuthorPublicationList[0].AuthorId, bookDto2.AuthorPublicationList[0].AuthorId);
+                Assert.Equal(bookDto1.AuthorPublicationList[0].Author, bookDto2.AuthorPublicationList[0].Author);
+                Assert.Equal(bookDto1.AuthorPublicationList[0].AuthorId, got1.AuthorPublicationList[0].AuthorId);
+                Assert.Equal(bookDto1.AuthorPublicationList[0].Author, got1.AuthorPublicationList[0].Author);
+                Assert.Equal(bookDto2.AuthorPublicationList[0].AuthorId, got2.AuthorPublicationList[0].AuthorId);
+                Assert.Equal(bookDto2.AuthorPublicationList[0].Author, got2.AuthorPublicationList[0].Author);
             }
             finally
             {
@@ -260,7 +265,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_DeleteBook_CorrectBooksWithTheSameAuthor_DeletedAllBooksAndAuthorsAndPublishers()
+        public void Test_DeleteBook_ValidBooksWithTheSameAuthor_DeletedAllBooksAndAuthorsAndPublishers()
         {
             BookDto bookDto1 = TestUtils.CreateBook();
             BookDto bookDto2 = TestUtils.CreateBook("Doctor Who");
@@ -306,6 +311,82 @@ namespace TestProject.Service
 
                     Assert.Contains(_mapper.Map<Publisher>(bookDto2.Publisher), publishers);
                     Assert.Contains(_mapper.Map<Book>(bookDto2), publications);
+                }
+            }
+            finally
+            {
+                TestUtils.Cleanup(_output);
+            }
+        }
+        
+        [Fact]
+        public void Test_AddArticle_ValidArticle_SameArticle()
+        {
+            ArticleDto articleDto = TestUtils.CreateArticle("ADD");
+            _output.WriteLine($"Adding {articleDto} in ADD test.");
+            ArticleDto added = _publicationService.AddArticle(articleDto);
+            _output.WriteLine($"Added {added} in ADD test.");
+
+            ArticleDto got;
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                _output.WriteLine($"Getting {added.Id} in ADD test from RAW db ctx.");
+                Article entity = db.Articles.Include(p => p.AuthorPublicationList).ThenInclude(ap => ap.Author)
+                    .Include(p => p.Publisher).First(p => p.Id == added.Id);
+                db.SaveChanges();
+                _output.WriteLine($"Got entity {entity} in ADD test.");
+                got = _mapper.Map<ArticleDto>(entity);
+                _output.WriteLine($"Got {got} in ADD test.");
+            }
+
+            try
+            {
+                Assert.Equal(articleDto, added);
+                Assert.Equal(articleDto, got);
+                Assert.Equal(added, got);
+            }
+            finally
+            {
+                TestUtils.Cleanup(_output);
+            }
+        }
+        
+        [Fact]
+        public void Test_GetAllPublications_ValidBooksAndArticles_AllBooksAndArticles()
+        {
+            List<PublicationDto> list = new List<PublicationDto>();
+            for (int i = 0; i < 10; i++)
+            {
+                BookDto bookDto = TestUtils.CreateBook("GET ALL" + i);
+                bookDto.Title = i.ToString();
+
+                _output.WriteLine($"Adding {bookDto} in GET ALL test.");
+                _output.WriteLine($"Added {_publicationService.AddBook(bookDto)} in GET ALL test.");
+
+                list.Add(bookDto);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                ArticleDto articleDto = TestUtils.CreateArticle("GET ALL" + i);
+                articleDto.Title = i.ToString();
+
+                _output.WriteLine($"Adding {articleDto} in GET ALL test.");
+                _output.WriteLine($"Added {_publicationService.AddArticle(articleDto)} in GET ALL test.");
+
+                list.Add(articleDto);
+            }
+
+            _output.WriteLine("Getting all in GET ALL test.");
+            IList<PublicationDto> got = _publicationService.GetAllPublications();
+            _output.WriteLine($"Got {got.Count} in GET ALL test.");
+
+            try
+            {
+                Assert.Equal(list.Count, got.Count);
+                Assert.Equal(list, got);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    Assert.Equal(list[i], got[i]);
                 }
             }
             finally

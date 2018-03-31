@@ -43,6 +43,40 @@ namespace TestProject.Utils
             return bookDto;
         }
 
+        public static ArticleDto CreateArticle(string title = "Some article")
+        {
+            DateTime dateTime = DateTime.FromOADate(DateTime.Now.ToOADate());
+            ArticleDto articleDto = new ArticleDto
+            {
+                AuthorPublicationList = new List<AuthorPublicationDto>
+                {
+                    new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = "Article",
+                            LastName = "Writer"
+                        }
+                    }
+                },
+                Date = dateTime,
+                Doi = "789302571-231",
+                Edition = "5.",
+                Issn = "87032987-1342",
+                MagazineTitle = "MagazineTitle",
+                Pages = "206-208",
+                Publisher = new PublisherDto
+                {
+                    Address = "Pilsen",
+                    Name = "University Press"
+                },
+                Title = title,
+                Volume = 10
+            };
+
+            return articleDto;
+        }
+
         public static IMapper CreateMapper()
         {
             return new Mapper(new MapperConfiguration(conf =>
@@ -52,6 +86,7 @@ namespace TestProject.Utils
                 conf.CreateMap<Book, BookDto>();
                 conf.CreateMap<Publication, PublicationDto>();
                 conf.CreateMap<Publisher, PublisherDto>();
+                conf.CreateMap<Article, ArticleDto>();
             }));
         }
 

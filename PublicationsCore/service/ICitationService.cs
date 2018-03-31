@@ -17,5 +17,19 @@ namespace PublicationsCore.Service
         /// <param name="book">Book to get HTML description for.</param>
         /// <returns>HTML snippet describing the specified book.</returns>
         string GetBookHtmlDescription(BookDto book);
+        
+        /// <summary>
+        /// Creates citation of the specified article.
+        /// </summary>
+        /// <param name="article">Article to cite.</param>
+        /// <returns>Citaion of the specified article.</returns>
+        string GetArticleCitation(ArticleDto article);
+
+        /// <summary>
+        /// Creates HTML snippet describing the specified article.
+        /// </summary>
+        /// <param name="article">Article to get HTML description for.</param>
+        /// <returns>HTML snippet describing the specified article.</returns>
+        string GetArticleHtmlDescription(ArticleDto article);
     }
 }

@@ -34,6 +34,10 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 citation = _citationService.GetBookCitation(book);
+            } else if (publication is ArticleDto article)
+            {
+                _validationService.ValidateArticle(article);
+                citation = _citationService.GetArticleCitation(article);
             }
 
             _logger.LogInformation($"Got citation: {citation}.");
@@ -49,6 +53,10 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 html = _citationService.GetBookHtmlDescription(book);
+            } else if (publication is ArticleDto article)
+            {
+                _validationService.ValidateArticle(article);
+                html = _citationService.GetArticleHtmlDescription(article);
             }
 
             _logger.LogInformation($"Got HTML description: {html}.");

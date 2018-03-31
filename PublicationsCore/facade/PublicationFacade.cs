@@ -39,7 +39,7 @@ namespace PublicationsCore.facade
             } else if (publication is ArticleDto article)
             {
                 _validationService.ValidateArticle(article);
-                
+                _publicationService.AddArticle(article);
             }
 
             _logger.LogInformation($"Added publication: {publication}.");
@@ -51,6 +51,10 @@ namespace PublicationsCore.facade
         {
             _logger.LogInformation($"Getting publication id: {id}.");
             PublicationDto publication = _publicationService.GetBook(id);
+            if (publication == null)
+            {
+                publication = _publicationService.GetArticle(id);
+            }
             _logger.LogInformation($"Got publication: {publication}.");
 
             return publication;
@@ -72,6 +76,10 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 publication = _publicationService.EditBook(book);
+            } else if (publication is ArticleDto article)
+            {
+                _validationService.ValidateArticle(article);
+                _publicationService.EditArticle(article);
             }
 
             _logger.LogInformation($"Edited publication: {publication}.");
