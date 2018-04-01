@@ -5,6 +5,22 @@ namespace PublicationsCore.Service
 {
     public class CitationService : ICitationService
     {
+        private const string SpanBook = "<span class='book'>";
+        private const string SpanArticle = "<span class='article'>";
+        private const string SpanEnd = "</span>";
+        private const string SpanTitle = "<span class='title'>";
+        private const string SpanPublisher = "<span class='publisher'>";
+        private const string SpanPublicationDate = "<span class='publication-date'>";
+        private const string SpanAddress = "<span class='address'>";
+        private const string SpanEdition = "<span class='edition'>";
+        private const string SpanAuthors = "<span class='authors'>";
+        private const string SpanIsbn = "<span class='isbn'>";
+        private const string SpanMagazineTile = "<span class='magazine-title'>";
+        private const string SpanVolume = "<span class='volume'>";
+        private const string SpanPages = "<span class='pages'>";
+        private const string SpanDoi = "<span class='doi'>";
+        private const string SpanIssn = "<span class='issn'>";
+
         /// <summary>
         /// Adds next author (not the first one) to the citation.
         /// </summary>
@@ -55,6 +71,20 @@ namespace PublicationsCore.Service
             return citation;
         }
 
+        /// <summary>
+        /// Adds first author to the HTML description with span tag and class author.
+        /// </summary>
+        /// <param name="author">Author to add</param>
+        /// <param name="html">HTML description to which author should be added.</param>
+        /// <returns>HTML description with added author.</returns>
+        private static string AddFirstAuthorHtml(AuthorDto author, string html)
+        {
+            html += SpanAuthors;
+            html = AddFirstAuthor(author, html);
+
+            return html;
+        }
+
         public string GetBookCitation(BookDto book)
         {
             string citation = "";
@@ -80,6 +110,32 @@ namespace PublicationsCore.Service
         }
 
         public string GetBookHtmlDescription(BookDto book)
+        {
+            string html = $"{SpanBook}";
+
+            if (book.AuthorPublicationList != null)
+            {
+                AuthorDto author = book.AuthorPublicationList[0].Author;
+                html = AddFirstAuthorHtml(author, html);
+
+                int count = book.AuthorPublicationList.Count;
+                for (int i = 1; i < count; i++)
+                {
+                    html = AddNextAuthor(book.AuthorPublicationList[i].Author, html, i != count - 1);
+                }
+
+                html += $"{SpanEnd}. ";
+            }
+
+            html +=
+                $"{SpanTitle}{book.Title}{SpanEnd}. {SpanEdition}{book.Edition}{SpanEnd}. {SpanAddress}" +
+                $"{book.Publisher.Address}{SpanEnd}: {SpanPublisher}{book.Publisher.Name}{SpanEnd}, " +
+                $"{SpanPublicationDate}{book.Date:yyyy}{SpanEnd}. ISBN {SpanIsbn}{book.Isbn}{SpanEnd}.{SpanEnd}";
+
+            return html;
+        }
+
+        public string GetBookBibTex(BookDto article)
         {
             throw new NotImplementedException();
         }
@@ -135,6 +191,59 @@ namespace PublicationsCore.Service
         }
 
         public string GetArticleHtmlDescription(ArticleDto article)
+        {
+            string html = $"{SpanArticle}";
+
+            if (article.AuthorPublicationList != null)
+            {
+                AuthorDto author = article.AuthorPublicationList[0].Author;
+                html = AddFirstAuthorHtml(author, html);
+
+                int count = article.AuthorPublicationList.Count;
+                for (int i = 1; i < count; i++)
+                {
+                    html = AddNextAuthor(article.AuthorPublicationList[i].Author, html, i != count - 1);
+                }
+
+                html += $"{SpanEnd}. ";
+            }
+
+            html += $"{SpanTitle}{article.Title}{SpanEnd}. {SpanMagazineTile}{article.MagazineTitle}{SpanEnd}.";
+            
+            if (article.Publisher != null)
+            {
+                PublisherDto publisher = article.Publisher;
+                if (publisher.Address != null && publisher.Name != null)
+                {
+                    html += $" {SpanAddress}{publisher.Address}{SpanEnd}: {SpanPublisher}{publisher.Name}{SpanEnd},";
+                } else if (publisher.Address != null)
+                {
+                    html += $" {SpanAddress}{publisher.Address}{SpanEnd},";
+                } else if (publisher.Name != null)
+                {
+                    html += $" {SpanPublisher}{publisher.Name}{SpanEnd},";
+                }
+            }
+
+            html += $" {SpanPublicationDate}{article.Date:yyyy}{SpanEnd}, {SpanEdition}{article.Edition}{SpanEnd}(" +
+            $"{SpanVolume}{article.Volume}{SpanEnd}), {SpanPages}{article.Pages}{SpanEnd}.";
+
+            if (article.Doi != null)
+            {
+                html +=  $" DOI {SpanDoi}{article.Doi}{SpanEnd}.";
+            }
+
+            if (article.Issn != null)
+            {
+                html += $" ISSN {SpanIssn}{article.Issn}{SpanEnd}.";
+            }
+
+            html += $"{SpanEnd}";
+
+            return html;
+        }
+
+        public string GetArticleBibTex(ArticleDto article)
         {
             throw new NotImplementedException();
         }

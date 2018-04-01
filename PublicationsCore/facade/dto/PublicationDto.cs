@@ -38,6 +38,8 @@ namespace PublicationsCore.Facade.Dto
         /// Edition of the book.
         /// </summary>
         public string Edition { get; set; }
+        
+        // TODO: Klaus - It should also be possible to upload many files to given publication.
 
         private string AuthorPublicationListToString()
         {

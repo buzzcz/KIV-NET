@@ -63,5 +63,22 @@ namespace PublicationsCore.facade
 
             return html;
         }
+
+        public string GetBibTex(PublicationDto publication)
+        {
+            _logger.LogInformation($"Getting BibTex entry for: {publication}.");
+            string bibtex = null;
+            if (publication is BookDto book)
+            {
+                _validationService.ValidateBook(book);
+                bibtex = _citationService.GetBookBibTex(book);
+            } else if (publication is ArticleDto article)
+            {
+                _validationService.ValidateArticle(article);
+                bibtex = _citationService.GetArticleBibTex(article);
+            }
+
+            return bibtex;
+        }
     }
 }

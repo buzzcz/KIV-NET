@@ -17,5 +17,12 @@ namespace PublicationsCore.facade
         /// <param name="publication">Publication that should be described by the snippet.</param>
         /// <returns>HTML snippet describing the specified publication.</returns>
         string GetHtmlDescription(PublicationDto publication);
+
+        /// <summary>
+        /// Creates BibTex entry for specified publication.
+        /// </summary>
+        /// <param name="publication">Publication for which the BibTex entry should be created.</param>
+        /// <returns>BibTex entry for specified publication.</returns>
+        string GetBibTex(PublicationDto publication);
     }
 }

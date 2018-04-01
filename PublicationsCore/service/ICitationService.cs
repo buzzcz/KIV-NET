@@ -17,6 +17,13 @@ namespace PublicationsCore.Service
         /// <param name="book">Book to get HTML description for.</param>
         /// <returns>HTML snippet describing the specified book.</returns>
         string GetBookHtmlDescription(BookDto book);
+
+        /// <summary>
+        /// Creates BibTex entry for specified book.
+        /// </summary>
+        /// <param name="article">Book for which the BibTex entry should be created.</param>
+        /// <returns>BibTex entry for specified book.</returns>
+        string GetBookBibTex(BookDto article);
         
         /// <summary>
         /// Creates citation of the specified article.
@@ -31,5 +38,12 @@ namespace PublicationsCore.Service
         /// <param name="article">Article to get HTML description for.</param>
         /// <returns>HTML snippet describing the specified article.</returns>
         string GetArticleHtmlDescription(ArticleDto article);
+        
+        /// <summary>
+        /// Creates BibTex entry for specified article.
+        /// </summary>
+        /// <param name="article">Article for which the BibTex entry should be created.</param>
+        /// <returns>BibTex entry for specified article.</returns>
+        string GetArticleBibTex(ArticleDto article);
     }
 }
