@@ -385,7 +385,7 @@ namespace TestProject.Service
 
             _output.WriteLine($"Getting HTML description for {bookDto} in BOOK HTML DESCRIPTION test.");
             string html = _citationService.GetBookHtmlDescription(bookDto);
-            _output.WriteLine($"Got citation {html} in BOOK HTML DESCRIPTION test.");
+            _output.WriteLine($"Got HTML description {html} in BOOK HTML DESCRIPTION test.");
 
             Assert.Equal(expected, html);
         }
@@ -485,11 +485,188 @@ namespace TestProject.Service
                 );
             }
 
-            _output.WriteLine($"Getting citation for {articleDto} in ARTICLE HTML DESCRIPTION test.");
+            _output.WriteLine($"Getting HTML description for {articleDto} in ARTICLE HTML DESCRIPTION test.");
             string html = _citationService.GetArticleHtmlDescription(articleDto);
-            _output.WriteLine($"Got citation {html} in ARTICLE HTML DESCRIPTION test.");
+            _output.WriteLine($"Got HTML description {html} in ARTICLE HTML DESCRIPTION test.");
 
             Assert.Equal(expected, html);
+        }
+        
+        [Theory]
+        [InlineData("Adams", null, "Moffat", null, "1990",
+            "@book{HitGuitthGal, author = 'Adams and Moffat and Adams and Moffat', title = 'Hitchhiker's Guide to the " +
+            "Galaxy', publisher = 'University Press', address = 'Pilsen', edition = '1st Edition', year = '1990', " +
+            "ISBN = '7892347-913-2341-09',}")]
+        [InlineData(null, "Douglas", null, "Steven", "1990",
+            "@book{HitGuitthGal, author = 'Douglas and Steven and Steven and Douglas', title = 'Hitchhiker's Guide to the " +
+            "Galaxy', publisher = 'University Press', address = 'Pilsen', edition = '1st Edition', year = '1990', " +
+            "ISBN = '7892347-913-2341-09',}")]
+        [InlineData("Adams", "Douglas", "Moffat", null, "1990",
+            "@book{HitGuitthGal, author = 'Douglas Adams and Moffat and Adams and Douglas Moffat', title = 'Hitchhiker's " +
+            "Guide to the Galaxy', publisher = 'University Press', address = 'Pilsen', edition = '1st Edition', year " +
+            "= '1990', ISBN = '7892347-913-2341-09',}")]
+        [InlineData("Adams", "Douglas", null, "Steven", "1990",
+            "@book{HitGuitthGal, author = 'Douglas Adams and Steven and Steven Adams and Douglas', title = 'Hitchhiker's " +
+            "Guide to the Galaxy', publisher = 'University Press', address = 'Pilsen', edition = '1st Edition', year " +
+            "= '1990', ISBN = '7892347-913-2341-09',}")]
+        [InlineData("Adams", "Douglas", "Moffat", "Steven", "1990",
+            "@book{HitGuitthGal, author = 'Douglas Adams and Steven Moffat and Steven Adams and Douglas Moffat', title = " +
+            "'Hitchhiker's Guide to the Galaxy', publisher = 'University Press', address = 'Pilsen', edition = '1st " +
+            "Edition', year = '1990', ISBN = '7892347-913-2341-09',}")]
+        public void Test_GetBookBibTex_ValidBookMoreAuthors_CorrectBookBibTex(string lastName,
+            string name, string lastName2, string name2, string date, string expected)
+        {
+            BookDto bookDto = TestUtils.CreateBook();
+            bookDto.Date = new DateTime(int.Parse(date), 1, 1);
+
+            if (lastName != null || name != null)
+            {
+                bookDto.AuthorPublicationList = new List<AuthorPublicationDto>
+                {
+                    new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name,
+                            LastName = lastName
+                        }
+                    }
+                };
+            }
+
+            if (lastName2 != null || name2 != null)
+            {
+                bookDto.AuthorPublicationList.Add(new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name2,
+                            LastName = lastName2
+                        }
+                    }
+                );
+            }
+
+            if (lastName != null || name2 != null)
+            {
+                bookDto.AuthorPublicationList.Add(new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name2,
+                            LastName = lastName
+                        }
+                    }
+                );
+            }
+
+            if (lastName2 != null || name != null)
+            {
+                bookDto.AuthorPublicationList.Add(new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name,
+                            LastName = lastName2
+                        }
+                    }
+                );
+            }
+
+            _output.WriteLine($"Getting BibTex for {bookDto} in BOOK BIBTEX test.");
+            string bitex = _citationService.GetBookBibTex(bookDto);
+            _output.WriteLine($"Got BibTex {bitex} in BOOK BIBTEX test.");
+
+            Assert.Equal(expected, bitex);
+        }
+
+        [Theory]
+        [InlineData("Adams", null, "Moffat", null, "1990",
+            "@article{Somart, author = 'Adams and Moffat and Adams and Moffat', title = 'Some article', journal = " +
+            "'MagazineTitle', number = '5.', volume = '10', pages = '206-208', year = '1990', address = 'Pilsen', " +
+            "publisher = 'University Press', ISSN = '87032987-1342', DOI = '789302571-231', }")]
+        [InlineData(null, "Douglas", null, "Steven", "1990",
+            "@article{Somart, author = 'Douglas and Steven and Steven and Douglas', title = 'Some article', journal =" +
+            " 'MagazineTitle', number = '5.', volume = '10', pages = '206-208', year = '1990', address = 'Pilsen', " +
+            "publisher = 'University Press', ISSN = '87032987-1342', DOI = '789302571-231', }")]
+        [InlineData("Adams", "Douglas", "Moffat", null, "1990",
+            "@article{Somart, author = 'Douglas Adams and Moffat and Adams and Douglas Moffat', title = 'Some article" +
+            "', journal = 'MagazineTitle', number = '5.', volume = '10', pages = '206-208', year = '1990', address = " +
+            "'Pilsen', publisher = 'University Press', ISSN = '87032987-1342', DOI = '789302571-231', }")]
+        [InlineData("Adams", "Douglas", null, "Steven", "1990",
+            "@article{Somart, author = 'Douglas Adams and Steven and Steven Adams and Douglas', title = 'Some article" +
+            "', journal = 'MagazineTitle', number = '5.', volume = '10', pages = '206-208', year = '1990', address = " +
+            "'Pilsen', publisher = 'University Press', ISSN = '87032987-1342', DOI = '789302571-231', }")]
+        [InlineData("Adams", "Douglas", "Moffat", "Steven", "1990",
+            "@article{Somart, author = 'Douglas Adams and Steven Moffat and Steven Adams and Douglas Moffat', title =" +
+            " 'Some article', journal = 'MagazineTitle', number = '5.', volume = '10', pages = '206-208', year = " +
+            "'1990', address = 'Pilsen', publisher = 'University Press', ISSN = '87032987-1342', DOI = '789302571-231" +
+            "', }")]
+        public void Test_GetArticleBibTex_ValidArticleMoreAuthors_CorrectArticleBibTex(string lastName,
+            string name, string lastName2, string name2, string date, string expected)
+        {
+            ArticleDto articleDto = TestUtils.CreateArticle();
+            articleDto.Date = new DateTime(int.Parse(date), 1, 1);
+
+            if (lastName != null || name != null)
+            {
+                articleDto.AuthorPublicationList = new List<AuthorPublicationDto>
+                {
+                    new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name,
+                            LastName = lastName
+                        }
+                    }
+                };
+            }
+
+            if (lastName2 != null || name2 != null)
+            {
+                articleDto.AuthorPublicationList.Add(new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name2,
+                            LastName = lastName2
+                        }
+                    }
+                );
+            }
+
+            if (lastName != null || name2 != null)
+            {
+                articleDto.AuthorPublicationList.Add(new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name2,
+                            LastName = lastName
+                        }
+                    }
+                );
+            }
+
+            if (lastName2 != null || name != null)
+            {
+                articleDto.AuthorPublicationList.Add(new AuthorPublicationDto
+                    {
+                        Author = new AuthorDto
+                        {
+                            FirstName = name,
+                            LastName = lastName2
+                        }
+                    }
+                );
+            }
+
+            _output.WriteLine($"Getting BibTex for {articleDto} in ARTICLE BIBTEX test.");
+            string bitex = _citationService.GetArticleBibTex(articleDto);
+            _output.WriteLine($"Got BibTex {bitex} in ARTICLE BIBTEX test.");
+
+            Assert.Equal(expected, bitex);
         }
     }
 }

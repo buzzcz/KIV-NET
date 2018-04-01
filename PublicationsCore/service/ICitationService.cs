@@ -21,9 +21,9 @@ namespace PublicationsCore.Service
         /// <summary>
         /// Creates BibTex entry for specified book.
         /// </summary>
-        /// <param name="article">Book for which the BibTex entry should be created.</param>
+        /// <param name="book">Book for which the BibTex entry should be created.</param>
         /// <returns>BibTex entry for specified book.</returns>
-        string GetBookBibTex(BookDto article);
+        string GetBookBibTex(BookDto book);
         
         /// <summary>
         /// Creates citation of the specified article.

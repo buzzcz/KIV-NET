@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using PublicationsCore.Facade.Dto;
 
 namespace PublicationsCore.Service
@@ -85,6 +85,61 @@ namespace PublicationsCore.Service
             return html;
         }
 
+        /// <summary>
+        /// Adds author to the BibTex entry.
+        /// </summary>
+        /// <param name="author">Author to add.</param>
+        /// <returns>BibTex entry with added author.</returns>
+        private static string AddAuthorToBibTex(AuthorDto author)
+        {
+            string name = "";
+            if (author.FirstName != null)
+            {
+
+                name += $"{author.FirstName}";
+            }
+
+            if (author.LastName != null)
+            {
+                if (author.FirstName != null)
+                {
+                    name += " ";
+                }
+                name += $"{author.LastName}";
+            }
+
+            return name;
+        }
+
+        /// <summary>
+        /// Creates short name of specified publication. From each word in the name it takes either 3 letters (if the
+        /// word is longer than 3 letters), 2 letters (if the word is longer than 2 letters and shorter than 3 letters)
+        /// or first letter.
+        /// </summary>
+        /// <param name="name">Name to be shortened.</param>
+        /// <returns>Short name of the specified publication.</returns>
+        private static string GetShortName(string name)
+        {
+            string shortName = "";
+            string[] words = name.Split(' ');
+            foreach (string word in words)
+            {
+                if (word.Length > 3)
+                {
+                    shortName += word.Substring(0, 3);
+                } else if (word.Length > 2)
+                {
+                    shortName += word.Substring(0, 2);
+                }
+                else
+                {
+                    shortName += word.ElementAt(0);
+                }
+            }
+
+            return shortName;
+        }
+
         public string GetBookCitation(BookDto book)
         {
             string citation = "";
@@ -135,9 +190,29 @@ namespace PublicationsCore.Service
             return html;
         }
 
-        public string GetBookBibTex(BookDto article)
+        public string GetBookBibTex(BookDto book)
         {
-            throw new NotImplementedException();
+            string bibtex = $"@book{{{GetShortName(book.Title)}, ";
+            
+            if (book.AuthorPublicationList != null)
+            {
+                AuthorDto author = book.AuthorPublicationList[0].Author;
+                bibtex += "author = '" + AddAuthorToBibTex(author);
+
+                int count = book.AuthorPublicationList.Count;
+                for (int i = 1; i < count; i++)
+                {
+                    bibtex += " and " + AddAuthorToBibTex(book.AuthorPublicationList[i].Author);
+                }
+
+                bibtex += "', ";
+            }
+
+            bibtex += $"title = '{book.Title}', publisher = '{book.Publisher.Name}', address = '" +
+                      $"{book.Publisher.Address}', edition = '{book.Edition}', year = '{book.Date:yyyy}', ISBN = '" +
+                      $"{book.Isbn}',}}";
+
+            return bibtex;
         }
 
         public string GetArticleCitation(ArticleDto article)
@@ -245,7 +320,48 @@ namespace PublicationsCore.Service
 
         public string GetArticleBibTex(ArticleDto article)
         {
-            throw new NotImplementedException();
+            string bibtex = $"@article{{{GetShortName(article.Title)}, ";
+            
+            if (article.AuthorPublicationList != null)
+            {
+                AuthorDto author = article.AuthorPublicationList[0].Author;
+                bibtex += "author = '" + AddAuthorToBibTex(author);
+
+                int count = article.AuthorPublicationList.Count;
+                for (int i = 1; i < count; i++)
+                {
+                    bibtex += " and " + AddAuthorToBibTex(article.AuthorPublicationList[i].Author);
+                }
+
+                bibtex += "', ";
+            }
+
+            bibtex += $"title = '{article.Title}', journal = '{article.MagazineTitle}', number = '{article.Edition}', " +
+                      $"volume = '{article.Volume}', pages = '{article.Pages}', year = '{article.Date:yyyy}', ";
+
+            if (article.Publisher?.Address != null)
+            {
+                bibtex += $"address = '{article.Publisher.Address}', ";
+            }
+
+            if (article.Publisher?.Name != null)
+            {
+                bibtex += $"publisher = '{article.Publisher.Name}', ";
+            }
+
+            if (article.Issn != null)
+            {
+                bibtex += $"ISSN = '{article.Issn}', ";
+            }
+
+            if (article.Doi != null)
+            {
+                bibtex += $"DOI = '{article.Doi}', ";
+            }
+
+            bibtex += "}";
+
+            return bibtex;
         }
     }
 }
