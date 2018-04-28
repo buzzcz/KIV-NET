@@ -125,7 +125,9 @@
         <e p="PublicationsCore.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="facade" t="Include">
+          <e p="AuthorFacade.cs" t="Include" />
           <e p="CitationFacade.cs" t="Include" />
+          <e p="IAuthorFacade.cs" t="Include" />
           <e p="ICitationFacade.cs" t="Include" />
           <e p="IPublicationFacade.cs" t="Include" />
           <e p="PublicationFacade.cs" t="Include" />
@@ -157,7 +159,9 @@
           </e>
         </e>
         <e p="service" t="Include">
+          <e p="AuthorService.cs" t="Include" />
           <e p="CitationService.cs" t="Include" />
+          <e p="IAuthorService.cs" t="Include" />
           <e p="ICitationService.cs" t="Include" />
           <e p="IPublicationService.cs" t="Include" />
           <e p="IValidationService.cs" t="Include" />

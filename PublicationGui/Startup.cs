@@ -25,6 +25,8 @@ namespace PublicationGui
             services.AddSingleton(new MapperConfiguration(cfg => cfg.AddProfile(new CoreMappingProfile())).CreateMapper());
             services.AddSingleton<IPublicationFacade, PublicationFacade>();
             services.AddSingleton<IPublicationService, PublicationService>();
+            services.AddSingleton<IAuthorFacade, AuthorFacade>();
+            services.AddSingleton<IAuthorService, AuthorService>();
             services.AddSingleton<IValidationService, ValidationService>();
         }
 
