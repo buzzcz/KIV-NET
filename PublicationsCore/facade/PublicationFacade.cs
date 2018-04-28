@@ -11,7 +11,7 @@ namespace PublicationsCore.facade
     public class PublicationFacade : IPublicationFacade
     {
         private readonly ILogger _logger;
-        
+
         private readonly IPublicationService _publicationService;
 
         private readonly IValidationService _validationService;
@@ -22,7 +22,8 @@ namespace PublicationsCore.facade
         /// <param name="logger">Logger to use for logging.</param>
         /// <param name="publicationService">Service handling publications.</param>
         /// <param name="validationService">Validation service used to validate publications.</param>
-        public PublicationFacade(ILogger logger, IPublicationService publicationService, IValidationService validationService)
+        public PublicationFacade(ILogger<PublicationFacade> logger, IPublicationService publicationService,
+            IValidationService validationService)
         {
             _logger = logger;
             _publicationService = publicationService;
@@ -36,7 +37,8 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 publication = _publicationService.AddBook(book);
-            } else if (publication is ArticleDto article)
+            }
+            else if (publication is ArticleDto article)
             {
                 _validationService.ValidateArticle(article);
                 _publicationService.AddArticle(article);
@@ -55,6 +57,7 @@ namespace PublicationsCore.facade
             {
                 publication = _publicationService.GetArticle(id);
             }
+
             _logger.LogInformation($"Got publication: {publication}.");
 
             return publication;
@@ -76,7 +79,8 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 publication = _publicationService.EditBook(book);
-            } else if (publication is ArticleDto article)
+            }
+            else if (publication is ArticleDto article)
             {
                 _validationService.ValidateArticle(article);
                 _publicationService.EditArticle(article);

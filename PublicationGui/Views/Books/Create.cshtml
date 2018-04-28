@@ -1,0 +1,34 @@
+﻿@model PublicationsCore.Facade.Dto.BookDto
+
+@{
+    ViewData["Title"] = "Přidání nové knihy";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+        <form asp-controller="Books" asp-action="Create" method="post" class="form-horizontal" role="form">
+            <div class="form-group form-inline">
+                <input asp-for="Title" placeholder="Název" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-th-list"></span> Vybrat autora</a>
+                <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-plus"></span> Přidat nového autora</a>
+            </div>
+            <div class="form-group form-inline">
+                <input asp-for="Edition" placeholder="Edice" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                <input asp-for="Publisher.Address" placeholder="Místo vydání" class="form-control"/>
+                <input asp-for="Publisher.Name" placeholder="Vydavatel" class="form-control"/>
+                <input asp-for="Date" type="month" placeholder="Datum vydání" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                <input asp-for="Isbn" placeholder="ISBN" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                <button type="submit" class="btn btn-default">Vytvořit</button>
+            </div>
+        </form>
+    </div>
+</div>

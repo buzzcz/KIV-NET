@@ -19,7 +19,8 @@ namespace PublicationsCore.facade
         /// <param name="citationService">Service handling creation of citaitons and HTML descriptions of
         /// publications.</param>
         /// <param name="validationService">Validation service used to validate publications.</param>
-        public CitationFacade(ILogger logger, ICitationService citationService, IValidationService validationService)
+        public CitationFacade(ILogger<CitationFacade> logger, ICitationService citationService,
+            IValidationService validationService)
         {
             _logger = logger;
             _citationService = citationService;
@@ -34,7 +35,8 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 citation = _citationService.GetBookCitation(book);
-            } else if (publication is ArticleDto article)
+            }
+            else if (publication is ArticleDto article)
             {
                 _validationService.ValidateArticle(article);
                 citation = _citationService.GetArticleCitation(article);
@@ -53,7 +55,8 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 html = _citationService.GetBookHtmlDescription(book);
-            } else if (publication is ArticleDto article)
+            }
+            else if (publication is ArticleDto article)
             {
                 _validationService.ValidateArticle(article);
                 html = _citationService.GetArticleHtmlDescription(article);
@@ -72,7 +75,8 @@ namespace PublicationsCore.facade
             {
                 _validationService.ValidateBook(book);
                 bibtex = _citationService.GetBookBibTex(book);
-            } else if (publication is ArticleDto article)
+            }
+            else if (publication is ArticleDto article)
             {
                 _validationService.ValidateArticle(article);
                 bibtex = _citationService.GetArticleBibTex(article);

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6"/>
+        <PackageReference Include="Microsoft.NETCore.App" Version="2.0.6"/>
+    </ItemGroup>
+    <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\PublicationsCore\PublicationsCore.csproj">
+            <Project>{A9FE4040-9D04-4379-9182-C5B185C56232}</Project>
+            <Name>PublicationsCore</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="wwwroot\images"/>
+    </ItemGroup>
+</Project>

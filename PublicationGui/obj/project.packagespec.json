@@ -1,0 +1,50 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationGui/PublicationGui.csproj",
+    "projectName": "PublicationGui",
+    "projectPath": "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationGui/PublicationGui.csproj",
+    "outputPath": "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationGui/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/opt/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp2.0"
+    ],
+    "frameworks": {
+      "netcoreapp2.0": {
+        "projectReferences": {
+          "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/PublicationsCore.csproj": {
+            "projectPath": "/media/GamesEtc/School/Ing/2Semester/NET/SemestrialWork/Publications/PublicationsCore/PublicationsCore.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.0": {
+      "dependencies": {
+        "Microsoft.AspNetCore.All": {
+          "target": "Package",
+          "version": "[2.0.6, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.0.6, )"
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

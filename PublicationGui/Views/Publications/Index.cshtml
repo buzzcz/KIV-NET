@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PublicationsCore.Facade.Dto.PublicationDto>
+
+@{
+    ViewData["Title"] = "Seznam publikací";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+        <p>
+            <a class="btn btn-default" asp-action="Create">Přidat</a>
+        </p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    Název
+                </th>
+                <th>
+                    Autoři
+                </th>
+                <th>
+                    Vydavatel
+                </th>
+                <th>
+                    Místo vydání
+                </th>
+                <th>
+                    Datum vydání
+                </th>
+                <th>
+                    Edice
+                </th>
+                <th>
+                    Akce
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuthorPublicationList.Aggregate("",
+                            (current, authorPublication) => current + $"{authorPublication.Author.FirstName} {authorPublication.Author.LastName}, "))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publisher.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Publisher.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Edition)
+                    </td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.CourseID">Upravit</a> |
+                        <a asp-action="Details" asp-route-id="@item.CourseID">Zobrazit detaily</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CourseID">Smazat</a>*@
+                        <a class="btn btn-default btn-sm">Detail</a> |
+                        <a class="btn btn-default btn-sm">Citace</a> |
+                        <a class="btn btn-default btn-sm">BibTex citace</a> |
+                        <a class="btn btn-default btn-sm">HTML popis</a> |
+                        <a class="btn btn-default btn-sm">Upravit</a> |
+                        <a class="btn btn-default btn-sm">Smazat</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

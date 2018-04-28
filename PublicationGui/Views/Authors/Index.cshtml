@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PublicationsCore.Facade.Dto.AuthorDto>
+
+@{
+    ViewData["Title"] = "Seznam publikací";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    Jméno
+                </th>
+                <th>
+                    Příjmení
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+@*             @foreach (var item in Model) *@
+@*             { *@
+@*                 <tr> *@
+@*                     <td> *@
+@*                         @Html.DisplayFor(modelItem => item.FirstName) *@
+@*                     </td> *@
+@*                     <td> *@
+@*                         @Html.DisplayFor(modelItem => item.LastName) *@
+@*                     </td> *@
+@*                 </tr> *@
+@*             } *@
+            </tbody>
+        </table>
+    </div>
+</div>
