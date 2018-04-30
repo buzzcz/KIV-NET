@@ -1,0 +1,47 @@
+﻿@model PublicationsCore.Facade.Dto.BookDto
+
+@{
+    ViewData["Title"] = "Úprava knihy";
+}
+       
+<div class="row">
+           <div class="col-md-12">
+               <h2>@ViewData["Title"]</h2>
+               @if (ViewData["Errors"] != null)
+               {
+                   <div>
+                       <h3 class="text-danger"><span class="glyphicon glyphicon-exclamation-sign"></span> @ViewData["Errors"] <span class="glyphicon glyphicon-exclamation-sign"></span></h3>
+                   </div>
+               }
+               <form asp-controller="Books" asp-action="Edit" asp-route-id="@Model.Id" method="post" class="form-horizontal" role="form">
+                   <div class="form-group form-inline">
+                       <input asp-for="Title" placeholder="Název" class="form-control"/>
+                   </div>
+                   <div class="form-group form-inline">
+                   @foreach (var item in Model.AuthorPublicationList)
+                   {
+                       <input asp-for="@item.Author.FirstName"/>
+                       <input asp-for="@item.Author.LastName"/>
+                       <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-remove"></span> Odebrat autora</a>
+                   }
+                       <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-th-list"></span> Vybrat autora</a>
+                       <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-plus"></span> Přidat nového autora</a>
+                   </div>
+                   <div class="form-group form-inline">
+                       <input asp-for="Edition" placeholder="Edice" class="form-control"/>
+                   </div>
+                   <div class="form-group form-inline">
+                       <input asp-for="Publisher.Address" placeholder="Místo vydání" class="form-control"/>
+                       <input asp-for="Publisher.Name" placeholder="Vydavatel" class="form-control"/>
+                       <input asp-for="Date" type="date" placeholder="Datum vydání" class="form-control"/>
+                   </div>
+                   <div class="form-group form-inline">
+                       <input asp-for="Isbn" placeholder="ISBN" class="form-control"/>
+                   </div>
+                   <div class="form-group form-inline">
+                       <button type="submit" class="btn btn-default">Upravit</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+

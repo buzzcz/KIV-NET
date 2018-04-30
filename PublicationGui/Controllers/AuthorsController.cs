@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PublicationGui.Models;
 using PublicationsCore.facade;
@@ -18,14 +14,14 @@ namespace PublicationGui.Controllers
             _authorFacade = authorFacade;
         }
 
-        public IActionResult Index()
-        {
-            return View(_authorFacade.GetAllAuthors());
-        }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        }
+
+        public IActionResult Index()
+        {
+            return View(_authorFacade.GetAllAuthors());
         }
     }
 }

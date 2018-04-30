@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PublicationGui.Controllers;
 using PublicationsCore.facade;
 using PublicationsCore.Service;
 using PublicationsCore.Utils;
@@ -21,7 +22,7 @@ namespace PublicationGui
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddControllersAsServices();
             services.AddSingleton(new MapperConfiguration(cfg => cfg.AddProfile(new CoreMappingProfile())).CreateMapper());
             services.AddSingleton<IPublicationFacade, PublicationFacade>();
             services.AddSingleton<IPublicationService, PublicationService>();

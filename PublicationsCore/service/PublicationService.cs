@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PublicationsCore.Facade.Dto;
 using PublicationsCore.Persistence;
 using PublicationsCore.Persistence.Model;
@@ -50,12 +50,7 @@ namespace PublicationsCore.Service
             {
                 IList<Publication> used = db.Publications.AsNoTracking().Include(p => p.AuthorPublicationList)
                     .ThenInclude(ap => ap.Author).Include(p => p.Publisher)
-                    .Where(p => p.Publisher.Id == oldPublication.Publisher.Id).Include(p => p.AuthorPublicationList)
-                    .ThenInclude(ap => ap.Author).Include(p => p.Publisher).ToList();
-                foreach (var publication1 in used)
-                {
-                    Console.WriteLine($"List: {publication1}");
-                }
+                    .Where(p => p.Publisher.Id == oldPublication.Publisher.Id).ToList();
 
                 if (used.Contains(oldPublication) && used.Count == 1)
                 {
@@ -112,9 +107,20 @@ namespace PublicationsCore.Service
                         a.FirstName == author.FirstName && a.LastName == author.LastName);
                     if (existing != null)
                     {
-                        author.Id = existing.Id;
-                        authorPublication.AuthorId = existing.Id;
-                        db.Entry(author).State = EntityState.Unchanged;
+                        EntityEntry entry = db.ChangeTracker.Entries().FirstOrDefault(e => e.Entity.Equals(existing));
+                        if (entry != null)
+                        {
+                            entry.State = EntityState.Unchanged;
+                            authorPublication.AuthorId = ((Author) entry.Entity).Id;
+                            authorPublication.Author = (Author) entry.Entity;
+                        }
+                        else
+                        {
+                            author.Id = existing.Id;
+                            authorPublication.AuthorId = existing.Id;
+                            db.Entry(author).State = EntityState.Unchanged;
+
+                        }
                     }
                 }
             }
@@ -130,11 +136,21 @@ namespace PublicationsCore.Service
         {
             Publisher publisher = publication.Publisher;
 
-            Publisher existing = db.Publishers.AsNoTracking().FirstOrDefault(p => p.Name == publisher.Name);
+            Publisher existing = db.Publishers.AsNoTracking()
+                .FirstOrDefault(p => p.Name == publisher.Name && p.Address == publisher.Address);
             if (existing != null)
             {
-                publisher.Id = existing.Id;
-                db.Entry(publisher).State = EntityState.Unchanged;
+                EntityEntry entry = db.ChangeTracker.Entries().FirstOrDefault(e => e.Entity.Equals(existing));
+                if (entry != null)
+                {
+                    entry.State = EntityState.Unchanged;
+                    publication.Publisher = (Publisher) entry.Entity;
+                }
+                else
+                {
+                    publisher.Id = existing.Id;
+                    db.Entry(publisher).State = EntityState.Unchanged;
+                }
             }
         }
 
@@ -192,27 +208,33 @@ namespace PublicationsCore.Service
                 Book oldBook = db.Books.AsNoTracking().Include(p => p.AuthorPublicationList)
                     .ThenInclude(ap => ap.Author).Include(p => p.Publisher).FirstOrDefault(p => p.Id == book.Id);
 
-                DeleteOldPublicationSubentities(db, oldBook, entity);
-
                 CheckAlreadyExistingAuthor(db, entity);
                 CheckAlreadyExistingPublisher(db, entity);
 
                 entity = db.Books.Update(entity).Entity;
+                db.SaveChanges();
+                
+                DeleteOldPublicationSubentities(db, oldBook, entity);
                 db.SaveChanges();
 
                 return _mapper.Map<BookDto>(entity);
             }
         }
 
-        public BookDto DeleteBook(BookDto book)
+        public BookDto DeletePublication(int id)
         {
             using (PublicationsContext db = new PublicationsContext())
             {
-                Book entity = _mapper.Map<Book>(book);
+                Publication entity = db.Publications.AsNoTracking().Include(p => p.AuthorPublicationList)
+                    .ThenInclude(ap => ap.Author).Include(p => p.Publisher).FirstOrDefault(p => p.Id == id);
+                if (entity == null)
+                {
+                    return null;
+                }
 
                 DeleteOldPublicationSubentities(db, entity);
 
-                entity = db.Books.Remove(entity).Entity;
+                entity = db.Publications.Remove(entity).Entity;
                 db.SaveChanges();
 
                 return _mapper.Map<BookDto>(entity);
@@ -254,27 +276,13 @@ namespace PublicationsCore.Service
                 Article oldArticle = db.Articles.AsNoTracking().Include(p => p.AuthorPublicationList)
                     .ThenInclude(ap => ap.Author).Include(p => p.Publisher).FirstOrDefault(p => p.Id == article.Id);
 
-                DeleteOldPublicationSubentities(db, oldArticle, entity);
-
                 CheckAlreadyExistingAuthor(db, entity);
                 CheckAlreadyExistingPublisher(db, entity);
 
                 entity = db.Articles.Update(entity).Entity;
                 db.SaveChanges();
-
-                return _mapper.Map<ArticleDto>(entity);
-            }
-        }
-
-        public ArticleDto DeleteArticle(ArticleDto article)
-        {
-            using (PublicationsContext db = new PublicationsContext())
-            {
-                Article entity = _mapper.Map<Article>(article);
-
-                DeleteOldPublicationSubentities(db, entity);
-
-                entity = db.Articles.Remove(entity).Entity;
+                
+                DeleteOldPublicationSubentities(db, oldArticle, entity);
                 db.SaveChanges();
 
                 return _mapper.Map<ArticleDto>(entity);

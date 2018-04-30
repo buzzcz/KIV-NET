@@ -7,6 +7,12 @@
 <div class="row">
     <div class="col-md-12">
         <h2>@ViewData["Title"]</h2>
+        @if (ViewData["Errors"] != null)
+        {
+            <div>
+                <h3 class="text-danger"><span class="glyphicon glyphicon-exclamation-sign"></span> @ViewData["Errors"] <span class="glyphicon glyphicon-exclamation-sign"></span></h3>
+            </div>
+        }
         <p>
             <a class="btn btn-default" asp-action="Create"><span class="glyphicon glyphicon-plus"></span> Přidat</a>
         </p>
@@ -44,8 +50,7 @@
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AuthorPublicationList.Aggregate("",
-                            (current, authorPublication) => current + $"{authorPublication.Author.FirstName} {authorPublication.Author.LastName}, "))
+                        @Html.DisplayFor(modelItem => item.AuthorPublicationList)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Publisher.Name)
@@ -54,18 +59,22 @@
                         @Html.DisplayFor(modelItem => item.Publisher.Address)
                     </td>
                     <td>
+                        @{ string date = $"{item.Date:yyyy}"; }
+                        @date
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.Edition)
                     </td>
                     <td>
-                        @*<a asp-action="Edit" asp-route-id="@item.CourseID">Upravit</a> |
-                        <a asp-action="Details" asp-route-id="@item.CourseID">Zobrazit detaily</a> |
-                        <a asp-action="Delete" asp-route-id="@item.CourseID">Smazat</a>*@
-                        <a class="btn btn-default btn-sm">Detail</a> |
-                        <a class="btn btn-default btn-sm">Citace</a> |
-                        <a class="btn btn-default btn-sm">BibTex citace</a> |
-                        <a class="btn btn-default btn-sm">HTML popis</a> |
-                        <a class="btn btn-default btn-sm">Upravit</a> |
-                        <a class="btn btn-default btn-sm">Smazat</a>
+                        <a asp-action="Detail" asp-route-id="@item.Id" class="btn btn-default btn-sm">Detail</a> |
+                        <a asp-action="Citation" asp-route-id="@item.Id" class="btn btn-default btn-sm">Citace</a> |
+                        <a asp-action="BibTex" asp-route-id="@item.Id" class="btn btn-default btn-sm">BibTeX citace</a> |
+                        <a asp-action="HtmlDescription" asp-route-id="@item.Id" class="btn btn-default btn-sm">HTML popis</a> |
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default btn-sm">Upravit</a> |
+                        <form method="post" class="form-inline" style="display:inline!important;">
+                            <input asp-for="@item.Id" name="id" hidden="true"/>
+                            <button asp-action="Delete" type="submit" class="btn btn-danger btn-sm">Smazat</button>
+                        </form>
                     </td>
                 </tr>
             }

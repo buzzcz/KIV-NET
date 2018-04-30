@@ -38,8 +38,8 @@ namespace PublicationsCore.facade
         /// <summary>
         /// Deletes specified publication.
         /// </summary>
-        /// <param name="publication">Publication to be deleted.</param>
+        /// <param name="id">Id of the publication to be deleted.</param>
         /// <returns>Deleted publication.</returns>
-        PublicationDto DeletePublication(PublicationDto publication);
+        PublicationDto DeletePublication(int id);
     }
 }

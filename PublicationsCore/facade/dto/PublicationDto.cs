@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace PublicationsCore.Facade.Dto
@@ -17,6 +18,7 @@ namespace PublicationsCore.Facade.Dto
         /// <summary>
         /// Title of the publication.
         /// </summary>
+        [Required]
         public string Title { get; set; }
 
         /// <summary>
@@ -27,6 +29,8 @@ namespace PublicationsCore.Facade.Dto
         /// <summary>
         /// Date of publishing.
         /// </summary>
+        [Required]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         /// <summary>
@@ -37,6 +41,7 @@ namespace PublicationsCore.Facade.Dto
         /// <summary>
         /// Edition of the book.
         /// </summary>
+        [Required]
         public string Edition { get; set; }
         
         // TODO: Klaus - It should also be possible to upload many files to given publication.

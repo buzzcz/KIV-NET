@@ -91,15 +91,10 @@ namespace PublicationsCore.facade
             return publication;
         }
 
-        public PublicationDto DeletePublication(PublicationDto publication)
+        public PublicationDto DeletePublication(int id)
         {
-            _logger.LogInformation($"Deleting publication: {publication}.");
-            if (publication is BookDto book)
-            {
-                _validationService.ValidateBook(book); // TODO: Klaus - Should there be the validation in here?
-                publication = _publicationService.DeleteBook(book);
-            }
-
+            _logger.LogInformation($"Deleting publication: {id}.");
+            PublicationDto publication = _publicationService.DeletePublication(id);
             _logger.LogInformation($"Deleted publication: {publication}.");
 
             return publication;

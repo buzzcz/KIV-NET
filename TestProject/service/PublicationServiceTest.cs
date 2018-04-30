@@ -169,7 +169,7 @@ namespace TestProject.Service
             _output.WriteLine($"Added {bookDto} in DELETE test.");
 
             _output.WriteLine($"Deleting {bookDto} in DELETE test.");
-            BookDto deleted = _publicationService.DeleteBook(bookDto);
+            BookDto deleted = _publicationService.DeletePublication(bookDto.Id);
             _output.WriteLine($"Deleted {deleted} in DELETE test.");
 
             _output.WriteLine($"Getting {bookDto.Id} in DELETE test.");
@@ -277,7 +277,7 @@ namespace TestProject.Service
             _output.WriteLine($"Added {bookDto2} in DELETE TWO WITH SAME AUTHOR test.");
 
             _output.WriteLine($"Deleting {bookDto1} in DELETE TWO WITH SAME AUTHOR test.");
-            BookDto deleted1 = _publicationService.DeleteBook(bookDto1);
+            BookDto deleted1 = _publicationService.DeletePublication(bookDto1.Id);
             _output.WriteLine($"Deleted {deleted1} in DELETE TWO WITH SAME AUTHOR test.");
 
             _output.WriteLine($"Getting {bookDto1.Id} in DELETE TWO WITH SAME AUTHOR test.");

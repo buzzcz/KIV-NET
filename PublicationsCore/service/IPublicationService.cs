@@ -35,9 +35,9 @@ namespace PublicationsCore.Service
         /// <summary>
         /// Deletes specified book.
         /// </summary>
-        /// <param name="book"></param>
+        /// <param name="id">Id of the publication to be deleted.</param>
         /// <returns>Deleted book.</returns>
-        BookDto DeleteBook(BookDto book);
+        BookDto DeletePublication(int id);
         
         /// <summary>
         /// Adds article to database.
@@ -59,12 +59,5 @@ namespace PublicationsCore.Service
         /// <param name="article">Edited article with original id.</param>
         /// <returns>Edited article.</returns>
         ArticleDto EditArticle(ArticleDto article);
-
-        /// <summary>
-        /// Deletes specified article.
-        /// </summary>
-        /// <param name="article"></param>
-        /// <returns>Deleted article.</returns>
-        ArticleDto DeleteArticle(ArticleDto article);
     }
 }
