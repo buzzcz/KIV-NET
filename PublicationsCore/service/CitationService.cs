@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿﻿using System.Linq;
 using PublicationsCore.Facade.Dto;
 
 namespace PublicationsCore.Service
@@ -168,7 +168,7 @@ namespace PublicationsCore.Service
 
         public string GetBookHtmlDescription(BookDto book)
         {
-            string html = $"{SpanBook}";
+            string html = $"{SpanBook}\n";
 
             if (book.AuthorPublicationList != null)
             {
@@ -181,20 +181,20 @@ namespace PublicationsCore.Service
                     html = AddNextAuthor(book.AuthorPublicationList[i].Author, html, i != count - 1);
                 }
 
-                html += $"{SpanEnd}. ";
+                html += $"{SpanEnd}. \n";
             }
 
             html +=
-                $"{SpanTitle}{book.Title}{SpanEnd}. {SpanEdition}{book.Edition}{SpanEnd}. {SpanAddress}" +
-                $"{book.Publisher.Address}{SpanEnd}: {SpanPublisher}{book.Publisher.Name}{SpanEnd}, " +
-                $"{SpanPublicationDate}{book.Date:yyyy}{SpanEnd}. ISBN {SpanIsbn}{book.Isbn}{SpanEnd}.{SpanEnd}";
+                $"{SpanTitle}{book.Title}{SpanEnd}. \n{SpanEdition}{book.Edition}{SpanEnd}. \n{SpanAddress}" +
+                $"{book.Publisher.Address}{SpanEnd}: \n{SpanPublisher}{book.Publisher.Name}{SpanEnd}, \n" +
+                $"{SpanPublicationDate}{book.Date:yyyy}{SpanEnd}. \nISBN {SpanIsbn}{book.Isbn}{SpanEnd}.\n{SpanEnd}";
 
             return html;
         }
 
         public string GetBookBibTex(BookDto book)
         {
-            string bibtex = $"@book{{{GetShortName(book.Title)}, ";
+            string bibtex = $"@book{{{GetShortName(book.Title)},\n";
             
             if (book.AuthorPublicationList != null)
             {
@@ -207,12 +207,12 @@ namespace PublicationsCore.Service
                     bibtex += " and " + AddAuthorToBibTex(book.AuthorPublicationList[i].Author);
                 }
 
-                bibtex += "', ";
+                bibtex += "',\n";
             }
 
-            bibtex += $"title = '{book.Title}', publisher = '{book.Publisher.Name}', address = '" +
-                      $"{book.Publisher.Address}', edition = '{book.Edition}', year = '{book.Date:yyyy}', ISBN = '" +
-                      $"{book.Isbn}',}}";
+            bibtex += $"title = '{book.Title}',\npublisher = '{book.Publisher.Name}',\naddress = '" +
+                      $"{book.Publisher.Address}',\nedition = '{book.Edition}',\nyear = '{book.Date:yyyy}',\nISBN = '" +
+                      $"{book.Isbn}',\n}}";
 
             return bibtex;
         }
@@ -269,7 +269,7 @@ namespace PublicationsCore.Service
 
         public string GetArticleHtmlDescription(ArticleDto article)
         {
-            string html = $"{SpanArticle}";
+            string html = $"{SpanArticle}\n";
 
             if (article.AuthorPublicationList != null)
             {
@@ -282,37 +282,37 @@ namespace PublicationsCore.Service
                     html = AddNextAuthor(article.AuthorPublicationList[i].Author, html, i != count - 1);
                 }
 
-                html += $"{SpanEnd}. ";
+                html += $"{SpanEnd}. \n";
             }
 
-            html += $"{SpanTitle}{article.Title}{SpanEnd}. {SpanMagazineTile}{article.MagazineTitle}{SpanEnd}.";
+            html += $"{SpanTitle}{article.Title}{SpanEnd}.\n{SpanMagazineTile}{article.MagazineTitle}{SpanEnd}.\n";
             
             if (article.Publisher != null)
             {
                 PublisherDto publisher = article.Publisher;
                 if (publisher.Address != null && publisher.Name != null)
                 {
-                    html += $" {SpanAddress}{publisher.Address}{SpanEnd}: {SpanPublisher}{publisher.Name}{SpanEnd},";
+                    html += $" {SpanAddress}{publisher.Address}{SpanEnd}: \n{SpanPublisher}{publisher.Name}{SpanEnd},\n";
                 } else if (publisher.Address != null)
                 {
-                    html += $" {SpanAddress}{publisher.Address}{SpanEnd},";
+                    html += $" {SpanAddress}{publisher.Address}{SpanEnd},\n";
                 } else if (publisher.Name != null)
                 {
-                    html += $" {SpanPublisher}{publisher.Name}{SpanEnd},";
+                    html += $" {SpanPublisher}{publisher.Name}{SpanEnd},\n";
                 }
             }
 
-            html += $" {SpanPublicationDate}{article.Date:yyyy}{SpanEnd}, {SpanEdition}{article.Edition}{SpanEnd}(" +
-            $"{SpanVolume}{article.Volume}{SpanEnd}), {SpanPages}{article.Pages}{SpanEnd}.";
+            html += $" {SpanPublicationDate}{article.Date:yyyy}{SpanEnd}, \n{SpanEdition}{article.Edition}{SpanEnd}(\n" +
+            $"{SpanVolume}{article.Volume}{SpanEnd}), \n{SpanPages}{article.Pages}{SpanEnd}.\n";
 
             if (article.Doi != null)
             {
-                html +=  $" DOI {SpanDoi}{article.Doi}{SpanEnd}.";
+                html +=  $" DOI {SpanDoi}{article.Doi}{SpanEnd}.\n";
             }
 
             if (article.Issn != null)
             {
-                html += $" ISSN {SpanIssn}{article.Issn}{SpanEnd}.";
+                html += $" ISSN {SpanIssn}{article.Issn}{SpanEnd}.\n";
             }
 
             html += $"{SpanEnd}";
@@ -322,7 +322,7 @@ namespace PublicationsCore.Service
 
         public string GetArticleBibTex(ArticleDto article)
         {
-            string bibtex = $"@article{{{GetShortName(article.Title)}, ";
+            string bibtex = $"@article{{{GetShortName(article.Title)},\n";
             
             if (article.AuthorPublicationList != null)
             {
@@ -335,30 +335,30 @@ namespace PublicationsCore.Service
                     bibtex += " and " + AddAuthorToBibTex(article.AuthorPublicationList[i].Author);
                 }
 
-                bibtex += "', ";
+                bibtex += "',\n";
             }
 
-            bibtex += $"title = '{article.Title}', journal = '{article.MagazineTitle}', number = '{article.Edition}', " +
-                      $"volume = '{article.Volume}', pages = '{article.Pages}', year = '{article.Date:yyyy}', ";
+            bibtex += $"title = '{article.Title}',\njournal = '{article.MagazineTitle}',\nnumber = '{article.Edition}',\n" +
+                      $"volume = '{article.Volume}',\npages = '{article.Pages}',\nyear = '{article.Date:yyyy}',\n";
 
             if (article.Publisher?.Address != null)
             {
-                bibtex += $"address = '{article.Publisher.Address}', ";
+                bibtex += $"address = '{article.Publisher.Address}',\n";
             }
 
             if (article.Publisher?.Name != null)
             {
-                bibtex += $"publisher = '{article.Publisher.Name}', ";
+                bibtex += $"publisher = '{article.Publisher.Name}',\n";
             }
 
             if (article.Issn != null)
             {
-                bibtex += $"ISSN = '{article.Issn}', ";
+                bibtex += $"ISSN = '{article.Issn}',\n";
             }
 
             if (article.Doi != null)
             {
-                bibtex += $"DOI = '{article.Doi}', ";
+                bibtex += $"DOI = '{article.Doi}',\n";
             }
 
             bibtex += "}";

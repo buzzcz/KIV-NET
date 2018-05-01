@@ -24,10 +24,12 @@
           </e>
           <e p="Books" t="Include">
             <e p="Create.cshtml" t="Include" />
+            <e p="Detail.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
           </e>
           <e p="Publications" t="Include">
             <e p="About.cshtml" t="Include" />
+            <e p="ActionOutput.cshtml" t="Include" />
             <e p="Create.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>

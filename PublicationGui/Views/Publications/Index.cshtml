@@ -50,7 +50,11 @@
                         @Html.DisplayFor(modelItem => item.Title)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AuthorPublicationList)
+                        @{
+                            string authors = item.AuthorPublicationList.Aggregate("", (c, v) => c + v.Author.FirstName + " " + v.Author.LastName + ", ");
+                            authors = authors.Substring(0, authors.Length - 2);
+                        }
+                        @authors
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Publisher.Name)

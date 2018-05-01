@@ -12,12 +12,16 @@ namespace PublicationGui.Controllers
 
         private readonly BooksController _booksController;
 
-        public PublicationsController(IPublicationFacade publicationFacade, BooksController booksController)
+        private readonly ICitationFacade _citationFacade;
+
+        public PublicationsController(IPublicationFacade publicationFacade, BooksController booksController,
+            ICitationFacade citationFacade)
         {
             _publicationFacade = publicationFacade;
             _booksController = booksController;
+            _citationFacade = citationFacade;
         }
-        
+
         public IActionResult Index()
         {
             return View(_publicationFacade.GetAllPublications());
@@ -69,6 +73,76 @@ namespace PublicationGui.Controllers
             {
                 ViewData["Errors"] = "Id musí být vyplněné";
             }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Detail(int? id)
+        {
+            if (id.HasValue)
+            {
+                PublicationDto publication = _publicationFacade.GetPublication(id.Value);
+
+                if (publication is BookDto book)
+                {
+                    return _booksController.Detail(book);
+                }
+            }
+            else
+            {
+                ViewData["Errors"] = "Id musí být vyplněné";
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Citation(int? id)
+        {
+            if (id.HasValue)
+            {
+                PublicationDto publication = _publicationFacade.GetPublication(id.Value);
+
+                string citation = _citationFacade.GetCitation(publication);
+                ViewData["Title"] = "Citace publikace";
+
+                return View("ActionOutput", citation);
+            }
+
+            ViewData["Errors"] = "Id musí být vyplněné";
+
+            return RedirectToAction("Index");
+        }
+        
+        public IActionResult BibTeX(int? id)
+        {
+            if (id.HasValue)
+            {
+                PublicationDto publication = _publicationFacade.GetPublication(id.Value);
+
+                string bibTex = _citationFacade.GetBibTex(publication);
+                ViewData["Title"] = "BibTeX citace publikace";
+
+                return View("ActionOutput", bibTex);
+            }
+
+            ViewData["Errors"] = "Id musí být vyplněné";
+
+            return RedirectToAction("Index");
+        }
+        
+        public IActionResult HtmlDescription(int? id)
+        {
+            if (id.HasValue)
+            {
+                PublicationDto publication = _publicationFacade.GetPublication(id.Value);
+
+                string html = _citationFacade.GetHtmlDescription(publication);
+                ViewData["Title"] = "BibTeX citace publikace";
+
+                return View("ActionOutput", html);
+            }
+
+            ViewData["Errors"] = "Id musí být vyplněné";
 
             return RedirectToAction("Index");
         }

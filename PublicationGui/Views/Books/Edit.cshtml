@@ -18,12 +18,14 @@
                        <input asp-for="Title" placeholder="Název" class="form-control"/>
                    </div>
                    <div class="form-group form-inline">
-                   @foreach (var item in Model.AuthorPublicationList)
-                   {
-                       <input asp-for="@item.Author.FirstName"/>
-                       <input asp-for="@item.Author.LastName"/>
-                       <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-remove"></span> Odebrat autora</a>
-                   }
+                       @foreach (var item in Model.AuthorPublicationList)
+                       {
+                           <p>
+                               <input asp-for="@item.Author.FirstName" class="form-control"/>
+                               <input asp-for="@item.Author.LastName" class="form-control"/>
+                               <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-remove"></span> Odebrat autora</a>
+                           </p>
+                       }
                        <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-th-list"></span> Vybrat autora</a>
                        <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-plus"></span> Přidat nového autora</a>
                    </div>

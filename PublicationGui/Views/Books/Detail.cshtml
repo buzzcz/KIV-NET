@@ -1,0 +1,62 @@
+﻿@model PublicationsCore.Facade.Dto.BookDto
+
+@{
+    ViewData["Title"] = "Detail knihy";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>@ViewData["Title"]</h2>
+        <p>
+            <b>ISBN:</b> @Html.DisplayFor(modelItem => modelItem.Isbn)
+        </p>
+        <p>
+            <b>Název:</b> @Html.DisplayFor(modelItem => modelItem.Title)
+        </p>
+        <p>
+            <b>Autoři:</b> <table class="table-condensed">
+                @foreach (var ap in Model.AuthorPublicationList)
+                {
+                    <tr>
+                        <td>@ap.Author.FirstName</td>
+                        <td>@ap.Author.LastName</td>
+                    </tr>
+                }
+            </table>
+        </p>
+        <p>
+            <b>Vydavatel:</b> @Html.DisplayFor(modelItem => modelItem.Publisher.Name)
+        </p>
+        <p>
+            <b>Místo vydání:</b> @Html.DisplayFor(modelItem => modelItem.Publisher.Address)
+        </p>
+        <p>
+            @{ string date = $"{Model.Date:yyyy}"; }
+            <b>Datum vydání:</b> @date
+        </p>
+        <p>
+            <b>Edice:</b> @Html.DisplayFor(modelItem => modelItem.Edition)
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Akce</h2>
+        <p>
+            <a asp-action="Citation" asp-controller="Publications" asp-route-id="@Model.Id" class="btn btn-default btn-sm">Citace</a>
+        </p>
+        <p>
+        <a asp-action="BibTex" asp-controller="Publications" asp-route-id="@Model.Id" class="btn btn-default btn-sm">BibTeX citace</a>
+        </p>
+        <p>
+        <a asp-action="HtmlDescription" asp-controller="Publications" asp-route-id="@Model.Id" class="btn btn-default btn-sm">HTML popis</a>
+        </p>
+        <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-default btn-sm">Upravit</a>
+        </p>
+        <p>
+        <form method="post" class="form-inline" style="display: inline !important;">
+            <input asp-for="@Model.Id" name="id" hidden="true"/>
+            <button asp-action="Delete" asp-controller="Publications" type="submit" class="btn btn-danger btn-sm">Smazat</button>
+        </form>
+        </p>
+    </div>
+</div>

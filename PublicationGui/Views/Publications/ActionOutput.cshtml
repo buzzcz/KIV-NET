@@ -1,0 +1,11 @@
+﻿@model string
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+        @{
+            int lines = @Model.Count(c => c == '\n') + 1;
+        }
+        <textarea class="form-control" rows="@lines">@Model</textarea>
+    </div>
+</div>

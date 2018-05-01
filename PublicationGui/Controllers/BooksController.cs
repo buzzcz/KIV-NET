@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PublicationGui.Models;
 using PublicationsCore.facade;
@@ -30,19 +31,29 @@ namespace PublicationGui.Controllers
         {
             return View("~/Views/Books/Edit.cshtml", book);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, BookDto book)
         {
             if (ModelState.IsValid)
             {
-                _publicationFacade.EditPublication(book);
+                try
+                {
+                    _publicationFacade.EditPublication(book);
 
-                return RedirectToAction("Index", "Publications");
+                    return RedirectToAction("Index", "Publications");
+                }
+                catch (ArgumentException e)
+                {
+                    ViewData["Errors"] = e.Message;
+                }
+            }
+            else
+            {
+                ViewData["Errors"] = "Formulář není validní";
             }
 
-            ViewData["Errors"] = "Formulář není validní";
             return View(book);
         }
 
@@ -50,16 +61,51 @@ namespace PublicationGui.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(BookDto book)
         {
+            // TODO: Remove, only for testing purposes!!
+            book.AuthorPublicationList = new List<AuthorPublicationDto>
+            {
+                new AuthorPublicationDto
+                {
+                    Author = new AuthorDto
+                    {
+                        FirstName = "Douglas",
+                        LastName = "Adams"
+                    }
+                },
+                new AuthorPublicationDto
+                {
+                    Author = new AuthorDto
+                    {
+                        FirstName = "Scott",
+                        LastName = "Whoever"
+                    }
+                }
+            };
             
             if (ModelState.IsValid)
             {
-                _publicationFacade.AddPublication(book);
+                try
+                {
+                    _publicationFacade.AddPublication(book);
 
-                return RedirectToAction("Index", "Publications");
+                    return RedirectToAction("Index", "Publications");
+                }
+                catch (ArgumentException e)
+                {
+                    ViewData["Errors"] = e.Message;
+                }
+            }
+            else
+            {
+                ViewData["Errors"] = "Formulář není validní";
             }
 
-            ViewData["Errors"] = "Formulář není validní";
             return View(book);
+        }
+
+        public IActionResult Detail(BookDto book)
+        {
+            return View("~/Views/Books/Detail.cshtml", book);
         }
     }
 }

@@ -29,6 +29,8 @@ namespace PublicationGui
             services.AddSingleton<IAuthorFacade, AuthorFacade>();
             services.AddSingleton<IAuthorService, AuthorService>();
             services.AddSingleton<IValidationService, ValidationService>();
+            services.AddSingleton<ICitationFacade, CitationFacade>();
+            services.AddSingleton<ICitationService, CitationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
