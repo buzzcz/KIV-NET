@@ -81,7 +81,7 @@ namespace PublicationGui.Controllers
                     }
                 }
             };
-            
+
             if (ModelState.IsValid)
             {
                 try

@@ -251,6 +251,8 @@ namespace TestProject.Service
 
             try
             {
+                Assert.Equal(bookDto1.AuthorPublicationList.Count, bookDto2.AuthorPublicationList.Count);
+                Assert.Equal(got1.AuthorPublicationList.Count, got2.AuthorPublicationList.Count);
                 Assert.Equal(bookDto1.AuthorPublicationList[0].AuthorId, bookDto2.AuthorPublicationList[0].AuthorId);
                 Assert.Equal(bookDto1.AuthorPublicationList[0].Author, bookDto2.AuthorPublicationList[0].Author);
                 Assert.Equal(bookDto1.AuthorPublicationList[0].AuthorId, got1.AuthorPublicationList[0].AuthorId);
@@ -265,7 +267,7 @@ namespace TestProject.Service
         }
 
         [Fact]
-        public void Test_DeleteBook_ValidBooksWithTheSameAuthor_DeletedAllBooksAndAuthorsAndPublishers()
+        public void Test_DeleteBook_ValidBooksWithTheSameAuthor_DeletedBookAndItsAuthorsAndPublishers()
         {
             BookDto bookDto1 = TestUtils.CreateBook();
             BookDto bookDto2 = TestUtils.CreateBook("Doctor Who");

@@ -29,7 +29,7 @@ namespace PublicationsCore.Service
         /// <param name="db">Database context to use.</param>
         /// <param name="oldPublication">Old publication from which to delete entities.</param>
         /// <param name="publication">New publication with changed entities. Defaults to null.</param>
-        private static void DeleteOldPublicationSubentities(PublicationsContext db, Publication oldPublication,
+        private void DeleteOldPublicationSubentities(PublicationsContext db, Publication oldPublication,
             Publication publication = null)
         {
             DeleteOldAuthors(db, oldPublication, publication);
@@ -66,7 +66,7 @@ namespace PublicationsCore.Service
         /// <param name="db">Database context to use.</param>
         /// <param name="oldPublication">Old publication from which to delete entities.</param>
         /// <param name="publication">New publication with changed entities. Defaults to null.</param>
-        private static void DeleteOldAuthors(PublicationsContext db, Publication oldPublication,
+        private void DeleteOldAuthors(PublicationsContext db, Publication oldPublication,
             Publication publication = null)
         {
             if (oldPublication.AuthorPublicationList != null)
@@ -95,10 +95,12 @@ namespace PublicationsCore.Service
         /// </summary>
         /// <param name="db">Database context to use.</param>
         /// <param name="publication">Publication where to check the authors.</param>
-        private static void CheckAlreadyExistingAuthor(PublicationsContext db, Publication publication)
+        private void CheckAlreadyExistingAuthor(PublicationsContext db, Publication publication)
         {
             if (publication.AuthorPublicationList != null)
             {
+                IList<AuthorPublication> toRemove = new List<AuthorPublication>();
+                IList<AuthorPublication> toAdd = new List<AuthorPublication>();
                 foreach (AuthorPublication authorPublication in publication.AuthorPublicationList)
                 {
                     Author author = authorPublication.Author;
@@ -107,22 +109,95 @@ namespace PublicationsCore.Service
                         a.FirstName == author.FirstName && a.LastName == author.LastName);
                     if (existing != null)
                     {
-                        EntityEntry entry = db.ChangeTracker.Entries().FirstOrDefault(e => e.Entity.Equals(existing));
-                        if (entry != null)
-                        {
-                            entry.State = EntityState.Unchanged;
-                            authorPublication.AuthorId = ((Author) entry.Entity).Id;
-                            authorPublication.Author = (Author) entry.Entity;
-                        }
-                        else
-                        {
-                            author.Id = existing.Id;
-                            authorPublication.AuthorId = existing.Id;
-                            db.Entry(author).State = EntityState.Unchanged;
-
-                        }
+                        HandleExistingAuthor(db, authorPublication, existing, toRemove, toAdd);
+                    }
+                    else
+                    {
+                        authorPublication.Id = 0;
                     }
                 }
+
+                foreach (AuthorPublication authorPublication in toRemove)
+                {
+                    publication.AuthorPublicationList.Remove(authorPublication);
+                }
+
+                foreach (AuthorPublication authorPublication in toAdd)
+                {
+                    publication.AuthorPublicationList.Add(authorPublication);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles using existing author in publication.
+        /// </summary>
+        /// <param name="db">Database context to use.</param>
+        /// <param name="authorPublication">AuthorPublication to handle.</param>
+        /// <param name="existing">Existing author.</param>
+        /// <param name="toRemove">List of AuthorPublications that should be removed afterwards (their authors were
+        /// edited and new ones are in toAdd list).</param>
+        /// <param name="toAdd">List of AuthorPublications that should be added afterwards (authors from the original
+        /// AuthorPublications were edited and old one are in toRemove list).</param>
+        private static void HandleExistingAuthor(PublicationsContext db, AuthorPublication authorPublication, Author existing,
+            IList<AuthorPublication> toRemove, IList<AuthorPublication> toAdd)
+        {
+            AuthorPublication oldAp = db.AuthorPublications.AsNoTracking().Include(ap => ap.Author)
+                .FirstOrDefault(ap => ap.Id == authorPublication.Id);
+
+            EntityEntry entry = db.ChangeTracker.Entries().FirstOrDefault(e => e.Entity.Equals(existing));
+            if (entry != null)
+            {
+                HandleExistingAuthorLocal(authorPublication, toRemove, toAdd, entry, oldAp);
+            }
+            else
+            {
+                HandleExistingAuthorDb(db, authorPublication, existing, toRemove, toAdd, oldAp);
+            }
+        }
+
+        private static void HandleExistingAuthorDb(PublicationsContext db, AuthorPublication authorPublication,
+            Author existing, IList<AuthorPublication> toRemove, IList<AuthorPublication> toAdd,
+            AuthorPublication oldAp)
+        {
+            if (oldAp != null && oldAp.Author.Equals(existing))
+            {
+                authorPublication.Author.Id = existing.Id;
+                authorPublication.AuthorId = existing.Id;
+                db.Entry(authorPublication.Author).State = EntityState.Unchanged;
+            }
+            else
+            {
+                toRemove.Add(authorPublication);
+                AuthorPublication newAp = new AuthorPublication
+                {
+                    AuthorId = existing.Id,
+                    Author = existing
+                };
+                db.Entry(newAp.Author).State = EntityState.Unchanged;
+                toAdd.Add(newAp);
+            }
+        }
+
+        private static void HandleExistingAuthorLocal(AuthorPublication authorPublication,
+            IList<AuthorPublication> toRemove, IList<AuthorPublication> toAdd, EntityEntry entry,
+            AuthorPublication oldAp)
+        {
+            entry.State = EntityState.Unchanged;
+            if (oldAp != null && oldAp.Author.Equals(entry.Entity))
+            {
+                authorPublication.AuthorId = ((Author) entry.Entity).Id;
+                authorPublication.Author = (Author) entry.Entity;
+            }
+            else
+            {
+                toRemove.Add(authorPublication);
+                AuthorPublication newAp = new AuthorPublication
+                {
+                    AuthorId = ((Author) entry.Entity).Id,
+                    Author = (Author) entry.Entity
+                };
+                toAdd.Add(newAp);
             }
         }
 
@@ -281,7 +356,7 @@ namespace PublicationsCore.Service
 
                 entity = db.Articles.Update(entity).Entity;
                 db.SaveChanges();
-                
+
                 DeleteOldPublicationSubentities(db, oldArticle, entity);
                 db.SaveChanges();
 
