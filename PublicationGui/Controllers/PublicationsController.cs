@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PublicationGui.Models;
 using PublicationsCore.facade;
@@ -20,6 +21,19 @@ namespace PublicationGui.Controllers
             _publicationFacade = publicationFacade;
             _booksController = booksController;
             _citationFacade = citationFacade;
+        }
+        
+        public static void AddAuthor(BookDto book)
+        {
+            if (book.AuthorPublicationList == null)
+            {
+                book.AuthorPublicationList = new List<AuthorPublicationDto>();
+            }
+            
+            book.AuthorPublicationList.Add(new AuthorPublicationDto
+            {
+                Author = new AuthorDto()
+            });
         }
 
         public IActionResult Index()

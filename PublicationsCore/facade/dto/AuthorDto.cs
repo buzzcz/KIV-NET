@@ -1,4 +1,6 @@
-﻿namespace PublicationsCore.Facade.Dto
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PublicationsCore.Facade.Dto
 {
     /// <summary>
     /// Class representing author of a publication.
@@ -13,11 +15,13 @@
         /// <summary>
         /// Author's first name.
         /// </summary>
+        [Required]
         public string FirstName { get; set; }
 
         /// <summary>
         /// Author's last name.
         /// </summary>
+        [Required]
         public string LastName { get; set; }
 
         public override string ToString()

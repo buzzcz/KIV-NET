@@ -13,13 +13,26 @@
                 <h3 class="text-danger"><span class="glyphicon glyphicon-exclamation-sign"></span> @ViewData["Errors"] <span class="glyphicon glyphicon-exclamation-sign"></span></h3>
             </div>
         }
-        <form asp-controller="Books" asp-action="Create" method="post" class="form-horizontal" role="form">
+        <form method="post" class="form-horizontal" role="form">
             <div class="form-group form-inline">
                 <input asp-for="Title" placeholder="Název" class="form-control"/>
             </div>
             <div class="form-group form-inline">
+                @if (Model != null && Model.AuthorPublicationList != null)
+                {
+                    for (int i = 0; i < Model.AuthorPublicationList.Count; i++)
+                    {
+                        <p>
+                            <input asp-for="@Model.AuthorPublicationList[i].Id" hidden="true"/>
+                            <input asp-for="@Model.AuthorPublicationList[i].PublicationId" hidden="true"/>
+                            <input asp-for="@Model.AuthorPublicationList[i].Author.FirstName" class="form-control"/>
+                            <input asp-for="@Model.AuthorPublicationList[i].Author.LastName" class="form-control"/>
+                            <button asp-controller="Books" asp-action="RemoveAuthorCreateView" name="index" value="@i" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Odebrat autora</button>
+                        </p>
+                    }
+                }
                 <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-th-list"></span> Vybrat autora</a>
-                <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-plus"></span> Přidat nového autora</a>
+                <button asp-controller="Books" asp-action="AddAuthorCreateView" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Přidat nového autora</button>
             </div>
             <div class="form-group form-inline">
                 <input asp-for="Edition" placeholder="Edice" class="form-control"/>
@@ -33,7 +46,7 @@
                 <input asp-for="Isbn" placeholder="ISBN" class="form-control"/>
             </div>
             <div class="form-group form-inline">
-                <button type="submit" class="btn btn-default">Vytvořit</button>
+                <button type="submit" asp-controller="Books" asp-action="Create" class="btn btn-default">Vytvořit</button>
             </div>
         </form>
     </div>

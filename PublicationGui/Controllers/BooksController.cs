@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using PublicationGui.Models;
 using PublicationsCore.facade;
@@ -62,25 +63,28 @@ namespace PublicationGui.Controllers
         public IActionResult Create(BookDto book)
         {
             // TODO: Remove, only for testing purposes!!
-            book.AuthorPublicationList = new List<AuthorPublicationDto>
+            if (book.AuthorPublicationList == null || book.AuthorPublicationList.Count == 0)
             {
-                new AuthorPublicationDto
+                book.AuthorPublicationList = new List<AuthorPublicationDto>
                 {
-                    Author = new AuthorDto
+                    new AuthorPublicationDto
                     {
-                        FirstName = "Douglas",
-                        LastName = "Adams"
-                    }
-                },
-                new AuthorPublicationDto
-                {
-                    Author = new AuthorDto
+                        Author = new AuthorDto
+                        {
+                            FirstName = "Douglas",
+                            LastName = "Adams"
+                        }
+                    },
+                    new AuthorPublicationDto
                     {
-                        FirstName = "Scott",
-                        LastName = "Whoever"
+                        Author = new AuthorDto
+                        {
+                            FirstName = "Scott",
+                            LastName = "Whoever"
+                        }
                     }
-                }
-            };
+                };
+            }
 
             if (ModelState.IsValid)
             {
@@ -106,6 +110,42 @@ namespace PublicationGui.Controllers
         public IActionResult Detail(BookDto book)
         {
             return View("~/Views/Books/Detail.cshtml", book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddAuthorEditView(BookDto book)
+        {
+            PublicationsController.AddAuthor(book);
+            
+            return View("~/Views/Books/Edit.cshtml", book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveAuthorEditView(BookDto book, int index)
+        {
+            book.AuthorPublicationList.RemoveAt(index);
+            
+            return View("~/Views/Books/Edit.cshtml", book);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddAuthorCreateView(BookDto book)
+        {
+            PublicationsController.AddAuthor(book);
+            
+            return View("~/Views/Books/Create.cshtml", book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveAuthorCreateView(BookDto book, int index)
+        {
+            book.AuthorPublicationList.RemoveAt(index);
+            
+            return View("~/Views/Books/Create.cshtml", book);
         }
     }
 }
