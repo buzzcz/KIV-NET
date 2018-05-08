@@ -25,5 +25,14 @@ namespace PublicationsCore.facade
 
             return authors;
         }
+
+        public AuthorDto GetAuthor(int id)
+        {
+            _logger.LogInformation($"Getting author {id}.");
+            AuthorDto author = _authorService.GetAuthor(id);
+            _logger.LogInformation($"Got author {author}.");
+
+            return author;
+        }
     }
 }

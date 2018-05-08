@@ -139,8 +139,6 @@ namespace PublicationsCore.Service
 
             return shortName;
         }
-        
-        // TODO Klaus: Add format to DTO and this service could just use that.
 
         public string GetBookCitation(BookDto book)
         {

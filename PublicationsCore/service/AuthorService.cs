@@ -25,5 +25,20 @@ namespace PublicationsCore.Service
                 return entities.Select(a => _mapper.Map<AuthorDto>(a)).ToList();
             }
         }
+
+        public AuthorDto GetAuthor(int id)
+        {
+            using (PublicationsContext db = new PublicationsContext())
+            {
+                Author entity = db.Authors.FirstOrDefault(a => a.Id == id);
+
+                if (entity != null)
+                {
+                    return _mapper.Map<AuthorDto>(entity);
+                }
+
+                return null;
+            }
+        }
     }
 }

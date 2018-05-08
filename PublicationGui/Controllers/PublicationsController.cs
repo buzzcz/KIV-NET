@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using PublicationGui.Models;
 using PublicationsCore.facade;
 using PublicationsCore.Facade.Dto;
@@ -22,18 +24,31 @@ namespace PublicationGui.Controllers
             _booksController = booksController;
             _citationFacade = citationFacade;
         }
-        
-        public static void AddAuthor(BookDto book)
+
+        public static void AddAuthor(BookDto book, AuthorDto author = null)
         {
             if (book.AuthorPublicationList == null)
             {
                 book.AuthorPublicationList = new List<AuthorPublicationDto>();
             }
-            
+
             book.AuthorPublicationList.Add(new AuthorPublicationDto
             {
-                Author = new AuthorDto()
+                Author = author ?? new AuthorDto()
             });
+        }
+
+        public static void AddAuthorsToViewData(IAuthorFacade authorFacade, ViewDataDictionary viewData,
+            PublicationDto publication = null)
+        {
+            List<AuthorDto> authors = (List<AuthorDto>) authorFacade.GetAllAuthors();
+            if (publication?.AuthorPublicationList != null)
+            {
+                authors.RemoveAll(dto => publication.AuthorPublicationList.Any(ap =>
+                    ap.Author.FirstName == dto.FirstName && ap.Author.LastName == dto.LastName));
+            }
+
+            viewData["Authors"] = authors;
         }
 
         public IActionResult Index()
@@ -126,7 +141,7 @@ namespace PublicationGui.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult BibTeX(int? id)
         {
             if (id.HasValue)
@@ -143,7 +158,7 @@ namespace PublicationGui.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult HtmlDescription(int? id)
         {
             if (id.HasValue)

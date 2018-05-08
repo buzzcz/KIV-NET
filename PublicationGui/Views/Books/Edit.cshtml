@@ -1,51 +1,97 @@
-﻿@model PublicationsCore.Facade.Dto.BookDto
+﻿@using PublicationsCore.Facade.Dto
+@model BookDto
 
 @{
     ViewData["Title"] = "Úprava knihy";
 }
-       
-<div class="row">
-           <div class="col-md-12">
-               <h2>@ViewData["Title"]</h2>
-               @if (ViewData["Errors"] != null)
-               {
-                   <div>
-                       <h3 class="text-danger"><span class="glyphicon glyphicon-exclamation-sign"></span> @ViewData["Errors"] <span class="glyphicon glyphicon-exclamation-sign"></span></h3>
-                   </div>
-               }
-               <form method="post" class="form-horizontal" role="form">
-                   <div class="form-group form-inline">
-                       <input asp-for="Title" placeholder="Název" class="form-control"/>
-                   </div>
-                   <div class="form-group form-inline">
-                       @for (int i = 0; i < Model.AuthorPublicationList.Count; i++)
-                       {
-                           <p>
-                               <input asp-for="@Model.AuthorPublicationList[i].Id" hidden="true"/>
-                               <input asp-for="@Model.AuthorPublicationList[i].PublicationId" hidden="true"/>
-                               <input asp-for="@Model.AuthorPublicationList[i].Author.FirstName" class="form-control"/>
-                               <input asp-for="@Model.AuthorPublicationList[i].Author.LastName" class="form-control"/>
-                               <button asp-controller="Books" asp-action="RemoveAuthorEditView" asp-route-id="@Model.Id" name="index" value="@i" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Odebrat autora</button>
-                           </p>
-                       }
-                       <a class="btn btn-default" asp-action=""><span class="glyphicon glyphicon-th-list"></span> Vybrat autora</a>
-                       <button asp-controller="Books" asp-action="AddAuthorEditView" asp-route-id="@Model.Id" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Přidat nového autora</button>
-                   </div>
-                   <div class="form-group form-inline">
-                       <input asp-for="Edition" placeholder="Edice" class="form-control"/>
-                   </div>
-                   <div class="form-group form-inline">
-                       <input asp-for="Publisher.Address" placeholder="Místo vydání" class="form-control"/>
-                       <input asp-for="Publisher.Name" placeholder="Vydavatel" class="form-control"/>
-                       <input asp-for="Date" type="date" placeholder="Datum vydání" class="form-control"/>
-                   </div>
-                   <div class="form-group form-inline">
-                       <input asp-for="Isbn" placeholder="ISBN" class="form-control"/>
-                   </div>
-                   <div class="form-group form-inline">
-                       <button asp-controller="Books" asp-action="Edit" asp-route-id="@Model.Id" type="submit" class="btn btn-default">Upravit</button>
-                   </div>
-               </form>
-           </div>
-       </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewData["Title"]</h2>
+        @if (ViewData["Errors"] != null)
+        {
+            <div>
+                <h3 class="text-danger">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> @ViewData["Errors"] <span class="glyphicon glyphicon-exclamation-sign"></span>
+                </h3>
+            </div>
+        }
+        <form method="post" class="form-horizontal" role="form">
+            <div class="form-group form-inline">
+                <input asp-for="Title" placeholder="Název" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                @for (int i = 0; i < Model.AuthorPublicationList.Count; i++)
+                {
+                    <p>
+                        <input asp-for="@Model.AuthorPublicationList[i].Id" hidden="true"/>
+                        <input asp-for="@Model.AuthorPublicationList[i].PublicationId" hidden="true"/>
+                        <input asp-for="@Model.AuthorPublicationList[i].Author.FirstName" class="form-control"/>
+                        <input asp-for="@Model.AuthorPublicationList[i].Author.LastName" class="form-control"/>
+                        <button asp-controller="Books" asp-action="RemoveAuthorEditView" asp-route-id="@Model.Id" name="index" value="@i" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Odebrat autora</button>
+                    </p>
+                }
+                <button class="btn btn-default" type="button" data-toggle="modal" data-target="#authorModal"><span class="glyphicon glyphicon-th-list"></span> Vybrat autora</button>
+                <button asp-controller="Books" asp-action="AddAuthorEditView" asp-route-id="@Model.Id" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Přidat nového autora</button>
+            </div>
+            <div class="form-group form-inline">
+                <input asp-for="Edition" placeholder="Edice" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                <input asp-for="Publisher.Address" placeholder="Místo vydání" class="form-control"/>
+                <input asp-for="Publisher.Name" placeholder="Vydavatel" class="form-control"/>
+                <input asp-for="Date" type="date" placeholder="Datum vydání" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                <input asp-for="Isbn" placeholder="ISBN" class="form-control"/>
+            </div>
+            <div class="form-group form-inline">
+                <button asp-controller="Books" asp-action="Edit" asp-route-id="@Model.Id" type="submit" class="btn btn-default">Upravit</button>
+            </div>
+
+            @* Modal window to select existing author *@
+            <div id="authorModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <h4 class="modal-title">Choose author</h4>
+                        </div>
+                        <div class="modal-body">
+                            @{
+                                IList<AuthorDto> authors = (IList<AuthorDto>) ViewData["Authors"];
+                            }
+                            <h3>Vyberte autora</h3>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Autor</th>
+                                    <th>Akce</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (AuthorDto a in authors)
+                                {
+                                    <tr>
+                                        <td>
+                                            @a.FirstName @a.LastName
+                                        </td>
+                                        <td>
+                                            <button asp-controller="Books" asp-action="SelectAuthorEditView" asp-route-id="@Model.Id" type="submit" class="btn btn-default" name="authorId" value="@a.Id">Vybrat</button>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

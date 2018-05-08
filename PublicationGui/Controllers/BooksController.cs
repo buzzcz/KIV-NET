@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using PublicationGui.Models;
 using PublicationsCore.facade;
@@ -13,9 +12,12 @@ namespace PublicationGui.Controllers
     {
         private readonly IPublicationFacade _publicationFacade;
 
-        public BooksController(IPublicationFacade publicationFacade)
+        private readonly IAuthorFacade _authorFacade;
+
+        public BooksController(IPublicationFacade publicationFacade, IAuthorFacade authorFacade)
         {
             _publicationFacade = publicationFacade;
+            _authorFacade = authorFacade;
         }
 
         public IActionResult Error()
@@ -25,11 +27,15 @@ namespace PublicationGui.Controllers
 
         public IActionResult Create()
         {
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData);
+            
             return View();
         }
 
         public IActionResult Edit(BookDto book)
         {
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
+            
             return View("~/Views/Books/Edit.cshtml", book);
         }
 
@@ -54,6 +60,8 @@ namespace PublicationGui.Controllers
             {
                 ViewData["Errors"] = "Formulář není validní";
             }
+            
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
 
             return View(book);
         }
@@ -103,6 +111,8 @@ namespace PublicationGui.Controllers
             {
                 ViewData["Errors"] = "Formulář není validní";
             }
+            
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
 
             return View(book);
         }
@@ -118,6 +128,8 @@ namespace PublicationGui.Controllers
         {
             PublicationsController.AddAuthor(book);
             
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
+            
             return View("~/Views/Books/Edit.cshtml", book);
         }
 
@@ -126,6 +138,10 @@ namespace PublicationGui.Controllers
         public IActionResult RemoveAuthorEditView(BookDto book, int index)
         {
             book.AuthorPublicationList.RemoveAt(index);
+            
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
+            
+            ModelState.Clear();
             
             return View("~/Views/Books/Edit.cshtml", book);
         }
@@ -136,6 +152,8 @@ namespace PublicationGui.Controllers
         {
             PublicationsController.AddAuthor(book);
             
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
+            
             return View("~/Views/Books/Create.cshtml", book);
         }
 
@@ -145,7 +163,23 @@ namespace PublicationGui.Controllers
         {
             book.AuthorPublicationList.RemoveAt(index);
             
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
+            
+            ModelState.Clear();
+
             return View("~/Views/Books/Create.cshtml", book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SelectAuthorEditView(BookDto book, int authorId)
+        {
+            AuthorDto author = _authorFacade.GetAuthor(authorId);
+            PublicationsController.AddAuthor(book, author);
+            
+            PublicationsController.AddAuthorsToViewData(_authorFacade, ViewData, book);
+            
+            return View("~/Views/Books/Edit.cshtml", book);
         }
     }
 }
